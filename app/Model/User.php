@@ -1,5 +1,6 @@
 <?php
 
+App::uses('AppModel', 'Model');
 App::uses('AuthComponent', 'Controller/Component');
 class User extends AppModel {
     public $validate = array(
@@ -41,8 +42,16 @@ class User extends AppModel {
             )
         )
     );
+
     public $useTable = 'user';
-    
+
+    public $belongsTo = array(
+        'group' => array(
+            'className' => 'Group',
+            'foreignKey' => 'group'
+        )
+    );
+
     public function beforeSave($options = array()) {
         if (isset($this->data[$this->alias]['password'])) {
             $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
