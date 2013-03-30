@@ -13,11 +13,12 @@
 <?php 
 foreach ($usersList as $user) :
     extract($user);
+    // pr($usersList); die;
 ?>
         <tr>
             <td><?php echo $User['id']; ?></td>
             <td><?php echo $User['username']; ?></td>
-            <td><?php echo $User['group']; ?></td>
+            <td><?php echo $group['label']; ?></td>
             <td><?php echo $User['created']; ?></td>
             <td><?php echo $User['modified']; ?></td>
             <td><a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'edit', $User['id'])); ?>">Edit</a></td>
