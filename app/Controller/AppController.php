@@ -35,15 +35,18 @@ class AppController extends Controller {
     public $components = array(
         'Session',
         'DebugKit.Toolbar',
+        'Acl',
         'Auth' => array(
-            'loginRedirect' => array('controller' => 'pages', 'action' => 'homepage'),
-            'logoutRedirect' => array('controller' => 'pages', 'action' => 'homepage'),
-
+            'authorize' => array(
+                'actions' => array('actionPath' => 'controllers')
+            )
         )
 	);
     
-    function beforeFilter() {
-        $this->Auth->allow('index', 'view');
+    public function beforeFilter() {
+        $this->Auth->loginAction = array('controllers' => 'users', 'action' => 'login');
+        $this->Auth->logoutRedirect = array('controllers' => 'users', 'action' => 'login');
+        $this->Auth->loginRedirect = array('controllers' => 'pages', 'action' => 'homepage');
     }
 		
 }
