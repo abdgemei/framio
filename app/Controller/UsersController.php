@@ -11,7 +11,7 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow();
+        $this->Auth->allow('index', 'view', 'login', 'initDB');
     }
 
 /**
@@ -118,6 +118,24 @@ class UsersController extends AppController {
     
     public function logout() {
         $this->redirect($this->Auth->logout());
+    }
+
+    public function initDB() {
+        $group = $this->User->Group;
+        
+        $group->id = 1;
+        $this->Acl->allow($group, 'controllers');
+        
+        $group->id = 2;
+        $this->Acl->deny($group, 'controllers');
+        $this->Acl->allow($group, 'controllers/Users/add');
+        $this->Acl->allow($group, 'controllers/Users/edit');
+        
+        $group->id = 3;
+        $this->Acl->deny($group, 'controllers');
+        
+        echo "all done!";
+        exit;
     }
     
 }

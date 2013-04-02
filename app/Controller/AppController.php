@@ -44,9 +44,9 @@ class AppController extends Controller {
 	);
     
     public function beforeFilter() {
-        $this->Auth->loginAction = array('controllers' => 'users', 'action' => 'login');
-        $this->Auth->logoutRedirect = array('controllers' => 'users', 'action' => 'login');
-        $this->Auth->loginRedirect = array('controllers' => 'pages', 'action' => 'homepage');
+        $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
+        $this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'login');
+        $this->Auth->loginRedirect = array('controller' => 'pages', 'action' => 'display');
     }
 		
 }
