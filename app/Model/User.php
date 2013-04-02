@@ -3,6 +3,7 @@
 App::uses('AppModel', 'Model');
 App::uses('AuthComponent', 'Controller/Component');
 class User extends AppModel {
+    
     public $validate = array(
         'username' => array(
             'required' => array(
@@ -46,9 +47,10 @@ class User extends AppModel {
     public $useTable = 'user';
 
     public $belongsTo = array(
-        'group' => array(
+        'Group' => array(
             'className' => 'Group',
-            'foreignKey' => 'group'
+            'foreignKey' => 'group',
+            //'dependent'  => true
         )
     );
     

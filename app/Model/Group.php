@@ -30,7 +30,7 @@ class Group extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'users' => array(
+		'User' => array(
 			'className' => 'User',
 			'foreignKey' => 'id',
 			'dependent' => false,
