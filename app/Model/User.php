@@ -54,7 +54,7 @@ class User extends AppModel {
         )
     );
     
-    public $actsAs = array('Acl' => array('type' => 'requester'));
+    //public $actsAs = array('Acl' => array('type' => 'requester'));
 
     public function beforeSave($options = array()) {
         if (isset($this->data[$this->alias]['password'])) {
@@ -75,10 +75,10 @@ class User extends AppModel {
         if (!$this->id && empty($this->data)) {
             return null;
         }
-        if (isset($this->data['User']['group_id'])) {
-            $groupId = $this->data['User']['group_id'];
+        if (isset($this->data['User']['group'])) {
+            $groupId = $this->data['User']['group'];
         } else {
-            $groupId = $this->field('group_id');
+            $groupId = $this->field('group');
         }
         if (!$groupId) {
             return null;

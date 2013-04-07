@@ -67,6 +67,7 @@ class UsersController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+	    //pr($this->User); die;
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
@@ -81,6 +82,7 @@ class UsersController extends AppController {
 			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
 			$this->request->data = $this->User->find('first', $options);
 		}
+        
 		$groups = $this->User->Group->find('list');
 		$this->set(compact('groups'));
 	}
