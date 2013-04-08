@@ -126,15 +126,15 @@ class UsersController extends AppController {
         $group = $this->User->Group;
         
         $group->id = 1;
-        $this->Acl->allow($group, 'controllers');
+        //$this->Acl->allow($group, 'controllers');
         
         $group->id = 2;
-        $this->Acl->deny($group, 'controllers');
-        $this->Acl->allow($group, 'controllers/Users/add');
-        $this->Acl->allow($group, 'controllers/Users/edit');
+        //$this->Acl->deny($group, 'controllers');
+        //$this->Acl->allow($group, 'controllers/Users/add');
+        //$this->Acl->allow($group, 'controllers/Users/edit');
         
         $group->id = 3;
-        $this->Acl->deny($group, 'controllers');
+        //$this->Acl->deny($group, 'controllers');
         
         echo "all done!";
         exit;
