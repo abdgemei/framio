@@ -8,6 +8,7 @@ App::uses('AppController', 'Controller');
 class UsersController extends AppController {
     
     public $helpers = array('HTML', 'Form');
+	
 
     public function beforeFilter() {
         parent::beforeFilter();
