@@ -54,6 +54,22 @@ class User extends AppModel {
         )
     );
     
+    public $hasMany = array(
+        'Upload' => array(
+            'className' => 'Upload',
+            'foreignKey' => 'id',
+            'dependent' => false,
+            'conditions' => '',
+            'fields' => '',
+            'order' => '',
+            'limit' => '',
+            'offset' => '',
+            'exclusive' => '',
+            'finderQuery' => '',
+            'counterQuery' => ''
+        )
+    );
+
     //public $actsAs = array('Acl' => array('type' => 'requester'));
 
     public function beforeSave($options = array()) {
