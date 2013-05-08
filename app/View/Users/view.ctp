@@ -51,6 +51,16 @@
         <?php echo $this->Form->end(__('Unfollow', true)); ?>
         </dd>
         <?php endif; ?>
+        <dt><?php echo __('Followers'); ?></dt>
+        <dd>
+            <?php echo $this->Following->followCount($user['User']['id']); ?>
+            &nbsp;
+        </dd>
+        <dt><?php echo __('Following'); ?></dt>
+        <dd>
+            <?php echo $this->Following->followingCount($user['User']['id']); ?>
+            &nbsp;
+        </dd>
 	</dl>
 </div>
 <div class="actions">

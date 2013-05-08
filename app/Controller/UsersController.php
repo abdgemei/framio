@@ -185,7 +185,8 @@ class UsersController extends AppController {
                         $following = new Following;
                         
                         $conditions = array(
-                            'following_user_id' => $this->request->data['Following']['following_user_id']
+                            'user_id' => $this->Auth->user('id'),
+                            'following_user_id' =>  $this->request->data['Following']['following_user_id']
                         );
 
                         

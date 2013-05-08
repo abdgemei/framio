@@ -33,7 +33,7 @@ class Following extends AppModel {
 		),
 		'FollowingUser' => array(
 			'className' => 'User',
-			'foreignKey' => 'user_id',
+			'foreignKey' => 'following_user_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
