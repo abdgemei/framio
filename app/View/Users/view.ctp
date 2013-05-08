@@ -31,6 +31,14 @@
 			<?php echo h($user['User']['modified']); ?>
 			&nbsp;
 		</dd>
+        <dt><?php echo __('Follow'); ?></dt>
+        <dd>
+        <?php echo $this->Form->create(false, array('action'=>'/follow')); ?>
+            <?php
+                echo $this->Form->hidden('Following.following_user_id', array('value'=> $user['User']['id']));
+            ?>
+        <?php echo $this->Form->end(__('Follow', true)); ?>
+        </dd>
 	</dl>
 </div>
 <div class="actions">

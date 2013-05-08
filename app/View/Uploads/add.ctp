@@ -1,17 +1,14 @@
 <div class="uploads form">
-<?php echo $this->Form->create('Upload'); ?>
+<?php echo $this->Form->create('Upload', array('type'=>'file')); ?>
 	<fieldset>
 		<legend><?php echo __('Add Upload'); ?></legend>
 	<?php
-		echo $this->Form->input('user_id');
 		echo $this->Form->input('title');
 		echo $this->Form->input('description');
-		echo $this->Form->input('filename');
-		echo $this->Form->input('filesize');
-		echo $this->Form->input('filemime');
+		echo $this->Form->input('file', array('type'=>'file'));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<?php echo $this->Form->end(__('Submit', true)); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

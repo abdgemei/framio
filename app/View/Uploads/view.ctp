@@ -1,3 +1,4 @@
+<?php // pr($upload); die; ?>
 <div class="uploads view">
 <h2><?php  echo __('Upload'); ?></h2>
 	<dl>
@@ -20,6 +21,12 @@
 		<dd>
 			<?php echo h($upload['Upload']['description']); ?>
 			&nbsp;
+		</dd>
+		<dt><?php echo __('Preview'); ?></dt>
+		<dd>
+		    <?php echo $this->Html->image(FULL_BASE_URL.'/content/'.$upload['Upload']['id'], array('alt' => $upload['Upload']['title'])); ?>
+
+		    &nbsp;
 		</dd>
 		<dt><?php echo __('Filename'); ?></dt>
 		<dd>
@@ -46,6 +53,13 @@
 			<?php echo h($upload['Upload']['modified']); ?>
 			&nbsp;
 		</dd>
+        <dt><?php echo __('Download'); ?></dt>
+        <dd>
+           <?php echo $this->Html->link(__('Download', true), array('action' => 'download', $upload['Upload']['id'])); ?>
+           
+        </dd>
+
+
 	</dl>
 </div>
 <div class="actions">

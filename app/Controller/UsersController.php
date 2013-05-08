@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('Following', 'Model');
 /**
  * Users Controller
  *
@@ -12,7 +13,7 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('index', 'view', 'login', 'initDB', 'logout');
+        $this->Auth->allow('index', 'view', 'login', 'initDB', 'logout', 'follow');
     }
 
 /**
@@ -122,6 +123,48 @@ class UsersController extends AppController {
     public function logout() {
         $this->redirect($this->Auth->logout());
     }
+    
+    public function follow() {
+        if ($this->request->is('post')) {
+            $conditions = array(
+                'User.id' => $this->request->data['Following']['following_user_id']
+            );
+            
+            if (!$this->User->hasAny($conditions)) {
+                throw new NotFoundException(__('User not found'));
+            } else {
+                $following = new Following;
+    
+                $conditions = array(
+                    'Following.user_id' => $this->Auth->user('id'),
+                    'Following.following_user_id' => $this->request->data['Following']['following_user_id']
+                );
+                
+                if ($following->hasAny($conditions)) {
+                    throw new InternalErrorException(__('Invalid operation: You are already following this user'));
+                } else {
+                    if ($this->request->data['Following']['following_user_id'] !== $this->Auth->user('id')) {
+                        $this->request->data['Following']['user_id'] = $this->Auth->user('id');
+                        $follow = new Following;
+                        
+                        if($follow->save($this->request->data)) {
+                            $this->autoRender = false;
+                            $this->Session->setFlash(__('Done!'));
+                            $this->redirect($this->referer());
+                        } else {
+                            throw new InternalErrorException(__('Invalid operation: Cannot save'));
+                        }
+                    } else {
+                        throw new InternalErrorException(__('Invalid operation: Cannot follow self'));
+                    }
+                }
+            }
+        }
+    }
+    
+// TODO uploads ACL entries for all user groups
+// TODO following action ACL entries
+
 
     public function initDB() {
         $group = $this->User->Group;

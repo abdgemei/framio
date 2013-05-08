@@ -55,3 +55,6 @@ Thumbs.db
 /app/tmp/tests/*
 !/app/tmp/tests/
 !/app/tmp/tests/empty
+
+/app/webroot/content/*
+/app/webroot/content
