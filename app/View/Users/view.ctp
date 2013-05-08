@@ -31,6 +31,7 @@
 			<?php echo h($user['User']['modified']); ?>
 			&nbsp;
 		</dd>
+		<?php if (!$this->Following->isFollowing($user['User']['id'])) : ?>
         <dt><?php echo __('Follow'); ?></dt>
         <dd>
         <?php echo $this->Form->create(false, array('action'=>'/follow')); ?>
@@ -39,6 +40,17 @@
             ?>
         <?php echo $this->Form->end(__('Follow', true)); ?>
         </dd>
+        <?php else : ?>
+            
+        <dt><?php echo __('Unfollow'); ?></dt>
+        <dd>
+        <?php echo $this->Form->create(false, array('action'=>'/unfollow')); ?>
+            <?php
+                echo $this->Form->hidden('Following.following_user_id', array('value'=> $user['User']['id']));
+            ?>
+        <?php echo $this->Form->end(__('Unfollow', true)); ?>
+        </dd>
+        <?php endif; ?>
 	</dl>
 </div>
 <div class="actions">

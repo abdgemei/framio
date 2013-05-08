@@ -8,12 +8,11 @@ App::uses('Following', 'Model');
  */
 class UsersController extends AppController {
     
-    public $helpers = array('HTML', 'Form');
-	
+    public $helpers = array('HTML', 'Form', 'Following');
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('index', 'view', 'login', 'initDB', 'logout', 'follow');
+        $this->Auth->allow('index', 'view', 'login', 'initDB', 'logout', 'follow', 'unfollow');
     }
 
 /**
@@ -161,10 +160,56 @@ class UsersController extends AppController {
             }
         }
     }
-    
-// TODO uploads ACL entries for all user groups
-// TODO following action ACL entries
 
+    public function unfollow() {
+        if ($this->request->is('post')) {
+            $conditions = array(
+                'User.id' => $this->request->data['Following']['following_user_id']
+            );
+            
+            if (!$this->User->hasAny($conditions)) {
+                throw new NotFoundException(__('User not found'));
+            } else {
+                $following = new Following;
+    
+                $conditions = array(
+                    'Following.user_id' => $this->Auth->user('id'),
+                    'Following.following_user_id' => $this->request->data['Following']['following_user_id']
+                );
+                
+                if (!$following->hasAny($conditions)) {
+                    throw new InternalErrorException(__('Invalid operation: You are not following this user'));
+                } else {
+                    if ($this->request->data['Following']['following_user_id'] !== $this->Auth->user('id')) {
+                        $this->request->data['Following']['user_id'] = $this->Auth->user('id');
+                        $following = new Following;
+                        
+                        $conditions = array(
+                            'following_user_id' => $this->request->data['Following']['following_user_id']
+                        );
+
+                        
+                        if($following->deleteAll($conditions, false)) {
+                            $this->autoRender = false;
+                            $this->Session->setFlash(__('Done!'));
+                            $this->redirect($this->referer());
+                        } else {
+                            throw new InternalErrorException(__('Invalid operation: Cannot delete'));
+                        }
+                    } else {
+                        throw new InternalErrorException(__('Invalid operation: Cannot unfollow self'));
+                    }
+                }
+            }
+        }
+        
+    }
+    
+// TODO do aco_sync too..
+// TODO uploads ACL entries for all user groups
+// TODO follow action ACL entries
+// TODO unfollow action ACL entries
+// TODO some shit
 
     public function initDB() {
         $group = $this->User->Group;
