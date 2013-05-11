@@ -31,6 +31,7 @@ class UploadsController extends AppController {
 		}
 		$options = array('conditions' => array('Upload.' . $this->Upload->primaryKey => $id));
 		$this->set('upload', $this->Upload->find('first', $options));
+        $this->set('uploadMetadata', $this->Upload->getMetadata($id));
 	}
 
     public function download($id = null) {

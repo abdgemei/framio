@@ -38,4 +38,28 @@ class Upload extends AppModel {
             'order' => ''
         )
     );
+    
+    public function getMetadata($id) {
+        if($this->hasAny(array('id' => $id))) {
+            
+            // pr(exif_read_data(FULL_BASE_URL.'/content/'.$id));die;
+            // $metadata = exif_read_data(FULL_BASE_URL.'/content/'.$id);
+            // $metadata = array(
+                // 'File name' => $this->findById(array('id' => $id))['Upload']['filename'],
+                // 'FileDatetime' => $metadata['FileDatetime'],
+                // 'FileSize' => $metadata['FileSize'],
+                // 'MimeType' => $metadata['MimeType'],
+                // 'Width' => $metadata['COMPUTED']['Width'],
+                // 'Height' => $metadata['COMPUTED']['Height'],
+                // 'ApertureFNumber' => $metadata['COMPUTED']['ApertureFNumber'],
+                // 'Make' => $metadata['Make'],
+                // 'Model' => $metadata['Model'],
+//                 
+            // );
+            //pr($metadata); die;
+            return exif_read_data(FULL_BASE_URL.'/content/'.$id);
+        } else {
+            return false;
+        }        
+    }
 }

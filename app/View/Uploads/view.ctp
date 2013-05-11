@@ -58,8 +58,13 @@
            <?php echo $this->Html->link(__('Download', true), array('action' => 'download', $upload['Upload']['id'])); ?>
            
         </dd>
-
-
+        <dt><?php echo __('Photo Metadata'); ?></dt>
+        <dd>
+           <?php foreach($uploadMetadata as $metaKey => $metaValue) : ?>
+               <dt><?php echo $metaKey ?></dt>
+               <dd><?php echo $metaValue ?></dd>
+           <?php endforeach; ?>
+        </dd>
 	</dl>
 </div>
 <div class="actions">

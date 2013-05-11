@@ -12,7 +12,7 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('index', 'view', 'login', 'initDB', 'logout', 'follow', 'unfollow');
+        $this->Auth->allow('index', 'view', 'login', 'initDB');
     }
 
 /**
@@ -222,10 +222,23 @@ class UsersController extends AppController {
         //$this->Acl->deny($group, 'controllers');
         //$this->Acl->allow($group, 'controllers/Users/add');
         //$this->Acl->allow($group, 'controllers/Users/edit');
+        // $this->Acl->allow($group, 'controllers/Users/view');
+        //$this->Acl->allow($group, 'controllers/Users/logout');
+        // $this->Acl->allow($group, 'controllers/Users/follow');
+        // $this->Acl->allow($group, 'controllers/Users/unfollow');
+        // $this->Acl->allow($group, 'controllers/Uploads/add');
+        // $this->Acl->allow($group, 'controllers/Uploads/edit');
+        // $this->Acl->allow($group, 'controllers/Uploads/view');
         
         $group->id = 3;
         //$this->Acl->deny($group, 'controllers');
-        
+        // $this->Acl->allow($group, 'controllers/Users/view');
+        //$this->Acl->allow($group, 'controllers/Users/logout');
+        // $this->Acl->allow($group, 'controllers/Users/follow');
+        // $this->Acl->allow($group, 'controllers/Users/unfollow');
+        // $this->Acl->allow($group, 'controllers/Uploads/add');
+        // $this->Acl->allow($group, 'controllers/Uploads/view');
+                
         echo "all done!";
         exit;
     }
