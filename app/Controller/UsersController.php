@@ -1,6 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
 App::uses('Following', 'Model');
+App::uses('Invitation', 'Model');
 /**
  * Users Controller
  *
@@ -59,7 +60,7 @@ class UsersController extends AppController {
 		$groups = $this->User->Group->find('list');
 		$this->set(compact('groups'));
 	}
-
+    
 /**
  * edit method
  *

@@ -46,12 +46,12 @@ class EmailConfig {
 
 	public $smtp = array(
 		'transport' => 'Smtp',
-		'from' => array('site@localhost' => 'My Site'),
-		'host' => 'localhost',
-		'port' => 25,
+		'from' => array('a@framio.net' => 'Framio'),
+		'host' => 'ssl://smtp.gmail.com',
+		'port' => 465,
 		'timeout' => 30,
-		'username' => 'user',
-		'password' => 'secret',
+		'username' => 'a@framio.net',
+		'password' => 'noBodyKnows',
 		'client' => null,
 		'log' => false,
 		//'charset' => 'utf-8',

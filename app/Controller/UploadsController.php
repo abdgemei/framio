@@ -7,6 +7,9 @@ App::uses('AppController', 'Controller');
  */
 class UploadsController extends AppController {
 
+    public $helpers = array('Html');
+    public $components = array('Rand');
+
 /**
  * index method
  *
@@ -91,7 +94,7 @@ class UploadsController extends AppController {
         //pr(ROOT.DS.'content'.DS.$file['name']); die;
         //pr(String::uuid()); die;
         if($file['error'] === UPLOAD_ERR_OK) {
-            $id = String::uuid();
+            $id = $this->Rand->generateRandomString();
             if(move_uploaded_file($file['tmp_name'], WWW_ROOT.DS.'content'.DS.$id)) {
                 $this->request->data['Upload']['id'] = $id;
                 $this->request->data['Upload']['user_id'] = $this->Auth->user('id');

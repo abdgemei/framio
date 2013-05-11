@@ -54,6 +54,16 @@ class User extends AppModel {
         )
     );
     
+    public $hasOne = array(
+        'Profile' => array(
+            'className' => 'Profile',
+            'foreignKey' => '',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        ),
+    );
+    
     public $hasMany = array(
         'Upload' => array(
             'className' => 'Upload',
