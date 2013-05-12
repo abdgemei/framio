@@ -33,7 +33,6 @@ class InvitationsController extends AppController {
             }
         }
     }
-    
  
  	public function approve($id = null) {
 		if (!$this->Invitation->exists($id)) {
@@ -60,70 +59,3 @@ class InvitationsController extends AppController {
         }
         
 	}
-
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->Invitation->create();
-			if ($this->Invitation->save($this->request->data)) {
-				$this->Session->setFlash(__('The invitation has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The invitation could not be saved. Please, try again.'));
-			}
-		}
-	}
-
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->Invitation->exists($id)) {
-			throw new NotFoundException(__('Invalid invitation'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Invitation->save($this->request->data)) {
-				$this->Session->setFlash(__('The invitation has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The invitation could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Invitation.' . $this->Invitation->primaryKey => $id));
-			$this->request->data = $this->Invitation->find('first', $options);
-		}
-	}
-
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->Invitation->id = $id;
-		if (!$this->Invitation->exists()) {
-			throw new NotFoundException(__('Invalid invitation'));
-		}
-		$this->request->onlyAllow('post', 'delete');
-
-        $this->Invitation->read(null, $id);
-        $this->Invitation->set('status', 'denied');
-
-		if ($this->Invitation->save()) {
-			$this->Session->setFlash(__('Invitation not approved'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Invitation was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
-}

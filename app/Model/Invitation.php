@@ -73,4 +73,16 @@ class Invitation extends AppModel {
 			),
 		),
 	);
+    
+    public function isRegistered($verificationCode) {
+        $invitation = $this->findByVerificationCode($verificationCode);
+        if (!$this->exists($invitation['Invitation']['id'])) {
+            throw new NotFoundException(__('Invalid invitation'));
+        }
+        if ($invitation['Invitation']['status'] == 'registered') {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
