@@ -13,26 +13,14 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('index', 'view', 'login', 'initDB');
+        $this->Auth->allow('login', 'initDB', 'logout');
     }
 
-/**
- * index method
- *
- * @return void
- */
 	public function index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate());
 	}
 
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function view($id = null) {
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
@@ -41,11 +29,6 @@ class UsersController extends AppController {
 		$this->set('user', $this->User->find('first', $options));
 	}
 
-/**
- * add method
- *
- * @return void
- */
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->User->create();
@@ -61,13 +44,6 @@ class UsersController extends AppController {
 		$this->set(compact('groups'));
 	}
     
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function edit($id = null) {
 	    //pr($this->User); die;
 		if (!$this->User->exists($id)) {
@@ -89,13 +65,6 @@ class UsersController extends AppController {
 		$this->set(compact('groups'));
 	}
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function delete($id = null) {
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
@@ -217,29 +186,28 @@ class UsersController extends AppController {
         $group = $this->User->Group;
         
         $group->id = 1;
-        //$this->Acl->allow($group, 'controllers');
+        $this->Acl->allow($group, 'controllers');
         
         $group->id = 2;
-        //$this->Acl->deny($group, 'controllers');
-        //$this->Acl->allow($group, 'controllers/Users/add');
-        //$this->Acl->allow($group, 'controllers/Users/edit');
-        // $this->Acl->allow($group, 'controllers/Users/view');
-        //$this->Acl->allow($group, 'controllers/Users/logout');
-        // $this->Acl->allow($group, 'controllers/Users/follow');
-        // $this->Acl->allow($group, 'controllers/Users/unfollow');
-        // $this->Acl->allow($group, 'controllers/Uploads/add');
-        // $this->Acl->allow($group, 'controllers/Uploads/edit');
-        // $this->Acl->allow($group, 'controllers/Uploads/view');
+        $this->Acl->deny($group, 'controllers');
+        $this->Acl->allow($group, 'controllers/Users/index');
+        $this->Acl->allow($group, 'controllers/Users/edit');
+        $this->Acl->allow($group, 'controllers/Users/view');
+        $this->Acl->allow($group, 'controllers/Users/follow');
+        $this->Acl->allow($group, 'controllers/Users/unfollow');
+        $this->Acl->allow($group, 'controllers/Uploads/add');
+        $this->Acl->allow($group, 'controllers/Uploads/edit');
+        $this->Acl->allow($group, 'controllers/Uploads/view');
+        $this->Acl->allow($group, 'controllers/Invitations/index');
+        $this->Acl->allow($group, 'controllers/Invitations/approve');
         
         $group->id = 3;
-        //$this->Acl->deny($group, 'controllers');
-        // $this->Acl->allow($group, 'controllers/Users/view');
-        //$this->Acl->allow($group, 'controllers/Users/logout');
-        // $this->Acl->allow($group, 'controllers/Users/follow');
-        // $this->Acl->allow($group, 'controllers/Users/unfollow');
-        // $this->Acl->allow($group, 'controllers/Uploads/add');
-        // $this->Acl->allow($group, 'controllers/Uploads/view');
-                
+        $this->Acl->deny($group, 'controllers');
+        $this->Acl->allow($group, 'controllers/Users/follow');
+        $this->Acl->allow($group, 'controllers/Users/unfollow');
+        $this->Acl->allow($group, 'controllers/Uploads/add');
+        $this->Acl->allow($group, 'controllers/Uploads/view');
+                        
         echo "all done!";
         exit;
     }

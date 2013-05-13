@@ -1,17 +1,16 @@
 <div class="profiles form">
 <?php echo $this->Form->create('Profile'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Profile'); ?></legend>
+		<legend><?php echo __('Create your profile'); ?></legend>
 	<?php
-		echo $this->Form->input('user_id');
-		echo $this->Form->input('first_name');
-		echo $this->Form->input('last_name');
+		//echo $this->Form->input('user_id');
+		echo $this->Form->input('name');
 		echo $this->Form->input('date_of_birth');
 		echo $this->Form->input('city');
 		echo $this->Form->input('country');
-		echo $this->Form->input('main_picture_id');
-		echo $this->Form->input('theme_id');
-		echo $this->Form->input('last_update');
+        echo $this->Form->input('main_picture_id', array('type'=>'file'));
+		//echo $this->Form->input('theme_id');
+		//echo $this->Form->input('last_update');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

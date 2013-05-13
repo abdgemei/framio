@@ -11,11 +11,6 @@ class InvitationsController extends AppController {
 
     public $components = array('Rand');
 
-/**
- * index method
- *
- * @return void
- */
 	public function index() {
 		$this->Invitation->recursive = 0;
 		$this->set('invitations', $this->paginate());
@@ -23,6 +18,9 @@ class InvitationsController extends AppController {
 	}
 
    public function apply() {
+        if ($this->Session->check('Auth.User')) {
+            $this->redirect('/');
+        }
         if ($this->request->is('post')) {
             $this->Invitation->create();
             if ($this->Invitation->save($this->request->data)) {
@@ -59,3 +57,4 @@ class InvitationsController extends AppController {
         }
         
 	}
+}

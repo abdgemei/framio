@@ -41,6 +41,13 @@ $cakeDescription = __d('cake_dev', 'Framio');
 	<div id="container">
 		<div id="header">
 			<h1><?php echo $this->Html->link($cakeDescription, 'http://framio.dev'); ?></h1>
+			<div style="float:right">
+			    <?php //pr($this->Session->read('Auth.User')); die; ?>
+			    <?php $user = $this->Session->read('Auth.User'); ?>
+			    <?php if(isset($user)) { echo "Logged in as <em>". $user['username'] ."</em>&nbsp;".$this->Html->link('Sign out', array('controller'=>'users', 'action'=>'logout')); } else { ?>
+			        
+			    <?php echo $this->Html->link('Sign in', array('controller'=>'users', 'action'=>'login')); }  ?>
+			</div>
 		</div>
 		<div id="content">
 
