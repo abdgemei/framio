@@ -11,10 +11,14 @@ class InvitationsController extends AppController {
 
     public $components = array('Rand');
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('apply');
+    }
+
 	public function index() {
 		$this->Invitation->recursive = 0;
 		$this->set('invitations', $this->paginate());
-        $this->Auth->allow('approve', 'apply');
 	}
 
    public function apply() {
@@ -25,13 +29,15 @@ class InvitationsController extends AppController {
             $this->Invitation->create();
             if ($this->Invitation->save($this->request->data)) {
                 $this->Session->setFlash(__('The invitation has been saved'));
-                $this->redirect(array('action' => 'index'));
+                $this->redirect('/');
             } else {
                 $this->Session->setFlash(__('The invitation could not be saved. Please, try again.'));
             }
         }
     }
  
+// TODO move email links to view
+
  	public function approve($id = null) {
 		if (!$this->Invitation->exists($id)) {
 			throw new NotFoundException(__('Invalid invitation'));

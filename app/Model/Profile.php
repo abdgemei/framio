@@ -21,17 +21,17 @@ class Profile extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'name' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'date_of_birth' => array(
+		// 'name' => array(
+			// 'notempty' => array(
+				// 'rule' => array('notempty'),
+				// //'message' => 'Your custom message here',
+				// //'allowEmpty' => false,
+				// //'required' => false,
+				// //'last' => false, // Stop validation after this rule
+				// //'on' => 'create', // Limit validation to 'create' or 'update' operations
+			// ),
+		// ),
+		'birthday' => array(
 			'date' => array(
 				'rule' => array('date'),
 				//'message' => 'Your custom message here',
@@ -58,15 +58,12 @@ class Profile extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-	);
-    
-    public $hasOne = array(
-        'Main Picture' => array(
-            'className' => 'Upload',
-            'foreignKey' => 'main_picture_id',
-            'conditions' => '',
-            'fields' => '',
-            'order' => ''
-        )
+        // 'Profile Picture' => array(
+            // 'className' => 'Upload',
+            // 'foreignKey' => 'prof_picture_id',
+            // 'conditions' => '',
+            // 'fields' => '',
+            // 'order' => ''
+        // )
     );
 }

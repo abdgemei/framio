@@ -80,6 +80,9 @@ class UsersController extends AppController {
 	}
 
     public function login() {
+        if ($this->Session->check('Auth.User')) {
+            $this->redirect($this->referer());
+        }
         if ($this->request->is('post') || $this->Auth->loggedIn()) {
             if ($this->Auth->login()) {
                 $this->redirect($this->Auth->redirect());
@@ -92,7 +95,7 @@ class UsersController extends AppController {
     public function logout() {
         $this->redirect($this->Auth->logout());
     }
-    
+        
     public function follow() {
         if ($this->request->is('post')) {
             $conditions = array(
@@ -200,6 +203,8 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Uploads/view');
         $this->Acl->allow($group, 'controllers/Invitations/index');
         $this->Acl->allow($group, 'controllers/Invitations/approve');
+        $this->Acl->allow($group, 'controllers/Invitations/apply');
+        $this->Acl->allow($group, 'controllers/Profiles/view');
         
         $group->id = 3;
         $this->Acl->deny($group, 'controllers');
@@ -207,7 +212,9 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Users/unfollow');
         $this->Acl->allow($group, 'controllers/Uploads/add');
         $this->Acl->allow($group, 'controllers/Uploads/view');
-                        
+        $this->Acl->allow($group, 'controllers/Invitations/apply');
+        $this->Acl->allow($group, 'controllers/Profiles/view');
+                                
         echo "all done!";
         exit;
     }

@@ -9,7 +9,7 @@
 			<th><?php echo $this->Paginator->sort('date_of_birth'); ?></th>
 			<th><?php echo $this->Paginator->sort('city'); ?></th>
 			<th><?php echo $this->Paginator->sort('country'); ?></th>
-			<th><?php echo $this->Paginator->sort('main_picture_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('prof_picture_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('theme_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('last_update'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -25,7 +25,7 @@
 		<td><?php echo h($profile['Profile']['date_of_birth']); ?>&nbsp;</td>
 		<td><?php echo h($profile['Profile']['city']); ?>&nbsp;</td>
 		<td><?php echo h($profile['Profile']['country']); ?>&nbsp;</td>
-		<td><?php echo h($profile['Profile']['main_picture_id']); ?>&nbsp;</td>
+		<td><?php echo h($profile['Profile']['prof_picture_id']); ?>&nbsp;</td>
 		<td><?php echo h($profile['Profile']['theme_id']); ?>&nbsp;</td>
 		<td><?php echo h($profile['Profile']['last_update']); ?>&nbsp;</td>
 		<td class="actions">
@@ -57,6 +57,6 @@
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Uploads'), array('controller' => 'uploads', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Main Picture'), array('controller' => 'uploads', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Profile Picture'), array('controller' => 'uploads', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

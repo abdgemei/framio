@@ -29,6 +29,15 @@ class Upload extends AppModel {
  *
  * @var array
  */
+    public $hasOne = array(
+        'Profile' => array(
+            'className' => 'Profile',
+            'foreignKey' => '',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        ),
+    );
     public $belongsTo = array(
         'User' => array(
             'className' => 'User',
@@ -37,13 +46,6 @@ class Upload extends AppModel {
             'fields' => '',
             'order' => ''
         ),
-        'Profile' => array(
-            'className' => 'Profile',
-            'foreignKey' => '',
-            'conditions' => '',
-            'fields' => '',
-            'order' => ''
-        )
     );
     
     public function getMetadata($id) {

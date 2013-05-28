@@ -19,6 +19,24 @@ class User extends AppModel {
                 'message' => 'This username has already been taken'
             )
         ),
+        'email' => array(
+            'required' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'A username is required'
+            ),
+            'email' => array(
+                'rule' => array('email'),
+                'message' => 'Please enter a valid email address',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+            'uniqueEmail' => array(
+                'rule'=>'isUnique',
+                'message' => 'This email has already been used'
+            ),
+        ),
         'password' => array(
             'required' => array(
                 'rule' => array('notEmpty'),
@@ -116,4 +134,12 @@ class User extends AppModel {
     public function bindNode($user) {
         return array('model' => 'group', 'foreign_key' => $user['User']['Group']['id']);
     }
+    
+    // public function isUnique($email) {
+        // if(!$this->findByEmail($email)->hasAny()) {
+            // return true;
+        // } else {
+            // return false;
+        // }
+    // }
 }

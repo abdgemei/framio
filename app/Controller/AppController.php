@@ -39,6 +39,11 @@ class AppController extends Controller {
         'Auth' => array(
             'authorize' => array(
                 'actions' => array('actionPath' => 'controllers')
+            ),
+            'authenticate' => array(
+                'Form' => array(
+                    'fields' => array('username' => 'email')
+                )
             )
         )
 	);

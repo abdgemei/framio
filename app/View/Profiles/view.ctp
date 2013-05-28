@@ -36,9 +36,9 @@
 			<?php echo h($profile['Profile']['country']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Main Picture Id'); ?></dt>
+		<dt><?php echo __('Profile Picture Id'); ?></dt>
 		<dd>
-			<?php echo h($profile['Profile']['main_picture_id']); ?>
+			<?php echo h($profile['Profile']['profile_picture_id']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Theme Id'); ?></dt>
@@ -63,54 +63,54 @@
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Uploads'), array('controller' => 'uploads', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Main Picture'), array('controller' => 'uploads', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Profile Picture'), array('controller' => 'uploads', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 	<div class="related">
 		<h3><?php echo __('Related Uploads'); ?></h3>
-	<?php if (!empty($profile['Main Picture'])): ?>
+	<?php if (!empty($profile['Profile Picture'])): ?>
 		<dl>
 			<dt><?php echo __('Id'); ?></dt>
 		<dd>
-	<?php echo $profile['Main Picture']['id']; ?>
+	<?php echo $profile['Profile Picture']['id']; ?>
 &nbsp;</dd>
 		<dt><?php echo __('User Id'); ?></dt>
 		<dd>
-	<?php echo $profile['Main Picture']['user_id']; ?>
+	<?php echo $profile['Profile Picture']['user_id']; ?>
 &nbsp;</dd>
 		<dt><?php echo __('Title'); ?></dt>
 		<dd>
-	<?php echo $profile['Main Picture']['title']; ?>
+	<?php echo $profile['Profile Picture']['title']; ?>
 &nbsp;</dd>
 		<dt><?php echo __('Description'); ?></dt>
 		<dd>
-	<?php echo $profile['Main Picture']['description']; ?>
+	<?php echo $profile['Profile Picture']['description']; ?>
 &nbsp;</dd>
 		<dt><?php echo __('Filename'); ?></dt>
 		<dd>
-	<?php echo $profile['Main Picture']['filename']; ?>
+	<?php echo $profile['Profile Picture']['filename']; ?>
 &nbsp;</dd>
 		<dt><?php echo __('Filesize'); ?></dt>
 		<dd>
-	<?php echo $profile['Main Picture']['filesize']; ?>
+	<?php echo $profile['Profile Picture']['filesize']; ?>
 &nbsp;</dd>
 		<dt><?php echo __('Filemime'); ?></dt>
 		<dd>
-	<?php echo $profile['Main Picture']['filemime']; ?>
+	<?php echo $profile['Profile Picture']['filemime']; ?>
 &nbsp;</dd>
 		<dt><?php echo __('Created'); ?></dt>
 		<dd>
-	<?php echo $profile['Main Picture']['created']; ?>
+	<?php echo $profile['Profile Picture']['created']; ?>
 &nbsp;</dd>
 		<dt><?php echo __('Modified'); ?></dt>
 		<dd>
-	<?php echo $profile['Main Picture']['modified']; ?>
+	<?php echo $profile['Profile Picture']['modified']; ?>
 &nbsp;</dd>
 		</dl>
 	<?php endif; ?>
 		<div class="actions">
 			<ul>
-				<li><?php echo $this->Html->link(__('Edit Main Picture'), array('controller' => 'uploads', 'action' => 'edit', $profile['Main Picture']['id'])); ?></li>
+				<li><?php echo $this->Html->link(__('Edit Profile Picture'), array('controller' => 'uploads', 'action' => 'edit', $profile['Profile Picture']['id'])); ?></li>
 			</ul>
 		</div>
 	</div>

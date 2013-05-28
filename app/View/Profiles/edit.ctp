@@ -10,7 +10,7 @@
 		echo $this->Form->input('date_of_birth');
 		echo $this->Form->input('city');
 		echo $this->Form->input('country');
-		echo $this->Form->input('main_picture_id');
+		echo $this->Form->input('profile_picture_id');
 		echo $this->Form->input('theme_id');
 		echo $this->Form->input('last_update');
 	?>
@@ -26,6 +26,6 @@
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Uploads'), array('controller' => 'uploads', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Main Picture'), array('controller' => 'uploads', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Profile Picture'), array('controller' => 'uploads', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

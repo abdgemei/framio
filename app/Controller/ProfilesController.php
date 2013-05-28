@@ -1,5 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
+App::uses('User', 'Model');
 App::uses('Invitation', 'Model');
 /**
  * Profiles Controller
@@ -10,8 +12,21 @@ class ProfilesController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('signup');
+        $this->Auth->allow('signup', 'view');
     }
+    
+    public function view($username = null) {
+        $row = $this->Profile->findByUsername($username);
+        $id = $row['Profile']['id'];
+        //pr($id); die;
+        if (!$this->Profile->exists($id)) {
+            throw new NotFoundException(__('Invalid profile'));
+        }
+        $options = array('conditions' => array('Profile.username' => $username));
+        $this->set('profile', $this->Profile->find('first', $options));
+    }
+
+    // TODO move email links to view
 
     public function signup($verificationCode = null) {
         if ($this->Session->check('Auth.User')) {
@@ -33,13 +48,33 @@ class ProfilesController extends AppController {
         }
         
         if ($this->request->is('post')) {
+            $this->User = new User;
+            $this->User->create();
             $this->Profile->create();
             $this->Invitation->id = $invitation['Invitation']['id'];
-            if ($this->Profile->save($this->request->data) && $this->Invitation->delete()) {
-                $this->Session->setFlash(__('The profile has been saved'));
-                $this->redirect(array('action' => 'index'));
+            $parts = explode("@", $this->request->data['User']['email']);
+            $username = $parts[0];
+            $this->request->data['Profile']['username'] = $username;
+            $this->request->data['User']['group'] = 3;
+            if ($this->User->save($this->request->data) && $this->Invitation->delete()) {
+                $this->request->data['Profile']['user_id'] = $this->User->getLastInsertID();
+                if($this->Profile->save($this->request->data)) {
+                    $this->Email = new CakeEmail('smtp');
+                    $this->Email->to($this->request->data['User']['email'])
+                                ->from(array('info@framio.dev' => 'Framio'))
+                                ->subject('Welcome to Framio!');
+                    $message = 'You have joined Framio! Log in here '.FULL_BASE_URL.'/users/login';
+                    if($this->Email->send($message)) {
+                        $this->Session->setFlash(__('Welcome to Framio!'));
+                        $this->redirect('/');
+                    } else {
+                        $this->Session->setFlash(__('Something went wrong. Please, try again.'));
+                    }
+                } else {
+                    $this->Session->setFlash(__('The profile cannot be saved. Please, try again.'));
+                }
             } else {
-                $this->Session->setFlash(__('The profile could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The profile cannot be saved. Please, try again.'));
             }
         }
     }
