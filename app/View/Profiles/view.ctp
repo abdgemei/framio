@@ -11,19 +11,14 @@
 			<?php echo $this->Html->link($profile['User']['id'], array('controller' => 'users', 'action' => 'view', $profile['User']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('First Name'); ?></dt>
+		<dt><?php echo __('Name'); ?></dt>
 		<dd>
-			<?php echo h($profile['Profile']['first_name']); ?>
+			<?php echo h($profile['Profile']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Last Name'); ?></dt>
+		<dt><?php echo __('Birthday'); ?></dt>
 		<dd>
-			<?php echo h($profile['Profile']['last_name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Date Of Birth'); ?></dt>
-		<dd>
-			<?php echo h($profile['Profile']['date_of_birth']); ?>
+			<?php echo h($profile['Profile']['birthday']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('City'); ?></dt>
@@ -34,11 +29,6 @@
 		<dt><?php echo __('Country'); ?></dt>
 		<dd>
 			<?php echo h($profile['Profile']['country']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Profile Picture Id'); ?></dt>
-		<dd>
-			<?php echo h($profile['Profile']['profile_picture_id']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Theme Id'); ?></dt>
@@ -110,7 +100,7 @@
 	<?php endif; ?>
 		<div class="actions">
 			<ul>
-				<li><?php echo $this->Html->link(__('Edit Profile Picture'), array('controller' => 'uploads', 'action' => 'edit', $profile['Profile Picture']['id'])); ?></li>
+				<li><?php // echo $this->Html->link(__('Edit Profile Picture'), array('controller' => 'uploads', 'action' => 'edit', $profile['Profile Picture']['id'])); ?></li>
 			</ul>
 		</div>
 	</div>

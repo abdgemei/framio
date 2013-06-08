@@ -10,7 +10,7 @@
 		echo $this->Form->input('date_of_birth');
 		echo $this->Form->input('city');
 		echo $this->Form->input('country');
-		echo $this->Form->input('profile_picture_id');
+		echo $this->Form->input('prof_picture_id');
 		echo $this->Form->input('theme_id');
 		echo $this->Form->input('last_update');
 	?>

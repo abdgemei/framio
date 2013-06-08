@@ -1,70 +1,82 @@
-<?php
-/**
- *
- * PHP 5
- *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Layouts
- * @since         CakePHP(tm) v 0.10.0.1076
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
- */
-
-$cakeDescription = __d('cake_dev', 'Framio');
+<?php //pr($this->params->pass[0]); die;  
+if (!Configure::read('debug')):
+    throw new NotFoundException();
+endif;
+App::uses('Debugger', 'Utility');
 ?>
+<?php $cakeDescription = __d('cake_dev', 'Framio'); ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<?php echo $this->Html->charset(); ?>
-	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo $title_for_layout; ?>
-	</title>
-	<?php
-		echo $this->Html->meta('icon');
+    <?php echo $this->Html->charset(); ?>
+    <title>
+        <?php echo $title_for_layout; ?> |
+        <?php echo $cakeDescription ?>
+    </title>
+    <?php echo $this->Html->meta('icon');
+          echo $this->Html->css('reset');
+          echo $this->Html->css('bootstrap');
+          echo $this->Html->css('style');
+          echo $this->fetch('meta');
+          echo $this->fetch('css');
+          echo $this->fetch('script');
+    ?>
+    <!-- <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="author" content="Abdelrahman Gemei" />
+    <meta name="description" content="Framio, Social network and photography publishing platform in Egypt." />
+    <meta name="keywords" content="framio, photography, egypt, web publisher and social networking platform, custom profile" />
+    <link rel="profile" href="http://gmpg.org/xfn/11" /> -->
 
-		echo $this->Html->css('cake.generic');
-
-		echo $this->fetch('meta');
-		echo $this->fetch('css');
-		echo $this->fetch('script');
-	?>
 </head>
 <body>
-	<div id="container">
-		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://framio.dev'); ?></h1>
-			<div style="float:right">
-			    <?php //pr($this->Session->read('Auth.User')); die; ?>
-			    <?php $user = $this->Session->read('Auth.User'); ?>
-			    <?php if(isset($user)) { echo "Logged in as <em>". $user['username'] ."</em>&nbsp;".$this->Html->link('Sign out', array('controller'=>'users', 'action'=>'logout')); } else { ?>
-			        
-			    <?php echo $this->Html->link('Sign in', array('controller'=>'users', 'action'=>'login')); }  ?>
-			</div>
-		</div>
-		<div id="content">
-
-			<?php echo $this->Session->flash(); ?>
-			<?php echo $this->Session->flash('auth'); ?>
-
-			<?php echo $this->fetch('content'); ?>
-		</div>
-		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-					'http://www.cakephp.org/',
-					array('target' => '_blank', 'escape' => false)
-				);
-			?>
-		</div>
-	</div>
-	<?php echo $this->element('sql_dump'); ?>
+<header class="container">
+    <section class="row">
+        <?php echo $this->Session->flash(); ?>
+        <?php echo $this->Session->flash('auth'); ?>
+        <section class="span3" id="logo">
+            <h1><a href="<?php echo FULL_BASE_URL ?>">framio</a></h1>
+        </section>
+        <?php echo $this->element('navigation'); ?>
+    </section>
+</header>
+<?php if(isset($this->params->pass[0])) { if ($this->params->pass[0] == 'home') { echo $this->element('collage');}} ?>
+<section class="container" id="wrap">
+<?php echo $this->fetch('content'); ?>
+</section>
+<footer class="container_12">
+    <section class="grid_2 alpha linkList1" id="footerAboutFramio">
+        <h4>About Framio</h4>
+        <ul>
+            <li><a href="#">Discover</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Who we are</a></li>
+        </ul>
+    </section>
+    <section class="grid_2 linkList2" id="footerCommunity">
+        <h4>About Framio</h4>
+        <ul>
+            <li><a href="#">Request an invite</a></li>
+            <li><a href="#">Find friends</a></li>
+            <li><a href="#">Jobs</a></li>
+        </ul>
+    </section>
+    <section class="grid_2 linkList3" id="footerMerchant">
+        <h4>Merchant</h4>
+        <ul>
+            <li><a href="#">Advertise</a></li>
+            <li><a href="#">Sponsor</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </section>
+    <section class="grid_2 linkList4" id="footerLegal">
+        <h4>Legal</h4>
+        <ul>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">FAQ</a></li>
+        </ul>
+    </section>
+</footer>
 </body>
 </html>
