@@ -1,0 +1,441 @@
+@charset "utf-8";
+/* CSS Document */
+
+#container{
+    margin:0px;
+	margin-left:auto;
+	margin-right:auto;
+	position:absolute;
+	width:960px;
+	height:1200px;
+}
+
+#bg{
+  min-height: 100%;
+  min-width: 960px;
+  width: 100%;
+  height: 1200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+	
+}
+
+nav#bar{
+	background-image:url(images/images/images/images/bar_03.png);
+	height:42px;
+	width:907px;
+	position:absolute;
+	margin-left:200px;
+	margin-top:10px;
+}
+
+nav h1{ 
+    font-size: 14px;
+	padding-left:10px;
+	padding-top:10px;
+	position:absolute;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#FFF;    	
+}
+
+nav ul{
+	position:absolute;
+	margin-left: 450px;
+	padding-top:0px;
+	list-style:none;
+	font-size:14px;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#FFF;
+}
+
+nav ul li {
+  display: block;
+  position: relative;
+  float: left;
+  margin-left:60px; 
+}
+
+nav ul li a{
+  text-decoration: none;
+  display: block;
+  position: relative;
+  color:#FFF;
+  float: left;
+  clear:both; 
+}
+
+
+header#greybar{
+	background-image:url(images/images/images/greygradient_03.jpg);
+	width:907px;
+	height:200px;
+	margin-left:200px;
+	margin-top:45px;
+	position:absolute;	
+}
+
+header ul{
+	position:relative;
+	margin-left:680px;
+	font-size:15px;
+	font-family:Arial, Helvetica, sans-serif;
+	list-style:none;
+	color:#000;
+	width:120px;
+	height:40px;
+}
+
+header ul li{
+	display:block;
+	line-height:20px;
+	
+}
+
+header ul li p{
+	color:#06F;
+	padding-left:10px;
+	float:right;
+	clear:both;
+	
+	
+}
+header img{ 
+    
+	height:174px;
+	position:absolute;
+	padding-left:5px;
+	padding-top:10px;
+	margin-left:10px;
+	
+		
+}
+
+h2{  
+	font-size: 12px;
+	margin-left:160px;
+	padding-top:10px;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#000;
+	line-height:20px;
+}
+
+header a{
+	text-decoration:none;
+	color:#06F;	
+}
+
+
+
+button{
+	position:absolute;
+	width:106px;
+	height:36px;
+	background-color:#06F;
+	border-bottom:none; border-left:none; border-right:none;
+	border-top-color:none; 
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	border-radius: 3px;
+	color: #ffffff;
+	display: block;
+	font: 14px Arial, Helvetica, sans-serif; font-weight:bolder;
+	margin-left:160px;
+	margin-top:40px;
+	padding-top:10px; padding-bottom:5px; padding-left:0px; padding-right:12px;
+	text-shadow: 0 1px 1px #000000;
+	text-transform: capitalize;
+}
+
+
+button img{
+	position:relative;
+	margin-left:2px;
+	padding-left:2px;
+	padding-top:0px;
+	padding-bottom:5px;
+	padding-right:0px;
+	float:left;
+	width:37px;
+	height:17px;
+}
+
+.btn{
+	position:relative;
+	width:192px;
+	height:29px;
+	background-color:#0e0e0e;
+	border-top:#999 solid; border-left:none; border-left:none; border-bottom:none;
+	padding-bottom:2px;
+	padding-top:5px;
+	padding-left:20px;
+	margin-right:0px;
+	float:right;
+	
+}
+
+#asidebar ul{
+	position:absolute;
+	list-style:none;
+	width:192px;
+	height:120px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#FFF;
+	padding-left:20px;
+	margin-left:0px;
+	margin-top:30px;
+	line-height:20px;
+	clear:both;
+}
+
+
+#asidebar ul li{
+	position:relative;
+	list-style:none;
+	margin-left:0px;
+	margin-bottom:10px;
+}
+
+#asidebar ul li a{
+	list-style:none;
+	text-decoration:none;
+	color:#FFF;
+}
+
+aside{
+	margin-left:200px;
+	width:162px;
+	height:780px;
+	position:absolute;
+	padding-top:245px;
+}
+
+aside#darkgreybar{
+	height:780px;
+	width:745px;
+	position:absolute;
+	margin-left:362px;
+	
+}
+
+
+#darkgreybar ul{
+    position:absolute;
+	list-style:none;
+	width:740px;
+	margin-left:35px;
+	margin-top:30px;
+
+}
+
+#darkgreybar ul li{
+	position:relative;
+	display:block;
+    float:left;
+	list-style:none;
+	margin-left:35px;
+	margin-bottom:30px;
+	width:175px;
+	height:131px;
+-moz-box-shadow:0px 0px 14px 3px rgba(0, 0, 0, 0.79);
+-webkit-box-shadow:0px 0px 14px 3px rgba(0, 0, 0, 0.79);
+box-shadow:0px 0px 14px 3px rgba(0, 0, 0, 0.79);
+z-index: 0; /*resets the stack order of the list items - we'll increase in step 4. See support section for more info*/
+}
+
+#darkgreybar ul span{
+position:absolute; /*see support section for more info on positioning*/
+left: -9999px; /*moves the span off the page, effectively hidding it from view*/
+}
+
+#darkgreybar ul li:hover{
+z-index: 50; /*places the popups infront of the thumbnails, which we gave a z-index of 0 in step 1*/
+cursor:pointer; /*changes the cursor to a hand*/
+}
+/***We bring the large image back onto the page by reducing left from -9999px (set in step 2) to figures below***/
+#darkgreybar ul li:hover span{ /*positions the <span> when the <li> (which contains the thumbnail) is hovered*/
+top: -250px; /*the distance from the bottom of the thumbnail to the top of the popup image*/
+left: -20px; /*distance from the left of the thumbnail to the left of the popup image*/
+}
+/***To make it look neater we used :nth-child to set a different left distance for each image***/
+#darkgreybar ul li:hover:nth-child(2) span{
+left: -100px;
+}
+#darkgreybar ul li:hover:nth-child(3) span{
+left: -200px;
+}
+
+    #darkgreybar ul span img{
+    padding: 2px; /*size of the frame*/
+    background: #ccc; /*colour of the frame*/
+    }
+
+    /***Style the <span> containing the framed images and the caption***/
+    #darkgreybar ul span{
+    /**Style the frame**/
+    padding: 10px; /*size of the frame*/
+    background:#eae9d4; /*colour of the frame*/
+    /*add a drop shadow to the frame*/
+    -webkit-box-shadow: 0 0 20px rgba(0,0,0, .75));
+    -moz-box-shadow: 0 0 20px rgba(0,0,0, .75);
+    box-shadow: 0 0 20px rgba(0,0,0, .75);
+    /*give the corners a curve*/
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius:8px;
+    /**Style the caption**/
+    font-family: 'Droid Sans', sans-serif; /*Droid Sans is available from Google fonts*/
+    font-size:.9em;
+    text-align: center;
+    color: #495a62;
+    }
+
+.prev_big,.next_big {
+color: #999;
+font-size: 16px;
+font-weight: normal;
+font-family:Arial, Helvetica, sans-serif;
+width: 100px;
+height: 20px;
+position:absolute;
+margin-top:700px;
+text-shadow: 0 1px 0 #FFF;
+z-index: 3;
+text-decoration:none;
+-moz-transition-duration: 0.2s;
+-webkit-transition-duration: 0.2s;
+-o-transition-duration: 0.2s;
+transition-duration: 0.2s;
+}
+
+.next_big {
+	background-color: #333;
+border-bottom-right-radius: 10px;
+border-top-right-radius: 10px;
+padding-left:20px; padding-right:0px; padding-top:10px; padding-bottom:5px;
+margin-left:550px;
+
+}
+
+.prev_big {
+	background-color: #333;
+border-bottom-left-radius: 10px;
+border-top-left-radius: 10px;
+padding-left:20px; padding-right:30px; padding-top:10px; padding-bottom:5px;
+margin-left:450px;
+}
+
+.prev_big:hover,
+.next_big:hover {
+text-decoration:none;
+font-size:18px;
+text-shadow:none;
+}
+
+.next_big:hover{
+	padding-right:20px;
+	background:#555;
+color:#FFF;
+}
+
+.prev_big:hover{
+	padding-left:10px;
+	background:#555;
+color:#FFF;
+}
+		
+footer{
+	position:absolute;
+	width:906px;
+	height:190px;
+	background-color:#000;
+	margin-left:200px;
+	margin-top:1010px;
+
+}
+
+/* signup form */
+#signup { display: block; }
+#signup span{
+	position:absolute;
+	color:#FFF;
+	font-size:16px;
+	font-family:Arial, Helvetica, sans-serif;
+	margin-top:75px;
+	margin-left:450px;
+}
+#email { 
+  width: 160px; 
+  outline: none;
+  color: #fff;
+  opacity: 0.75;
+  padding: 10px 14px;
+  font-size:14px;
+  font-weight: normal;
+  border: 1px solid #0c0e0f;
+  background-color: #282a2c;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#282a2c), to(#181a1c));
+  background-image: -webkit-linear-gradient(top, #282a2c, #181a1c);
+  background-image: -moz-linear-gradient(top, #282a2c, #181a1c);
+  background-image: -ms-linear-gradient(top, #282a2c, #181a1c);
+  background-image: -o-linear-gradient(top, #282a2c, #181a1c);
+  background-image: linear-gradient(top, #282a2c, #181a1c);
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  position:absolute;
+  margin-top:60px;
+  margin-left:620px;
+}
+
+#submitbtn {
+  display: none;
+  position: relative;
+  cursor: pointer;
+  font-size: 14px;;
+  padding: 4px 9px;
+  border: 1px solid #bcbcbc;
+  background-color: #f0eded;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.9);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fdfafb), to(#f0eded), color-stop(0.5, #f9f7f7), color-stop(0.5, #F6F3F4));
+  background-image: -moz-linear-gradient(top, #fdfafb, #f9f7f7 50%, #f6f3f4 50%, #f0eded);
+  background-image: -o-linear-gradient(top, #fdfafb, #f9f7f7 50%, #f6f3f4 50%, #f0eded);
+  background-image: -webkit-linear-gradient(top, #fdfafb, #f9f7f7 50%, #f6f3f4 50%, #f0eded);
+  color: #524d4d;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdfafb', endColorstr='#f0eded');
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+#submitbtn:active {
+  background: #e0e0e0;
+  color: #403c3c;
+}
+
+footer ul{
+	width:900px;
+	height:50px;
+	padding-left:10px;
+	padding-right:10px;
+	color:#FFF;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	position:absolute;
+	list-style:none;
+}
+
+footer ul li{
+	color:#FFF;
+	display:block;
+	float:left;
+	margin-top:20px;
+	margin-left:65px;
+	margin-bottom:20px;
+}
+
+footer ul li a{
+	text-decoration:none;
+	color:#FFF;
+}

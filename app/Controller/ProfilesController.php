@@ -12,6 +12,7 @@ class ProfilesController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
+        $this->layout = 'profile';
         $this->Auth->allow('signup', 'view');
     }
     
