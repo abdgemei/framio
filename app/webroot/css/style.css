@@ -4,8 +4,20 @@ body {
     font: 16px solid "Helvetica Neue", helvetica, arial, sans-serif;
 }
 
+header li,
+footer li,
+header ul,
+footer ul {
+    list-style:none;
+    margin-left:0;
+}
+
 footer {
     height: 154px;
+}
+
+legend {
+    color:#ddd;
 }
 
 h1, h2, h3 {
@@ -30,6 +42,11 @@ a:hover {
     text-decoration: none;
 }
 
+.btn {
+    text-decoration: none;
+    font-family: Avenir, "Helvetica Neue", arial, sans-serif;
+}
+
 header {
     font-size: 0.875em;
     height: 35px;
@@ -37,7 +54,7 @@ header {
     margin-bottom: 15px;
 }
 
-    header h1 {font-size: 1.365em;}
+    header h1 {font-size: 1.365em; line-height: 0;}
     header a {text-decoration: none;}
     
     header ul li {
@@ -87,13 +104,14 @@ header {
     }
     
     #takeATourButton {
-        display: block;
+        /*display: block;
         width: 160px;
         height: 44px;
         background: url('../images/takeATourButton.png') no-repeat left top;
-        text-indent: -9999px;
+        text-indent: -9999px;*/
+        font-size:1.25em;
     }
-    
+
 #logInForm {
     margin-top: 60px;
 }
@@ -114,17 +132,20 @@ header {
     #passForm {
         width: 133px;
     }
-    
+ 
     #signInButton {
-        display: inline-block;
+        /*display: inline-block;*/
         width: 69px;
-        height: 30px;
-        background: url('../images/signInButton.png') no-repeat left top;
-        text-indent: -9999px;
-        border-width: 0;
-        margin-bottom: 0.375em;
+        height: 34px;
+        position: relative;
+        top: -5px;
+        left: 6px;
+        /*background: url('../images/signInButton.png') no-repeat left top;*/
+        /*text-indent: -9999px;*/
+        /*border-width: 0;*/
+        /*margin-bottom: 0.375em;*/
     }
-    
+/*    
     #signInButton:hover {
         cursor: pointer;
     }
@@ -132,7 +153,7 @@ header {
     #logInForm p {
         line-height: 1.625em;
     }
-    
+    */
 h2, h3 {
     font-size: 1.25em;
     font-weight: 600;
@@ -176,14 +197,15 @@ h2, h3 {
     }
     
     #signUpForAnInviteButton {
-        display: block;
+        /*display: block;
         width: 213px;
         height: 44px;
         background: url('../images/signUpForAnInviteButton.png') no-repeat left top;
-        text-indent: -9999px;
+        text-indent: -9999px;*/
         position: relative;
         top: 16px;
         left: 66px;
+        font-size:1.25em;
     }
     
 .photoSet {

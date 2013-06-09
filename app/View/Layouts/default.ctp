@@ -14,7 +14,6 @@ App::uses('Debugger', 'Utility');
         <?php echo $cakeDescription ?>
     </title>
     <?php echo $this->Html->meta('icon');
-          echo $this->Html->css('reset');
           echo $this->Html->css('bootstrap');
           echo $this->Html->css('style');
           echo $this->fetch('meta');
@@ -44,8 +43,8 @@ App::uses('Debugger', 'Utility');
 <section class="container" id="wrap">
 <?php echo $this->fetch('content'); ?>
 </section>
-<footer class="container_12">
-    <section class="grid_2 alpha linkList1" id="footerAboutFramio">
+<footer class="container row">
+    <section class="span2 linkList1" id="footerAboutFramio">
         <h4>About Framio</h4>
         <ul>
             <li><a href="#">Discover</a></li>
@@ -53,7 +52,7 @@ App::uses('Debugger', 'Utility');
             <li><a href="#">Who we are</a></li>
         </ul>
     </section>
-    <section class="grid_2 linkList2" id="footerCommunity">
+    <section class="span2 linkList2" id="footerCommunity">
         <h4>About Framio</h4>
         <ul>
             <li><a href="#">Request an invite</a></li>
@@ -61,7 +60,7 @@ App::uses('Debugger', 'Utility');
             <li><a href="#">Jobs</a></li>
         </ul>
     </section>
-    <section class="grid_2 linkList3" id="footerMerchant">
+    <section class="span2 linkList3" id="footerMerchant">
         <h4>Merchant</h4>
         <ul>
             <li><a href="#">Advertise</a></li>
@@ -69,7 +68,7 @@ App::uses('Debugger', 'Utility');
             <li><a href="#">Contact</a></li>
         </ul>
     </section>
-    <section class="grid_2 linkList4" id="footerLegal">
+    <section class="span2 linkList4" id="footerLegal">
         <h4>Legal</h4>
         <ul>
             <li><a href="#">Terms of Use</a></li>
