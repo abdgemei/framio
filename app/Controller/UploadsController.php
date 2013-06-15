@@ -89,6 +89,7 @@ class UploadsController extends AppController {
 		$this->set(compact('users'));
 	}
 
+// TODO validate by filetype
     protected function uploadFile() {
         $file = $this->data['Upload']['file'];
         //pr(ROOT.DS.'content'.DS.$file['name']); die;

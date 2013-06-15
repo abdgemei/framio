@@ -11,6 +11,8 @@ class UsersController extends AppController {
     
     public $helpers = array('HTML', 'Form', 'Following');
 
+// TODO make forgot password function
+// TODO password salt using user salt
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('login', 'initDB', 'logout');
