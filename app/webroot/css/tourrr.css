@@ -1,0 +1,163 @@
+    
+/* TOUR PAGE STYLES
+ * 
+ */
+@charset "utf-8";
+/* CSS Document */
+
+.center
+{
+margin-left:auto;
+margin-right:auto;
+width:960px;
+background-color:#000000;
+}
+
+.logo{
+    position:relative;
+    background-image:url(/images/tour/framio%20logo.jpg);
+    top:20px;
+    left:20px;
+    width:301px;
+    height:111px;
+}
+
+a:link {
+    position:relative;
+    padding:20px;
+    left:600px;
+    text-decoration:none;
+    }
+a:hover{
+    font-weight:bold;
+}
+
+
+
+.bluebg{
+    background-image:url(/images/tour/background%20header.jpg);
+    width:960px;
+    height:344px;
+    margin-top:50px;
+}
+
+.p{
+    position:relative;
+    text-align:center;
+    font-weight:bold;
+    font-size:45px;
+    font-family:bebas;
+    top:70px;   
+    }
+    
+.imglink1{
+    position:relative;
+    top:120px;
+left:-430px;
+}
+
+.imglink2{
+    position:relative;
+    top:120px;
+    left:-200PX;
+}
+
+.loginpic{
+    position:relative;
+    background-image:url(/images/tour/tour%20page%20mini%20login.jpg);
+    width:260px;
+    height:249px;
+    top:70px;
+    left:50px;
+}
+
+.p2{
+    position:relative;
+    color:#FFFFFF;
+    font-weight:bold;
+    left:350px;
+    top:-150px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:24px;
+}
+
+.p3{
+    position:relative;
+    color:#FFFFFF;
+    left:350px;
+    top:-120px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:32px;
+}
+
+.breakline{
+    background-image:url(/images/tour/break%20line.jpg);
+    width:783px;
+    height:7px;
+    position:relative;
+    left:85px;
+    top:-50px;
+}
+
+.miniprofile{
+    position:relative;
+    background-image:url(/images/tour/tour%20page%20mini%20profile.jpg);
+    width:260px;
+    height:249px;
+    left:60px;
+}
+
+.p4{
+    position:relative;
+    color:#FFFFFF;
+    font-weight:bold;
+    left:350px;
+    top:-230px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:24px;
+}
+
+.p5{
+    position:relative;
+    color:#FFFFFF;
+    left:350px;
+    top:-200px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:32px;
+}
+
+.breakline2{
+    position:relative;
+    background-image:url(/images/tour/break%20line.jpg);
+    width:783px;
+    height:7px;
+    left:85px;
+    top:-50px;
+}
+
+
+.profiletour{
+    position:relative;
+    background-image:url(/images/tour/tour%20page%20footer.jpg);
+    width:930px;
+    height:475px;
+    left:20px;
+}
+
+.footer{
+    position:relative;
+    top:55px;
+    left:-580px;
+    display:block;
+}
+
+
+.paboutframio{
+    position:relative;
+    left:40px;
+    top:40px;
+    font-family:"Arial Black", Gadget, sans-serif;
+    font-size:14px;
+    color:#FFF;
+}
+

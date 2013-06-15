@@ -1,4 +1,4 @@
-<?php   
+<?php //pr($this->params); die;
 if (!Configure::read('debug')):
     throw new NotFoundException();
 endif;
@@ -17,9 +17,9 @@ App::uses('Debugger', 'Utility');
           echo $this->Html->css('bootstrap');
           //echo $this->Html->css('style');
           echo $this->Html->css('profile');
+          echo $this->Html->script('jquery-2.0.2.min');
           echo $this->fetch('meta');
           echo $this->fetch('css');
-          //echo $this->fetch('jquery-2.0.2.min');
           echo $this->fetch('script');
     ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -43,7 +43,6 @@ $('.next_page').clone().prependTo('body').addClass('next_big').html('&rsaquo;');
 
 <body>
 <div id="container">
-<img src="/images/bg.jpg" id="bg"/>
 <nav id="bar"><h1>Framio</h1>
 <ul><br/>
 <li><a href="">Upload</a></li>
@@ -127,7 +126,7 @@ $('.next_page').clone().prependTo('body').addClass('next_big').html('&rsaquo;');
 
 <a class="prev_big" href="page1.html" title="View Previous Page">Previous</a>
 <a class="next_big" href="page3.html" title="View Next Page">Next</a> 
-<img src="images/images/images/images/asidedarkbar_07.jpg"/>
+<img src="/images/asidedarkbar_07.jpg"/>
 </aside>
 
-<?php $this->element('footer'); ?>
+<?php echo $this->element('footer'); ?>

@@ -13,6 +13,7 @@ class InvitationsController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
+        $this->layout = 'homepage';
         $this->Auth->allow('apply');
     }
 

@@ -24,7 +24,10 @@ class ProfilesController extends AppController {
             throw new NotFoundException(__('Invalid profile'));
         }
         $options = array('conditions' => array('Profile.username' => $username));
+        //pr($this->Profile->User->Upload->find('all')); die;
+        //$this->set('photos', $this->Upload->find());
         $this->set('profile', $this->Profile->find('first', $options));
+        $this->set('title_for_layout', $row['Profile']['name']);
     }
 
     // TODO move email links to view

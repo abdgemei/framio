@@ -8,7 +8,7 @@
         echo $this->Form->input('website');
         echo $this->Form->submit(
             'Apply', 
-            array('class' => 'btn btn-primary', 'title' => 'Custom Title')
+            array('class' => 'btn btn-success', 'title' => 'Custom Title')
         );
     ?>
     </fieldset>

@@ -54,6 +54,7 @@ class PagesController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
+        $this->layout = 'homepage';
         $this->Auth->allow('display', 'homepage');
     }
 
