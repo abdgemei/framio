@@ -25,6 +25,8 @@ class ProfilesController extends AppController {
         }
         $options = array('conditions' => array('Profile.username' => $username));
         //$this->Profile->User->Upload->find('all');
+        //pr($this->Profile->User->ProfilePictures->find());
+        $this->set('profile_pictures', $this->Profile->User->ProfilePictures->find('first'));
         $this->set('uploads', $this->Profile->User->Upload->find('all'));
         $this->set('profile', $this->Profile->find('first', $options));
         $this->set('title_for_layout', $row['Profile']['name']);

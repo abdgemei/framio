@@ -95,7 +95,14 @@ class User extends AppModel {
             'exclusive' => '',
             'finderQuery' => '',
             'counterQuery' => ''
-        )
+        ),
+        'ProfilePictures' => array(
+            'className' => 'ProfilePicture',
+            'foreignKey' => '',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        ),
     );
 
     //public $actsAs = array('Acl' => array('type' => 'requester'));

@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('ProfilePicture', 'Model');
 /**
  * Uploads Controller
  *
@@ -9,6 +10,10 @@ class UploadsController extends AppController {
 
     public $helpers = array('Html');
     public $components = array('Rand');
+
+// TODO favorite uploads
+// TODO upload metadata table
+// TODO main picture table
 
 /**
  * index method
@@ -32,7 +37,7 @@ class UploadsController extends AppController {
 		if (!$this->Upload->exists($id)) {
 			throw new NotFoundException(__('Invalid upload'));
 		}
-		$options = array('conditions' => array('Upload.' . $this->Upload->primaryKey => $id));
+		$options = array('conditions' => array('Upload.' . $this->Upload->primaryKey => $id, 'user_id' => $this->Auth->user('id')));
 		$this->set('upload', $this->Upload->find('first', $options));
         $this->set('uploadMetadata', $this->Upload->getMetadata($id));
 	}
@@ -88,6 +93,27 @@ class UploadsController extends AppController {
 		$users = $this->Upload->User->find('list');
 		$this->set(compact('users'));
 	}
+    
+    public function addProfilePicture() {
+        $this->view = 'add';
+        $this->ProfilePicture = new ProfilePicture;
+        if ($this->request->is('post')) {
+            $this->Upload->create();
+            if ($this->uploadFile() && $this->Upload->save($this->request->data)) {
+                $data['user_id'] = $this->Auth->user('id');
+                $data['upload_id'] = $this->Upload->getLastInsertID();
+                $this->ProfilePicture->create();
+                if($this->ProfilePicture->save($data)) {
+                    $this->Session->setFlash(__('The profile picture has been saved'));
+                    $this->redirect(array('action' => 'index'));
+                }
+            } else {
+                $this->Session->setFlash(__('The upload could not be saved. Please, try again.'));
+            }
+        }
+        $users = $this->Upload->User->find('list');
+        $this->set(compact('users'));
+    }
 
 // TODO validate by filetype
     protected function uploadFile() {

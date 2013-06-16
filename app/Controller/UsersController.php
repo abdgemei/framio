@@ -181,12 +181,6 @@ class UsersController extends AppController {
         
     }
     
-// TODO do aco_sync too..
-// TODO uploads ACL entries for all user groups
-// TODO follow action ACL entries
-// TODO unfollow action ACL entries
-// TODO some shit
-
     public function initDB() {
         $group = $this->User->Group;
         
@@ -204,6 +198,7 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Uploads/edit');
         $this->Acl->allow($group, 'controllers/Uploads/view');
         $this->Acl->allow($group, 'controllers/Uploads/download');
+        $this->Acl->allow($group, 'controllers/Uploads/addProfilePicture');
         $this->Acl->allow($group, 'controllers/Invitations/index');
         $this->Acl->allow($group, 'controllers/Invitations/approve');
         $this->Acl->allow($group, 'controllers/Invitations/apply');
@@ -216,6 +211,7 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Uploads/add');
         $this->Acl->allow($group, 'controllers/Uploads/view');
         $this->Acl->allow($group, 'controllers/Uploads/download');
+        $this->Acl->allow($group, 'controllers/Uploads/addProfilePicture');
         $this->Acl->allow($group, 'controllers/Invitations/apply');
         $this->Acl->allow($group, 'controllers/Profiles/view');
                                 
