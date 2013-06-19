@@ -19,6 +19,10 @@ body{
     
 }
 
+#transparentGray {
+    background:url(/images/aside-background.png) repeat top left;
+}
+
 .navbar .nav > li > a {
     color:#FFF;
 }

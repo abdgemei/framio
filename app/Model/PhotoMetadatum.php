@@ -16,12 +16,6 @@ class PhotoMetadatum extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Photo' => array(
-			'className' => 'Photo',
-			'foreignKey' => 'photo_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
+		'Photo'
 	);
 }

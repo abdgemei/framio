@@ -28,8 +28,8 @@
  */
 	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
 	//Router::connect('/p', array('controller' => 'uploads', 'action' => 'index'));
-	// Router::connect('/p/:id', array('controller' => 'uploads', 'action' => 'view', 'id'), array('pass'=>array('id'), 'id'=>'[A-Za-z0-9_]+'));
-	// Router::connect('/:id', array('controller' => 'profiles', 'action' => 'view', 'id'), array('pass'=>array('id'), 'id'=>'[A-Za-z0-9_]+'));
+	//Router::connect('/p/:id', array('controller' => 'uploads', 'action' => 'view', 'id'), array('pass'=>array('id'), 'id'=>'[A-Za-z0-9_]+'));
+	//Router::connect('/:id', array('controller' => 'profiles', 'action' => 'view', 'id'), array('pass'=>array('id'), 'id'=>'[A-Za-z0-9_]+'));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */

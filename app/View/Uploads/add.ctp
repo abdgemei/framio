@@ -3,8 +3,8 @@
 	<fieldset>
 		<legend><?php echo __('Add Upload'); ?></legend>
 	<?php
-		echo $this->Form->input('title');
-		echo $this->Form->input('description');
+		echo $this->Form->input('Photo.title');
+		echo $this->Form->input('Photo.description');
 		echo $this->Form->input('file', array('type'=>'file'));
 	?>
 	</fieldset>

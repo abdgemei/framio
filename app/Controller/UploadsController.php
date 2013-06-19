@@ -1,5 +1,8 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('File', 'Utility');
+App::uses('Photo', 'Model');
+App::uses('PhotoMetadatum', 'Model');
 App::uses('ProfilePicture', 'Model');
 /**
  * Uploads Controller
@@ -21,10 +24,14 @@ class UploadsController extends AppController {
  * @return void
  */
 	public function index() {
-        //pr($this->Auth->user('id')); die;
+	    // pr($this->Auth->user('id')); die;
 		$this->Upload->recursive = 0;
-		$this->set('uploads', $this->paginate());
+		$this->set('uploads', $this->paginate($this->showOwn($this->Auth->user('id'))));
 	}
+    
+    protected function showOwn($id) {
+        return $this->Upload->find('all', array('conditions' => array('user_id' => $id)));
+    }
 
 /**
  * view method
@@ -37,7 +44,7 @@ class UploadsController extends AppController {
 		if (!$this->Upload->exists($id)) {
 			throw new NotFoundException(__('Invalid upload'));
 		}
-		$options = array('conditions' => array('Upload.' . $this->Upload->primaryKey => $id, 'user_id' => $this->Auth->user('id')));
+		$options = array('conditions' => array('Upload.' . $this->Upload->primaryKey => $id));
 		$this->set('upload', $this->Upload->find('first', $options));
         $this->set('uploadMetadata', $this->Upload->getMetadata($id));
 	}
@@ -81,11 +88,18 @@ class UploadsController extends AppController {
  * @return void
  */
 	public function add() {
+	    $this->Photo = new Photo;
+        $this->PhotoMetadatum = new PhotoMetadatum;
 		if ($this->request->is('post')) {
 			$this->Upload->create();
-			if ($this->uploadFile() && $this->Upload->save($this->request->data)) {
-				$this->Session->setFlash(__('The upload has been saved'));
-				$this->redirect(array('action' => 'index'));
+			if ($this->uploadFile() && $this->Upload->saveAssociated($this->request->data)) {
+			    $this->PhotoMetadatum->create();
+			    $this->request->data['PhotoMetadatum'] = $this->Upload->getMetadata($this->Upload->getLastInsertID());
+                $this->request->data['PhotoMetadatum'] = array('photo_id' => $this->Photo->getLastInsertID()) + $this->request->data['PhotoMetadatum'];
+                if($this->PhotoMetadatum->save($this->request->data)) {
+            	    $this->Session->setFlash(__('The upload has been saved'));
+    			    $this->redirect(array('action' => 'index'));
+                }
 			} else {
 				$this->Session->setFlash(__('The upload could not be saved. Please, try again.'));
 			}
@@ -169,11 +183,13 @@ class UploadsController extends AppController {
  */
 	public function delete($id = null) {
 		$this->Upload->id = $id;
-		if (!$this->Upload->exists()) {
+		$this->File = new File(WWW_ROOT.DS.'content'.DS.$id, false, 0777);
+		if (!$this->Upload->exists() && !$this->File->exists()) {
 			throw new NotFoundException(__('Invalid upload'));
 		}
+        
 		$this->request->onlyAllow('post', 'delete');
-		if ($this->Upload->delete()) {
+		if ($this->Upload->deleteAll(array('Upload.id' => $id), true) && $this->File->delete()) {
 			$this->Session->setFlash(__('Upload deleted'));
 			$this->redirect(array('action' => 'index'));
 		}

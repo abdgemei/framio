@@ -12,7 +12,7 @@
 </div>
 <div class="container">
     <div class="row-fluid" style="margin-left:0px; margin-top:-30px;">
-        <aside class="span2" style="background-color:#444; margin-left:0px; padding-bottom:520px; width:17%;">
+        <aside class="span2" id="transparentGray" style="margin-left:0px; padding-bottom:520px; width:17%;">
             <ul class="nav nav-list">
                 <li><a href="friends.html">Friends</a></li>
                 <li class="active"><a href="">Favorites</a></li>

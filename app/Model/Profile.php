@@ -51,13 +51,7 @@ class Profile extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'User' => array(
-			'className' => 'User',
-			'foreignKey' => 'user_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
+		'User'
         // 'Profile Picture' => array(
             // 'className' => 'Upload',
             // 'foreignKey' => 'prof_picture_id',

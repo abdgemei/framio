@@ -198,6 +198,7 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Uploads/edit');
         $this->Acl->allow($group, 'controllers/Uploads/view');
         $this->Acl->allow($group, 'controllers/Uploads/download');
+        $this->Acl->allow($group, 'controllers/Uploads/delete');
         $this->Acl->allow($group, 'controllers/Uploads/addProfilePicture');
         $this->Acl->allow($group, 'controllers/Invitations/index');
         $this->Acl->allow($group, 'controllers/Invitations/approve');
@@ -211,6 +212,7 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Uploads/add');
         $this->Acl->allow($group, 'controllers/Uploads/view');
         $this->Acl->allow($group, 'controllers/Uploads/download');
+        $this->Acl->allow($group, 'controllers/Uploads/delete');
         $this->Acl->allow($group, 'controllers/Uploads/addProfilePicture');
         $this->Acl->allow($group, 'controllers/Invitations/apply');
         $this->Acl->allow($group, 'controllers/Profiles/view');
