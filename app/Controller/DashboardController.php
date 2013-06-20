@@ -8,6 +8,7 @@ class DashboardController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('index');
+        $this->layout = 'dashboard';
         $this->User = new User;
         $this->Upload = new Upload;
     }

@@ -26,6 +26,7 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
+
 	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
 	//Router::connect('/p', array('controller' => 'uploads', 'action' => 'index'));
 	//Router::connect('/p/:id', array('controller' => 'uploads', 'action' => 'view', 'id'), array('pass'=>array('id'), 'id'=>'[A-Za-z0-9_]+'));

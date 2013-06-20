@@ -33,7 +33,8 @@ class Photo extends AppModel {
  */
 	public $hasOne = array(
 		'PhotoMetaDatum' => array(
-            'dependent' => true
+            'dependent' => true,
+
         )
 	);
 
@@ -44,12 +45,6 @@ class Photo extends AppModel {
  */
 	public $belongsTo = array(
 		'Upload',
-		'Album' => array(
-			'className' => 'Album',
-			'foreignKey' => 'album_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
+		'Album'
 	);
 }

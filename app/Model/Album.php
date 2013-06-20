@@ -31,17 +31,7 @@ class Album extends AppModel {
  */
 	public $hasMany = array(
 		'Photo' => array(
-			'className' => 'Photo',
-			'foreignKey' => 'album_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
+			'dependent' => false
 		)
 	);
 
