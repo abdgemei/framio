@@ -5,7 +5,7 @@
 	<?php
 		echo $this->Form->input('Photo.title');
 		echo $this->Form->input('Photo.description');
-		echo $this->Form->input('file', array('type'=>'file'));
+		echo $this->Form->input('files.', array('type'=>'file', 'multiple'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true)); ?>

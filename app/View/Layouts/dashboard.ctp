@@ -15,6 +15,7 @@ App::uses('Debugger', 'Utility');
     </title>
     <?php echo $this->Html->meta('icon');
           echo $this->Html->css('bootstrap');
+          echo $this->Html->css('cake.generic');
           echo $this->Html->css('dashboard');
           echo $this->fetch('meta');
           echo $this->fetch('css');
@@ -25,7 +26,7 @@ App::uses('Debugger', 'Utility');
 </head>
 <body>
 <header>
-    <section class="container">
+    <section class="container" id="header">
         
     </section>
 </header>
@@ -41,11 +42,11 @@ App::uses('Debugger', 'Utility');
             </ul>
         </section>
         <section class="span7" id="content">
-            <?php $this->fetch('content'); ?>
+            <?php echo $this->fetch('content'); ?>
         </section>
         <section class="span4" id="activityFeed">
             
         </section>
     </section>
 </section>
-<?php $this->element('footer'); ?>
+<?php //echo $this->element('footer'); ?>

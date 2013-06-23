@@ -35,7 +35,7 @@ h3 {font-size: 1.4em}
 
 a {
     text-decoration: underline;
-    color: #f0f0f0;
+    /*color: #f0f0f0;*/
 }
 
 a:hover {
@@ -66,8 +66,8 @@ a.navItem {
     display: block;
 }
 
-.navItem#home {background:url(../images/home.jpg) no-repeat left top;}
-.navItem#photos {background:url(../images/photos.jpg) no-repeat left top;}
-.navItem#faves {background:url(../images/faves.jpg) no-repeat left top;}
-.navItem#stats {background:url(../images/stats.jpg) no-repeat left top;}
-.navItem#settings {background:url(../images/settings.jpg) no-repeat left top;}
+.navItem#home {background:url(../images/home.png) no-repeat left top;}
+.navItem#photos {background:url(../images/photos.png) no-repeat left top;}
+.navItem#faves {background:url(../images/faves.png) no-repeat left top;}
+.navItem#stats {background:url(../images/stats.png) no-repeat left top;}
+.navItem#settings {background:url(../images/settings.png) no-repeat left top;}

@@ -1,5 +1,6 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('Photo', 'Model');
 /**
  * Album Model
  *
@@ -23,16 +24,27 @@ class Album extends AppModel {
 
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
+	
+	public $belongsTo = array(
+	    'User'
+	);
 
 /**
  * hasMany associations
  *
  * @var array
  */
-	public $hasMany = array(
+ 
+	public $hasAndBelongsToMany = array(
 		'Photo' => array(
-			'dependent' => false
+		    'className' => 'Photo',
+		    'joinTable' => 'album_photos',
+		    'associationForeignKey' => 'photo_id',
+			//'dependent' => false
 		)
 	);
+	
+	protected function addPhotoToAlbum() {
+	}
 
 }

@@ -37,6 +37,14 @@ class Photo extends AppModel {
 
         )
 	);
+	
+	public $hasAndBelongsToMany = array(
+	    'Album' => array(
+	        'className' => 'Album',
+	        'joinTable' => 'album_photos',
+	        'associationForeignKey' => 'album_id'
+	    )
+	);
 
 /**
  * belongsTo associations
@@ -44,7 +52,6 @@ class Photo extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Upload',
-		'Album'
+		'Upload'
 	);
 }

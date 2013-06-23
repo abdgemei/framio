@@ -13,6 +13,7 @@ class UploadsController extends AppController {
 
     public $helpers = array('Html');
     public $components = array('Rand');
+   // public $layout = 'dashboard';
 
 // TODO favorite uploads
 // TODO upload metadata table
@@ -23,14 +24,16 @@ class UploadsController extends AppController {
  *
  * @return void
  */
+
 	public function index() {
 	    // pr($this->Auth->user('id')); die;
 		$this->Upload->recursive = 0;
-		$this->set('uploads', $this->paginate($this->showOwn($this->Auth->user('id'))));
+        $this->showOwn();
+		$this->set('uploads', $this->paginate('Upload', array('Upload.user_id' => $this->Auth->user('id')) ));
 	}
     
-    protected function showOwn($id) {
-        return $this->Upload->find('all', array('conditions' => array('user_id' => $id)));
+    protected function showOwn() {
+        return $this->Upload->find('all', array('conditions' => array('Upload.user_id' => $this->Auth->user('id'))));
     }
 
 /**
@@ -91,18 +94,25 @@ class UploadsController extends AppController {
 	    $this->Photo = new Photo;
         $this->PhotoMetadatum = new PhotoMetadatum;
 		if ($this->request->is('post')) {
-			$this->Upload->create();
-			if ($this->uploadFile() && $this->Upload->saveAssociated($this->request->data)) {
-			    $this->PhotoMetadatum->create();
-			    $this->request->data['PhotoMetadatum'] = $this->Upload->getMetadata($this->Upload->getLastInsertID());
-                $this->request->data['PhotoMetadatum'] = array('photo_id' => $this->Photo->getLastInsertID()) + $this->request->data['PhotoMetadatum'];
-                if($this->PhotoMetadatum->save($this->request->data)) {
-            	    $this->Session->setFlash(__('The upload has been saved'));
-    			    $this->redirect(array('action' => 'index'));
-                }
-			} else {
-				$this->Session->setFlash(__('The upload could not be saved. Please, try again.'));
+		    //pr($this->request->data); die;
+
+			foreach($this->request->data['Upload']['files'] as $this->request->data['Upload']['file']) {
+				$this->Upload->create();
+    			if ($this->uploadFile() && $this->Upload->saveAssociated($this->request->data)) {
+    			    $this->PhotoMetadatum->create();
+    			    $this->request->data['PhotoMetadatum'] = $this->Upload->getMetadata($this->Upload->getLastInsertID());
+                    $this->request->data['PhotoMetadatum'] = array('photo_id' => $this->Photo->getLastInsertID()) + $this->request->data['PhotoMetadatum'];
+                    if($this->PhotoMetadatum->save($this->request->data)) {
+                	    $this->Session->setFlash(__('The upload has been saved'));
+        			    //$this->redirect(array('action' => 'index'));
+                    }
+    			} else {
+    			    throw new InternalErrorException(__('The upload could not be saved. Please, try again.'));
+    				//$this->Session->setFlash(__('The upload could not be saved. Please, try again.'));
+    			}
 			}
+    	    $this->Session->setFlash(__('The upload has been saved'));
+			$this->redirect(array('action' => 'index'));
 		}
 		$users = $this->Upload->User->find('list');
 		$this->set(compact('users'));
@@ -127,6 +137,10 @@ class UploadsController extends AppController {
         }
         $users = $this->Upload->User->find('list');
         $this->set(compact('users'));
+    }
+    
+    public function attachPhotoToAlbum() {
+        
     }
 
 // TODO validate by filetype

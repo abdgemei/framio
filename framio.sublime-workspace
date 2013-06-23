@@ -1,0 +1,813 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"th",
+				"this"
+			],
+			[
+				"Service",
+				"Services_Calendar"
+			],
+			[
+				"prin",
+				"print_r"
+			],
+			[
+				"Zend",
+				"Zend_Form"
+			],
+			[
+				"Zend_Form",
+				"Zend_Form_Element_Text"
+			],
+			[
+				"array",
+				"array"
+			],
+			[
+				"Zend_",
+				"Zend_Form_Element_Text"
+			],
+			[
+				"Zend_Form_",
+				"Zend_Form_SubForm"
+			],
+			[
+				"Zend_Form_E",
+				"Zend_Form_Element_Text"
+			],
+			[
+				"title",
+				"t_title"
+			],
+			[
+				"print",
+				"printf"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/Controller/UsersController.php",
+			"settings":
+			{
+				"buffer_size": 9568,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "{<?php\n/**\n *\n * PHP 5\n *\n * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)\n * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)\n *\n * Licensed under The MIT License\n * For full copyright and license information, please see the LICENSE.txt\n * Redistributions of files must retain the above copyright notice.\n *\n * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)\n * @link          http://cakephp.org CakePHP(tm) Project\n * @package       app.View.Layouts\n * @since         CakePHP(tm) v 0.10.0.1076\n * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)\n */\n\n$cakeDescription = __d('cake_dev', 'Framio');\n?>\n<!DOCTYPE html>\n<html>\n<head>\n	<?php echo $this->Html->charset(); ?>\n	<title>\n		<?php echo $cakeDescription ?>:\n		<?php echo $title_for_layout; ?>\n	</title>\n	<?php\n		echo $this->Html->meta('icon');\n\n		echo $this->Html->css('cake.generic');\n\n		echo $this->fetch('meta');\n		echo $this->fetch('css');\n		echo $this->fetch('script');\n	?>\n</head>\n<body>\n	<div id=\"container\">\n		<div id=\"header\">\n			<h1><?php echo $this->Html->link($cakeDescription, 'http://framio.dev'); ?></h1>\n			<div style=\"float:right\">\n			    <?php //pr($this->Session->read('Auth.User')); die; ?>\n			    <?php $user = $this->Session->read('Auth.User'); ?>\n			    <?php if(isset($user)) { echo \"Logged in as <em>\". $user['username'] .\"</em>&nbsp;\".$this->Html->link('Sign out', array('controller'=>'users', 'action'=>'logout')); } else { ?>\n			        \n			    <?php echo $this->Html->link('Sign in', array('controller'=>'users', 'action'=>'login')); }  ?>\n			</div>\n		</div>\n		<div id=\"content\">\n\n			<?php echo $this->Session->flash(); ?>\n			<?php echo $this->Session->flash('auth'); ?>\n\n			<?php echo $this->fetch('content'); ?>\n		</div>\n		<div id=\"footer\">\n			<?php echo $this->Html->link(\n					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),\n					'http://www.cakephp.org/',\n					array('target' => '_blank', 'escape' => false)\n				);\n			?>\n		</div>\n	</div>\n	<?php echo $this->element('sql_dump'); ?>\n</body>\n</html>\n",
+			"file": "app/View/Layouts/default.ctp",
+			"file_size": 2139,
+			"file_write_time": 1371055137000000,
+			"settings":
+			{
+				"buffer_size": 2140,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/abdgemei/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 138,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/View/Layouts/dashboard.ctp",
+			"settings":
+			{
+				"buffer_size": 1575,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Controller/UploadsController.php",
+			"settings":
+			{
+				"buffer_size": 7270,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 115.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": true,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/abdgemei/Library/Application Support/Sublime Text 2/Packages/User/Distraction Free.sublime-settings",
+		"/Applications/MAMP/htdocs/framio/app/Controller/UploadsController.php",
+		"/Applications/MAMP/htdocs/framio/build.properties",
+		"/Applications/MAMP/htdocs/framio/build.xml",
+		"/Applications/MAMP/htdocs/framio/CONTRIBUTING.md",
+		"/Applications/MAMP/htdocs/framio/framio.sublime-workspace",
+		"/Applications/MAMP/htdocs/framio/index.php",
+		"/Applications/MAMP/htdocs/framio/README.md",
+		"/Applications/MAMP/htdocs/framio/plugins/empty",
+		"/Applications/MAMP/htdocs/framio/reset.css",
+		"/Users/abdgemei/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/abdgemei/Documents/Study/College/Term 7/Intelligent Computing/person-abdgemei.xsd",
+		"/Users/abdgemei/Desktop/met.xsd",
+		"/Applications/MAMP/htdocs/Symfony/app/AppKernel.php",
+		"/Applications/MAMP/htdocs/Symfony/app/config/config.yml",
+		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Resources/views/Signup/index.html.twig",
+		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Form/AccountType.php",
+		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Controller/SignupController.php",
+		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Resources/config/routing.yml",
+		"/Applications/MAMP/htdocs/Symfony/app/config/routing.yml",
+		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Resources/views/Default/index.html.twig",
+		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Controller/DefaultController.php",
+		"/Applications/MAMP/htdocs/Symfony/app/config/routing_dev.yml",
+		"/Users/abdgemei/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Applications/MAMP/htdocs/Symfony/app/config/parameters.ini",
+		"/Applications/MAMP/htdocs/Symfony/app/bootstrap.php.cache",
+		"/Applications/MAMP/htdocs/Symfony/app/config/security.yml",
+		"/Applications/MAMP/htdocs/Symfony/app/config/sssecurity.yml",
+		"/Applications/MAMP/htdocs/Symfony/deps",
+		"/Applications/MAMP/htdocs/Symfony/deps.lock",
+		"/Applications/MAMP/htdocs/Symfony/LICENSE",
+		"/Applications/MAMP/htdocs/Symfony/README.md",
+		"/Applications/MAMP/htdocs/Symfony/src/FrontendBundle.zip",
+		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/KareerakFrontendBundle.php",
+		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Resources/config/doctrine/Account.orm.yml",
+		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Resources/config/doctrine/Employer.orm.yml",
+		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Resources/config/doctrine/Seeker.orm.yml",
+		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Resources/config/services.yml",
+		"/Applications/MAMP/htdocs/Symfony/web/app_dev.php",
+		"/Applications/MAMP/htdocs/Symfony/web/app.php",
+		"/Applications/MAMP/htdocs/Symfony/web/config.php",
+		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/JobsBundle/Controller/DefaultController.php",
+		"/Applications/MAMP/htdocs/doit/include/Zend/Locale/Format.php",
+		"/Applications/MAMP/htdocs/doit/include/Zend/Date.php",
+		"/Applications/MAMP/htdocs/doit/include/Zend/Calendar.php",
+		"/Applications/MAMP/htdocs/doit/application/controllers/CalendarController.php",
+		"/Applications/MAMP/htdocs/doit/application/views/scripts/calendar.phtml",
+		"/Users/abdgemei/Downloads/muxx-Twig-HTML.mode-12713c7/README.markdown",
+		"/Applications/MAMP/htdocs/doit/application/views/scripts/calendar/index.phtml",
+		"/Applications/MAMP/htdocs/doit/application/models/Service/Calendar.php",
+		"/Applications/MAMP/htdocs/doit/application/models/Service/CCalendra.php",
+		"/Applications/MAMP/htdocs/doit/application/models/Calendar/Calendar.php",
+		"/Applications/MAMP/htdocs/doit/include/Zend/Locale.php",
+		"/Applications/MAMP/htdocs/doit/include/Zend/Gdata/Calendar/Extension/Timezone.php",
+		"/Applications/MAMP/htdocs/doit/include/Zend/Gdata/DublinCore/Extension/Date.php",
+		"/Applications/MAMP/htdocs/doit/htdocs/index.php",
+		"/Applications/MAMP/htdocs/doit/application/services/Calendar.php",
+		"/Applications/MAMP/htdocs/doit/application/views/scripts/calendar/view-calendar.php",
+		"/Applications/MAMP/htdocs/doit/application/controllers/TasksController.php",
+		"/Applications/MAMP/htdocs/doit/include/Zend/Auth.php",
+		"/Applications/MAMP/htdocs/doit/include/Zend/Db.php",
+		"/Applications/MAMP/htdocs/doit/application/layouts/scripts/layout.phtml",
+		"/Applications/MAMP/htdocs/doit/include/Zend/Controller/Action.php",
+		"/Applications/MAMP/htdocs/doit/application/controllers/IndexController.php",
+		"/Applications/MAMP/htdocs/doit/application/models/tasks/EntryForm.php",
+		"/Applications/MAMP/htdocs/doit/include/Zend/Form.php",
+		"/Applications/MAMP/htdocs/doit/include/Zend/Db/Adapter/Pdo/Mysql.php",
+		"/Applications/MAMP/htdocs/doit/include/Zend/Db/Adapter/Abstract.php",
+		"/Applications/MAMP/htdocs/doit/include/Zend/Db/Adapter/Pdo/Abstract.php",
+		"/Applications/MAMP/htdocs/doit/include/Zend/Db/Statement/Mysqli.php",
+		"/Applications/MAMP/htdocs/doit/include/Zend/Db/Adapter/Mysqli.php",
+		"/Applications/MAMP/htdocs/doit/application/config.ini",
+		"/Applications/MAMP/htdocs/doit/application/models/tasks/GetTable.php",
+		"/Applications/MAMP/htdocs/doit/include/Zend/Request/Interface.php",
+		"/Applications/MAMP/htdocs/doit/include/Zend/Form/SubForm.php",
+		"/Applications/MAMP/htdocs/doit/application/views/scripts/index/index.phtml",
+		"/Applications/MAMP/htdocs/doit/application/views/scripts/tasks/index.phtml",
+		"/Applications/MAMP/htdocs/doit/application/models/Tasks/EntryForm.php",
+		"/Applications/MAMP/htdocs/doit/application/models/TaskEntryForm",
+		"/Applications/MAMP/htdocs/doit/htdocs/assets/css/style.css",
+		"/Applications/MAMP/htdocs/doit/application/models/Task.php",
+		"/Applications/MAMP/htdocs/doit/application/views/scripts/tasks/add.phtml",
+		"/Applications/MAMP/htdocs/doit/application/views/scripts/index/add.phtml",
+		"/Applications/MAMP/htdocs/doit/application/layouts/scripts/footer.phtml",
+		"/Applications/MAMP/htdocs/doit/application/layouts/scripts/header.phtml",
+		"/Applications/MAMP/htdocs/doit/htdocs/assets/css/reset.css",
+		"/Applications/MAMP/htdocs/doit/application/views/helpers/BaseUrl.php",
+		"/Applications/MAMP/htdocs/doit/application/views/helpers/baseUrl.php",
+		"/Applications/MAMP/htdocs/doit/application/views/helper/baseUrl.php",
+		"/Applications/MAMP/htdocs/doit/application/views/helper/baseUrl",
+		"/Applications/MAMP/htdocs/blueflare/ar/device-location.html",
+		"/Users/abdgemei/Library/Caches/Cleanup At Startup/Transmit/06868C11-85E6-4E05-81EF-B2A50A94C0D2/device-location.php",
+		"/Applications/MAMP/htdocs/blueflare/ar/assets/style.css",
+		"/Applications/MAMP/htdocs/blueflare/ar/add-device.html",
+		"/Applications/MAMP/htdocs/blueflare/ar/contactsView.html",
+		"/Applications/MAMP/htdocs/blueflare/ar/login.html",
+		"/Applications/MAMP/htdocs/blueflare/ar/reports.html",
+		"/Applications/MAMP/htdocs/blueflare/ar/index.html",
+		"/Applications/MAMP/htdocs/blueflare/ar/add-contact.html",
+		"/Applications/MAMP/htdocs/php-project/inc/sidebar.php",
+		"/Applications/MAMP/htdocs/php-project/film.php",
+		"/Applications/MAMP/htdocs/php-project/index.php",
+		"/Applications/MAMP/htdocs/php-project/name.php",
+		"/Applications/MAMP/htdocs/php-project/inc/footer.php",
+		"/Applications/MAMP/htdocs/php-project/css/style.css",
+		"/Applications/MAMP/htdocs/php-project/genre.php",
+		"/Applications/MAMP/htdocs/php-project/inc/header.php",
+		"/Applications/MAMP/htdocs/php-project/php-project.esproj/user.abdgemei.espressostorage",
+		"/Applications/MAMP/htdocs/php-project/functions.php",
+		"/Applications/MAMP/htdocs/ci/application/views/modify_post_form.php",
+		"/Applications/MAMP/htdocs/ci/application/views/modify_user_form.php",
+		"/Applications/MAMP/htdocs/ci/application/views/add_user_form.php",
+		"/Applications/MAMP/htdocs/ci/application/controllers/dashboard/signup.php",
+		"/Applications/MAMP/htdocs/ci/application/controllers/dashboard/users.php",
+		"/Applications/MAMP/htdocs/ci/application/models/user_model.php",
+		"/Applications/MAMP/htdocs/ci/application/models/post_model.php",
+		"/Applications/MAMP/htdocs/ci/application/controllers/dashboard/posts.php",
+		"/Applications/MAMP/htdocs/ci/application/views/signup_form.php",
+		"/Applications/MAMP/htdocs/ci/application/controllers/dashboard/media.php",
+		"/Applications/MAMP/htdocs/ci/application/controllers/dashboard/login.php",
+		"/Applications/MAMP/htdocs/ci/application/controllers/admin.php",
+		"/Applications/MAMP/htdocs/ci/application/controllers/dashboard/logout.php",
+		"/Applications/MAMP/htdocs/ci/application/views/login_form.php",
+		"/Applications/MAMP/htdocs/ci/application/config/autoload.php",
+		"/Applications/MAMP/htdocs/ci/application/models/media_model.php",
+		"/Applications/MAMP/htdocs/ci/application/views/upload_media_form.php",
+		"/Applications/MAMP/htdocs/ci/application/config/config.php",
+		"/Applications/MAMP/htdocs/ci/application/views/admin_view.php"
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"zend_date",
+			"EEE",
+			"day",
+			"tue",
+			"sun",
+			"mon",
+			"day",
+			"day_format",
+			"day_fo",
+			"format",
+			"getDayN",
+			"iconv",
+			"text",
+			"ucs",
+			"utf",
+			"iconv_s",
+			"iconv",
+			"iconv_s",
+			"iconv_",
+			"iconv_strpos",
+			"strpos",
+			"iconv_strpos",
+			"parseDate",
+			"service",
+			"format",
+			"locale",
+			"new ",
+			"Zend_Locale",
+			"new ",
+			"new",
+			"getDate",
+			"_parseDate",
+			"new ",
+			"_profiler",
+			"insert",
+			" has",
+			" is",
+			"session",
+			"_POST",
+			"is",
+			"isPost",
+			"ispost",
+			"$_request",
+			"var $_request",
+			"_request",
+			"getR",
+			"fieldset",
+			"a href",
+			"script",
+			"search",
+			"groups",
+			"location",
+			" ",
+			"add",
+			"shopp",
+			"min-height",
+			"get_movie_by_id",
+			"get_names",
+			"sitemap_model",
+			"id",
+			"flash",
+			"n/",
+			"model",
+			"controller",
+			"model",
+			"controller",
+			"model",
+			"line",
+			"noel",
+			"saw",
+			"noel",
+			"file",
+			"wrap",
+			"font"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"s",
+			"strpos"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/Controller/UsersController.php",
+					"settings":
+					{
+						"buffer_size": 9568,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								662,
+								662
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/View/Layouts/default.ctp",
+					"settings":
+					{
+						"buffer_size": 2140,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								710,
+								710
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/abdgemei/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+					"settings":
+					{
+						"buffer_size": 138,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								138,
+								138
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/View/Layouts/dashboard.ctp",
+					"settings":
+					{
+						"buffer_size": 1575,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/Controller/UploadsController.php",
+					"settings":
+					{
+						"buffer_size": 7270,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								243,
+								243
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 28.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"uploads",
+				"app/Controller/UploadsController.php"
+			],
+			[
+				"settings",
+				"/Users/abdgemei/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings"
+			],
+			[
+				"dashboard.ctp",
+				"app/View/Layouts/dashboard.ctp"
+			],
+			[
+				"view/layouts/def",
+				"app/View/Layouts/default.ctp"
+			],
+			[
+				"routing",
+				"app/config/routing.yml"
+			],
+			[
+				"routing_dev",
+				"app/config/routing_dev.yml"
+			],
+			[
+				"appker",
+				"app/AppKernel.php"
+			],
+			[
+				"appkerne",
+				"app/AppKernel.php"
+			],
+			[
+				"para",
+				"app/config/parameters.ini"
+			],
+			[
+				"app/config/conf",
+				"app/config/config.yml"
+			],
+			[
+				"accounttype",
+				"src/Kareerak/FrontendBundle/Form/AccountType.php"
+			],
+			[
+				"index.html.twig",
+				"src/Kareerak/FrontendBundle/Resources/views/Default/index.html.twig"
+			],
+			[
+				"defaultcontro",
+				"src/Kareerak/FrontendBundle/Controller/DefaultController.php"
+			],
+			[
+				"routing.",
+				"app/config/routing.yml"
+			],
+			[
+				"signup",
+				"src/Kareerak/FrontendBundle/Controller/SignupController.php"
+			],
+			[
+				"zendlocalefor",
+				"include/Zend/Locale/Format.php"
+			],
+			[
+				"zend/date",
+				"include/Zend/Date.php"
+			],
+			[
+				"zend/calendar",
+				"include/Zend/Calendar.php"
+			],
+			[
+				"zendlocaleform",
+				"include/Zend/Locale/Format.php"
+			],
+			[
+				"zenddate.php",
+				"include/Zend/Date.php"
+			],
+			[
+				"zendlocalform",
+				"include/Zend/Locale/Format.php"
+			],
+			[
+				"zenddate",
+				"include/Zend/Date.php"
+			],
+			[
+				"localefo",
+				"include/Zend/Locale/Format.php"
+			],
+			[
+				"zendlocale",
+				"include/Zend/Locale.php"
+			],
+			[
+				"",
+				"application/controllers/TasksController.php"
+			],
+			[
+				"zenddbadapterpdoabstract",
+				"include/Zend/Db/Adapter/Pdo/Abstract.php"
+			],
+			[
+				"zenddbmys",
+				"include/Zend/Db/Statement/Mysqli.php"
+			],
+			[
+				"zenddbadaptera",
+				"include/Zend/Db/Adapter/Abstract.php"
+			],
+			[
+				"zenddbadapterpdoab",
+				"include/Zend/Db/Adapter/Pdo/Abstract.php"
+			],
+			[
+				"zend/db/adamysql",
+				"include/Zend/Db/Adapter/Pdo/Mysql.php"
+			],
+			[
+				"zend/db/adapter/m",
+				"include/Zend/Db/Adapter/Mysqli.php"
+			],
+			[
+				"auth.php",
+				"include/Zend/Auth.php"
+			],
+			[
+				"action.php",
+				"include/Zend/Controller/Action.php"
+			],
+			[
+				"zenddb",
+				"include/Zend/Db.php"
+			],
+			[
+				"config",
+				"application/config.ini"
+			],
+			[
+				"zend/form.php",
+				"include/Zend/Form.php"
+			],
+			[
+				"zend/controller",
+				"include/Zend/Controller/Action.php"
+			],
+			[
+				"entryform",
+				"application/models/Tasks/EntryForm.php"
+			],
+			[
+				"zend/form/sub",
+				"include/Zend/Form/SubForm.php"
+			],
+			[
+				"layout.phtml",
+				"application/layouts/scripts/layout.phtml"
+			],
+			[
+				"shopp",
+				"shoppingcart.php"
+			],
+			[
+				"functions.php",
+				"functions.php"
+			],
+			[
+				"function",
+				"functions.php"
+			],
+			[
+				"posts.php",
+				"application/controllers/dashboard/posts.php"
+			],
+			[
+				"users.php",
+				"application/controllers/dashboard/users.php"
+			],
+			[
+				"media",
+				"application/controllers/dashboard/media.php"
+			],
+			[
+				"post",
+				"application/models/post_model.php"
+			],
+			[
+				"post.",
+				"application/controllers/dashboard/posts.php"
+			],
+			[
+				"mes",
+				"application/views/message_display.php"
+			],
+			[
+				"posts.ph",
+				"application/controllers/dashboard/posts.php"
+			],
+			[
+				"media_mo",
+				"application/models/media_model.php"
+			],
+			[
+				"template.php",
+				"application/views/includes/template.php"
+			],
+			[
+				"galle",
+				"application/views/gallery.php"
+			],
+			[
+				"galler",
+				"application/models/gallery_model.php"
+			],
+			[
+				"gall",
+				"application/controllers/gallery.php"
+			],
+			[
+				"post_m",
+				"application/models/post_model.php"
+			],
+			[
+				"admin",
+				"application/controllers/admin.php"
+			],
+			[
+				"mess",
+				"application/views/message_display.php"
+			],
+			[
+				"media.php",
+				"application/controllers/dashboard/media.php"
+			],
+			[
+				"auto",
+				"application/config/autoload.php"
+			],
+			[
+				"post_mo",
+				"application/models/post_model.php"
+			],
+			[
+				"admin_v",
+				"application/views/admin_view.php"
+			],
+			[
+				"media_",
+				"application/models/media_model.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 171.0,
+	"status_bar_visible": true
+}

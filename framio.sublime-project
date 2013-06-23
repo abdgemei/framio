@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"path": "lib"
+		},
+		{
+			"path": "plugins"
+		},
+		{
+			"path": "vendors"
+		},
+		{
+			"path": "app"
+		}
+	]
+}

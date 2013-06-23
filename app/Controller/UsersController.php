@@ -200,6 +200,12 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Uploads/download');
         $this->Acl->allow($group, 'controllers/Uploads/delete');
         $this->Acl->allow($group, 'controllers/Uploads/addProfilePicture');
+        $this->Acl->allow($group, 'controllers/Albums/add');
+        $this->Acl->allow($group, 'controllers/Albums/edit');
+        $this->Acl->allow($group, 'controllers/Albums/delete');
+        $this->Acl->allow($group, 'controllers/Photos/add');
+        $this->Acl->allow($group, 'controllers/Photos/edit');
+        $this->Acl->allow($group, 'controllers/Photos/delete');
         $this->Acl->allow($group, 'controllers/Invitations/index');
         $this->Acl->allow($group, 'controllers/Invitations/approve');
         $this->Acl->allow($group, 'controllers/Invitations/apply');
@@ -214,6 +220,12 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Uploads/download');
         $this->Acl->allow($group, 'controllers/Uploads/delete');
         $this->Acl->allow($group, 'controllers/Uploads/addProfilePicture');
+        $this->Acl->allow($group, 'controllers/Albums/add');
+        $this->Acl->allow($group, 'controllers/Albums/edit');
+        $this->Acl->allow($group, 'controllers/Albums/delete');
+        $this->Acl->allow($group, 'controllers/Photos/add');
+        $this->Acl->allow($group, 'controllers/Photos/edit');
+        $this->Acl->allow($group, 'controllers/Photos/delete');
         $this->Acl->allow($group, 'controllers/Invitations/apply');
         $this->Acl->allow($group, 'controllers/Profiles/view');
                                 

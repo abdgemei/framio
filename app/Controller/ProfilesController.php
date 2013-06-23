@@ -9,10 +9,11 @@ App::uses('Invitation', 'Model');
  * @property Profile $Profile
  */
 class ProfilesController extends AppController {
+    
+    public $layout = 'profile';
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->layout = 'profile';
         $this->Auth->allow('signup', 'view');
     }
     
@@ -31,6 +32,27 @@ class ProfilesController extends AppController {
         $this->set('profile', $this->Profile->find('first', $options));
         $this->set('title_for_layout', $row['Profile']['name']);
     }
+
+    public function edit($id = null) {
+        if (!$this->Profile->exists($id)) {
+            throw new NotFoundException(__('Invalid profile'));
+        }
+        if ($this->request->is('post') || $this->request->is('put')) {
+            if ($this->Profile->save($this->request->data)) {
+                $this->Session->setFlash(__('The profile has been saved'));
+                $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Session->setFlash(__('The profile could not be saved. Please, try again.'));
+            }
+        } else {
+            $options = array('conditions' => array('Profile.' . $this->Profile->primaryKey => $id));
+            $this->request->data = $this->Profile->find('first', $options);
+        }
+        
+        $user = $this->Profile->User->find('list');
+        $this->set(compact('user'));
+    }
+
 
     // TODO move email links to view
 

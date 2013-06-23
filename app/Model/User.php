@@ -103,6 +103,7 @@ class User extends AppModel {
             'fields' => '',
             'order' => ''
         ),
+        'Album'
     );
 
     //public $actsAs = array('Acl' => array('type' => 'requester'));

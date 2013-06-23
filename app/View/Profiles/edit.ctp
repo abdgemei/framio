@@ -4,6 +4,7 @@
 		<legend><?php echo __('Edit Profile'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
+		echo $this->Form->input('User.username');
 		echo $this->Form->input('user_id');
 		echo $this->Form->input('first_name');
 		echo $this->Form->input('last_name');
