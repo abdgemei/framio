@@ -19,7 +19,7 @@ class AlbumsController extends AppController {
  */
 	public function index() {
 		$this->Album->recursive = 0;
-		$this->set('albums', $this->paginate());
+		$this->set('albums', $this->paginate('Album', array('Album.user_id' => $this->Auth->user('id')) ));
 	}
 
 /**

@@ -36,15 +36,15 @@ class Upload extends AppModel {
         )
     );
     
-    public $hasMany = array(
-        'ProfilePictures' => array(
-            'className' => 'ProfilePicture',
-            'foreignKey' => '',
-            'conditions' => '',
-            'fields' => '',
-            'order' => ''
-        )    
-    );
+    // public $hasMany = array(
+    //     'ProfilePictures' => array(
+    //         'className' => 'ProfilePicture',
+    //         'foreignKey' => '',
+    //         'conditions' => '',
+    //         'fields' => '',
+    //         'order' => ''
+    //     )    
+    // );
     
     public $belongsTo = array(
         'User' => array(

@@ -75,6 +75,7 @@ Cache::config('default', array('engine' => 'File'));
 
 CakePlugin::load('DebugKit');
 CakePlugin::load('AclExtras');
+CakePlugin::load('PhpThumb');
 
 /**
  * You can attach event listeners to the request lifecycle as Dispatcher Filter . By Default CakePHP bundles two filters:
@@ -96,7 +97,7 @@ Configure::write('Dispatcher.filters', array(
 	'AssetDispatcher',
 	'CacheDispatcher'
 ));
-
+Configure::load('config');
 /**
  * Configures default file logging options
  */

@@ -194,6 +194,7 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Users/view');
         $this->Acl->allow($group, 'controllers/Users/follow');
         $this->Acl->allow($group, 'controllers/Users/unfollow');
+        $this->Acl->allow($group, 'controllers/Uploads/index');
         $this->Acl->allow($group, 'controllers/Uploads/add');
         $this->Acl->allow($group, 'controllers/Uploads/edit');
         $this->Acl->allow($group, 'controllers/Uploads/view');
@@ -203,18 +204,21 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Albums/add');
         $this->Acl->allow($group, 'controllers/Albums/edit');
         $this->Acl->allow($group, 'controllers/Albums/delete');
-        $this->Acl->allow($group, 'controllers/Photos/add');
+        $this->Acl->allow($group, 'controllers/Photos/index');
+        $this->Acl->allow($group, 'controllers/Photos/view');
         $this->Acl->allow($group, 'controllers/Photos/edit');
         $this->Acl->allow($group, 'controllers/Photos/delete');
         $this->Acl->allow($group, 'controllers/Invitations/index');
         $this->Acl->allow($group, 'controllers/Invitations/approve');
         $this->Acl->allow($group, 'controllers/Invitations/apply');
         $this->Acl->allow($group, 'controllers/Profiles/view');
+        $this->Acl->allow($group, 'controllers/Profiles/edit');
         
         $group->id = 3;
         $this->Acl->deny($group, 'controllers');
         $this->Acl->allow($group, 'controllers/Users/follow');
         $this->Acl->allow($group, 'controllers/Users/unfollow');
+        $this->Acl->allow($group, 'controllers/Uploads/index');
         $this->Acl->allow($group, 'controllers/Uploads/add');
         $this->Acl->allow($group, 'controllers/Uploads/view');
         $this->Acl->allow($group, 'controllers/Uploads/download');
@@ -223,11 +227,13 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Albums/add');
         $this->Acl->allow($group, 'controllers/Albums/edit');
         $this->Acl->allow($group, 'controllers/Albums/delete');
-        $this->Acl->allow($group, 'controllers/Photos/add');
+        $this->Acl->allow($group, 'controllers/Photos/index');
+        $this->Acl->allow($group, 'controllers/Photos/view');
         $this->Acl->allow($group, 'controllers/Photos/edit');
         $this->Acl->allow($group, 'controllers/Photos/delete');
         $this->Acl->allow($group, 'controllers/Invitations/apply');
         $this->Acl->allow($group, 'controllers/Profiles/view');
+        $this->Acl->allow($group, 'controllers/Profiles/edit');
                                 
         echo "all done!";
         exit;

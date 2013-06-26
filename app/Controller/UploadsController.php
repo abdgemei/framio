@@ -2,6 +2,7 @@
 App::uses('AppController', 'Controller');
 App::uses('File', 'Utility');
 App::uses('Photo', 'Model');
+App::uses('Album', 'Model');
 App::uses('PhotoMetadatum', 'Model');
 App::uses('ProfilePicture', 'Model');
 /**
@@ -11,13 +12,16 @@ App::uses('ProfilePicture', 'Model');
  */
 class UploadsController extends AppController {
 
-    public $helpers = array('Html');
+    public $helpers = array('Html', 'Time', 'PhpThumb.PhpThumb');
     public $components = array('Rand');
    // public $layout = 'dashboard';
 
 // TODO favorite uploads
-// TODO upload metadata table
-// TODO main picture table
+
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->layout = 'dashboard';
+    }
 
 /**
  * index method
@@ -26,14 +30,28 @@ class UploadsController extends AppController {
  */
 
 	public function index() {
-	    // pr($this->Auth->user('id')); die;
-		$this->Upload->recursive = 0;
-        $this->showOwn();
-		$this->set('uploads', $this->paginate('Upload', array('Upload.user_id' => $this->Auth->user('id')) ));
+        $this->Upload->recursive = 2;
+        $this->Upload->unbindModel(array('belongsTo' => array('User')));
+        $this->Upload->unbindModel(array('hasOne' => array('ProfilePicture')));
+        $this->Upload->User->unbindModel(array('hasMany' => array('Upload')));
+        $this->Upload->Photo->unbindModel(array('belongsTo' => array('Upload')));
+		$this->set('uploads', $this->Upload->find('all', array('Upload.user_id' => $this->Auth->user('id')) ));
 	}
-    
-    protected function showOwn() {
-        return $this->Upload->find('all', array('conditions' => array('Upload.user_id' => $this->Auth->user('id'))));
+
+    public function addToAlbum($photo_data, $album_id) {
+        if(is_array($photo_data)) {
+            foreach ($photo_data as $photo) {
+                $this->Photo = new Photo;
+                if($this->Photo->attachToAlbum($photo, $album_id)) {
+
+                } else {
+                    // single photo-album attachment fails
+                }
+            }
+        } else {
+            $this->Photo = new Photo;
+            $this->Photo->attachToAlbum($photo_data, $album_id);
+        }
     }
 
 /**
@@ -94,7 +112,6 @@ class UploadsController extends AppController {
 	    $this->Photo = new Photo;
         $this->PhotoMetadatum = new PhotoMetadatum;
 		if ($this->request->is('post')) {
-		    //pr($this->request->data); die;
 
 			foreach($this->request->data['Upload']['files'] as $this->request->data['Upload']['file']) {
 				$this->Upload->create();
@@ -104,7 +121,6 @@ class UploadsController extends AppController {
                     $this->request->data['PhotoMetadatum'] = array('photo_id' => $this->Photo->getLastInsertID()) + $this->request->data['PhotoMetadatum'];
                     if($this->PhotoMetadatum->save($this->request->data)) {
                 	    $this->Session->setFlash(__('The upload has been saved'));
-        			    //$this->redirect(array('action' => 'index'));
                     }
     			} else {
     			    throw new InternalErrorException(__('The upload could not be saved. Please, try again.'));
@@ -139,10 +155,6 @@ class UploadsController extends AppController {
         $this->set(compact('users'));
     }
     
-    public function attachPhotoToAlbum() {
-        
-    }
-
 // TODO validate by filetype
     protected function uploadFile() {
         $file = $this->data['Upload']['file'];

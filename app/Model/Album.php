@@ -44,7 +44,4 @@ class Album extends AppModel {
 		)
 	);
 	
-	protected function addPhotoToAlbum() {
-	}
-
 }

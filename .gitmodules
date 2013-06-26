@@ -1,0 +1,3 @@
+[submodule "app/Plugin/Thumbnail"]
+	path = app/Plugin/Thumbnail
+	url = git@github.com:martinbean/cakephp-thumbnail-behavior.git

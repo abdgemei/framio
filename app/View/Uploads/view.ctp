@@ -7,27 +7,6 @@
 			<?php echo h($upload['Upload']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('User'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($upload['User']['id'], array('controller' => 'users', 'action' => 'view', $upload['User']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Title'); ?></dt>
-		<dd>
-			<?php echo h($upload['Upload']['title']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Description'); ?></dt>
-		<dd>
-			<?php echo h($upload['Upload']['description']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Preview'); ?></dt>
-		<dd>
-		    <?php echo $this->Html->image(FULL_BASE_URL.'/content/'.$upload['Upload']['id'], array('alt' => $upload['Upload']['title'])); ?>
-
-		    &nbsp;
-		</dd>
 		<dt><?php echo __('Filename'); ?></dt>
 		<dd>
 			<?php echo h($upload['Upload']['filename']); ?>
@@ -58,13 +37,14 @@
            <?php echo $this->Html->link(__('Download', true), array('action' => 'download', $upload['Upload']['id'])); ?>
            
         </dd>
-        <?php foreach($uploadMetadata as $metaKey => $metaValue) : ?>
+<!--         <?php foreach($uploadMetadata as $metaKey => $metaValue) : ?>
         <dt><?php echo __($metaKey); ?></dt>
         <dd>
             <?php echo $metaValue ?>
         </dd>
         <?php endforeach; ?>
 	</dl>
+ -->
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

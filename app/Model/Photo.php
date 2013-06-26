@@ -1,5 +1,6 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('Album', 'Model');
 /**
  * Photo Model
  *
@@ -54,4 +55,11 @@ class Photo extends AppModel {
 	public $belongsTo = array(
 		'Upload'
 	);
+
+	public function attachToAlbum($photo, $album_id) {
+		if(!$this->exists($photo['id'])) {
+			return false;
+		}
+	}
+
 }
