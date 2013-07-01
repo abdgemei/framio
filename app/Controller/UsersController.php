@@ -1,7 +1,9 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 App::uses('Following', 'Model');
 App::uses('Invitation', 'Model');
+
 /**
  * Users Controller
  *
@@ -15,7 +17,7 @@ class UsersController extends AppController {
 // TODO password salt using user salt
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('login', 'initDB', 'logout');
+        $this->Auth->allow('login', 'initDB', 'logout', 'resetPassword');
     }
 
 	public function index() {
@@ -46,13 +48,20 @@ class UsersController extends AppController {
 		$this->set(compact('groups'));
 	}
     
-	public function edit($id = null) {
+	public function edit() {
 	    //pr($this->User); die;
+        $id = $this->Auth->user('id');
+        $this->layout = 'dashboard';
+        $profile_row = $this->User->findById($id);
+        $profile_id = $profile_row['Profile']['id'];
+        unset($profile_row);
+
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->User->save($this->request->data)) {
+            $this->request->data['Profile']['last_update'] = date('Y-m-d H:i:s');
+			if ($this->User->saveAll($this->request->data)) {
 				$this->Session->setFlash(__('The user has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
@@ -66,6 +75,22 @@ class UsersController extends AppController {
 		$groups = $this->User->Group->find('list');
 		$this->set(compact('groups'));
 	}
+
+    public function changePassword() {
+        $this->layout = 'dashboard';
+
+        if ($this->request->is('post') || $this->request->is('put')) {
+            $this->User->id = CakeSession::read('Auth.User.id');
+            $this->User->set('password', AuthComponent::password($this->request->data['User']['password_confirmation']));
+            $this->User->set('change_password_flag', 0);
+            if ($this->User->save()) {
+                $this->Session->setFlash(__('Your password has been changed!'));
+                $this->redirect($this->referer());
+            } else {
+                $this->Session->setFlash(__('Something went wrong...'));
+            }
+        }
+    }
 
 	public function delete($id = null) {
 		$this->User->id = $id;
@@ -82,11 +107,17 @@ class UsersController extends AppController {
 	}
 
     public function login() {
+        $this->layout = 'loginScreen';
         if ($this->Session->check('Auth.User')) {
             $this->redirect($this->referer());
         }
         if ($this->request->is('post') || $this->Auth->loggedIn()) {
             if ($this->Auth->login()) {
+                $user = $this->User->findById(CakeSession::read('Auth.User.id'));
+                if ($user['User']['change_password_flag']) {
+                    $this->Session->setFlash(__('It is important that you change your password, please <a href="'. Router::url(array('controller' => 'users', 'action' => 'changePassword'), true) .'">click here</a>.'));
+                }
+
                 $this->redirect($this->Auth->redirect());
             } else {
                 $this->Session->setFlash(__('Invalid username or password, try again'));
@@ -119,6 +150,9 @@ class UsersController extends AppController {
                 } else {
                     if ($this->request->data['Following']['following_user_id'] !== $this->Auth->user('id')) {
                         $this->request->data['Following']['user_id'] = $this->Auth->user('id');
+
+                        // $this->DboSource = new DboSource(null, true);
+                        $this->request->data['Following']['timestamp'] = time();
                         $follow = new Following;
                         
                         if($follow->save($this->request->data)) {
@@ -160,12 +194,12 @@ class UsersController extends AppController {
                         $following = new Following;
                         
                         $conditions = array(
-                            'user_id' => $this->Auth->user('id'),
-                            'following_user_id' =>  $this->request->data['Following']['following_user_id']
+                            'Following.user_id' => $this->Auth->user('id'),
+                            'Following.following_user_id' =>  $this->request->data['Following']['following_user_id']
                         );
 
                         
-                        if($following->deleteAll($conditions, false)) {
+                        if($following->deleteAll($conditions, true)) {
                             $this->autoRender = false;
                             $this->Session->setFlash(__('Done!'));
                             $this->redirect($this->referer());
@@ -181,6 +215,39 @@ class UsersController extends AppController {
         
     }
     
+    public function resetPassword() {
+        $this->layout = 'homepage';
+        if ($this->request->is('post')) {
+            $user = $this->User->findByEmail($this->request->data['User']['email']);
+            // pr($this->request->data); die;
+            $this->User->id = $user['User']['id'];
+            $conditions = array(
+                'User.email' => $this->request->data['User']['email']
+            );
+            if (!$this->User->hasAny($conditions)) {
+                throw new NotFoundException(__('User not found'));
+            }
+
+            $newPass = rand(100000, 999999);
+
+            if ($this->User->saveField('password', $newPass) && $this->User->saveField('change_password_flag', '1')) {
+                $this->Email = new CakeEmail('smtp');
+                $this->Email->from('info@framio.net', 'Framio');
+                $this->Email->subject('Password Reset Information');
+                $this->Email->to($this->request->data['User']['email']);
+                $message = "Your new password is ".$newPass.".";
+                if ($this->Email->send($message)) {
+                    $this->Session->setFlash(__('Your password has been set, please check your inbox'));
+                    $this->redirect($this->referer());
+                } else {
+                    throw new InternalErrorException(__('Error'));
+                }
+            } else {
+                throw new InternalErrorException(__('Password not saved'));
+            }
+        }
+    }
+
     public function initDB() {
         $group = $this->User->Group;
         
@@ -192,6 +259,7 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Users/index');
         $this->Acl->allow($group, 'controllers/Users/edit');
         $this->Acl->allow($group, 'controllers/Users/view');
+        $this->Acl->allow($group, 'controllers/Users/changePassword');
         $this->Acl->allow($group, 'controllers/Users/follow');
         $this->Acl->allow($group, 'controllers/Users/unfollow');
         $this->Acl->allow($group, 'controllers/Uploads/index');
@@ -201,21 +269,24 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Uploads/download');
         $this->Acl->allow($group, 'controllers/Uploads/delete');
         $this->Acl->allow($group, 'controllers/Uploads/addProfilePicture');
+        $this->Acl->allow($group, 'controllers/Uploads/favorite');
+        $this->Acl->allow($group, 'controllers/Uploads/unfavorite');
         $this->Acl->allow($group, 'controllers/Albums/add');
         $this->Acl->allow($group, 'controllers/Albums/edit');
         $this->Acl->allow($group, 'controllers/Albums/delete');
         $this->Acl->allow($group, 'controllers/Photos/index');
         $this->Acl->allow($group, 'controllers/Photos/view');
-        $this->Acl->allow($group, 'controllers/Photos/edit');
-        $this->Acl->allow($group, 'controllers/Photos/delete');
         $this->Acl->allow($group, 'controllers/Invitations/index');
         $this->Acl->allow($group, 'controllers/Invitations/approve');
         $this->Acl->allow($group, 'controllers/Invitations/apply');
         $this->Acl->allow($group, 'controllers/Profiles/view');
-        $this->Acl->allow($group, 'controllers/Profiles/edit');
+        $this->Acl->allow($group, 'controllers/Activities/index');
         
         $group->id = 3;
         $this->Acl->deny($group, 'controllers');
+        $this->Acl->allow($group, 'controllers/Users/view');
+        $this->Acl->allow($group, 'controllers/Users/edit');
+        $this->Acl->allow($group, 'controllers/Users/changePassword');
         $this->Acl->allow($group, 'controllers/Users/follow');
         $this->Acl->allow($group, 'controllers/Users/unfollow');
         $this->Acl->allow($group, 'controllers/Uploads/index');
@@ -224,16 +295,16 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Uploads/download');
         $this->Acl->allow($group, 'controllers/Uploads/delete');
         $this->Acl->allow($group, 'controllers/Uploads/addProfilePicture');
+        $this->Acl->allow($group, 'controllers/Uploads/favorite');
+        $this->Acl->allow($group, 'controllers/Uploads/unfavorite');
         $this->Acl->allow($group, 'controllers/Albums/add');
         $this->Acl->allow($group, 'controllers/Albums/edit');
         $this->Acl->allow($group, 'controllers/Albums/delete');
         $this->Acl->allow($group, 'controllers/Photos/index');
         $this->Acl->allow($group, 'controllers/Photos/view');
-        $this->Acl->allow($group, 'controllers/Photos/edit');
-        $this->Acl->allow($group, 'controllers/Photos/delete');
         $this->Acl->allow($group, 'controllers/Invitations/apply');
         $this->Acl->allow($group, 'controllers/Profiles/view');
-        $this->Acl->allow($group, 'controllers/Profiles/edit');
+        $this->Acl->allow($group, 'controllers/Activities/index');
                                 
         echo "all done!";
         exit;

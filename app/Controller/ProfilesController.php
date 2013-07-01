@@ -25,45 +25,15 @@ class ProfilesController extends AppController {
         if (!$this->Profile->exists($id)) {
             throw new NotFoundException(__('Invalid profile'));
         }
-        $options = array('conditions' => array('Profile.username' => $username));
+        $profileOptions = array('conditions' => array('Profile.username' => $username));
+        $photoOptions = array('conditions' => array('Profile.username' => $username, 'is_visible' => true));
         //$this->Profile->User->Upload->find('all');
         //pr($this->Profile->User->ProfilePictures->find());
         $this->set('profile_pictures', $this->Profile->User->ProfilePictures->find('first'));
-        $this->set('uploads', $this->Profile->User->Upload->find('all'));
-        $this->set('profile', $this->Profile->find('first', $options));
+        $this->set('uploads', $this->Profile->User->Upload->find('all', $photoOptions));
+        $this->set('profile', $this->Profile->find('first', $profileOptions));
         $this->set('title_for_layout', $row['Profile']['first_name']);
     }
-
-    public function edit() {
-        // pr(date('Y-m-d H:i:s')); die;
-        $user_id = $this->Auth->user('id');
-        $this->layout = 'default';
-        $this->User = new User();
-        $id = $this->User->findById($user_id)['Profile']['id'];
-        
-        if (!$this->Profile->exists($id)) {
-            throw new NotFoundException(__('Invalid profile'));
-        }
-        if(!$id == $this->Auth->user('id')) {
-            throw new InternalErrorException(__('Something went wrong!'));
-        }
-        if ($this->request->is('post') || $this->request->is('put')) {
-            $this->request->data['Profile']['last_update'] = date('Y-m-d H:i:s');
-            if ($this->Profile->save($this->request->data)) {
-                $this->Session->setFlash(__('The profile has been saved'));
-                $this->redirect(array('action' => 'edit'));
-            } else {
-                $this->Session->setFlash(__('The profile could not be saved. Please, try again.'));
-            }
-        } else {
-            $options = array('conditions' => array('Profile.' . $this->Profile->primaryKey => $id));
-            $this->request->data = $this->Profile->find('first', $options);
-        }
-        
-        $user = $this->Profile->User->find('list');
-        $this->set(compact('user'));
-    }
-
 
     // TODO move email links to view
 

@@ -6,11 +6,6 @@
 			<?php echo h($user['User']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Username'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['username']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Password'); ?></dt>
 		<dd>
 			<?php echo h($user['User']['password']); ?>

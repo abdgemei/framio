@@ -60,6 +60,68 @@ header {
     display: inline;
 }
 
+.form .span5 h2 {
+    line-height:2em;
+    position:relative;
+    top:0.3em;
+}
+
+.actions h2,
+.form h2 {
+    display: inline;
+    line-height: 2.4em;
+    color: #367fb9;
+    font-weight: 100;
+}
+
+.actions {
+    position: relative;
+}
+
+.actions a#uploadAction,
+.actions a#editAction,
+.actions a#downloadAction,
+.actions a#refreshStreamAction {
+    text-decoration: none;
+    color: #6d6d6d;
+    padding-left: 24px;
+    margin-right: 10px;
+    position: relative;
+    left: 10px;
+    top: -2px;
+}
+
+.actions a#uploadAction:hover,
+.actions a#editAction:hover,
+.actions a#downloadAction:hover,
+.actions a#refreshStreamAction:hover {
+    text-decoration: underline;
+}
+
+.actions a#uploadAction {
+    background: url(../images/uploadAction.png) no-repeat 3px center;
+}
+
+.actions a#refreshStreamAction {
+    background: url(../images/refreshStreamAction.png) no-repeat 3px center;
+}
+
+.actions a#editAction {
+    background: url(../images/editAction.png) no-repeat 3px center;
+}
+
+.actions a#downloadAction {
+    background: url(../images/downloadAction.png) no-repeat 3px center;
+}
+
+.actions .search {
+    margin: 10px 20px;
+    display: inline;
+    position: absolute;
+    top:12px;
+    right:0;
+}
+
 #accountActions {
 
 }
@@ -283,6 +345,8 @@ p.error,
     background-image: -o-linear-gradient(top, #ee5f5b, #c43c35);
     background-image: linear-gradient(top, #ee5f5b, #c43c35);
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+    z-index:2;
+    position:relative;
 }
 .success {
     clear: both;
@@ -318,3 +382,71 @@ p.error em {
 .success {
     color: #fff;
 }
+
+/* Form errors */
+form .error {
+    background: #FFDACC;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    font-weight: normal;
+}
+form .error-message {
+    -moz-border-radius: none;
+    -webkit-border-radius: none;
+    border-radius: none;
+    border: none;
+    background: none;
+    margin: 0;
+    padding-left: 4px;
+    padding-right: 0;
+}
+form .error,
+form .error-message {
+    color: #9E2424;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+/** Dashboard **/
+
+#feedContainer {
+    position: relative;
+}
+
+.feedItem {
+    width: 390px;
+    /*background:gray;*/
+}
+
+#photosContainer,
+#feedContainer {
+    margin-top: 20px;
+}
+
+dl#metadata {
+    width:100%;
+}
+
+#metadata dt,
+#metadata dd {
+    background:white;
+    font-size: 0.8em;
+    line-height:2em;
+}
+
+#metadata dt {
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size:0.7em;
+}
+
+#metadata dd {
+    margin-left: 9em;
+}
+
+.control-group.form-inline .controls {display:none;}

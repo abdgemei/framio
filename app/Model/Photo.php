@@ -39,6 +39,12 @@ class Photo extends AppModel {
         )
 	);
 	
+	public $hasMany = array(
+		'Favorite' => array(
+            'dependent' => true,
+        )
+	);
+	
 	public $hasAndBelongsToMany = array(
 	    'Album' => array(
 	        'className' => 'Album',

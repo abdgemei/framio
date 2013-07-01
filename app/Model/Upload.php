@@ -33,6 +33,9 @@ class Upload extends AppModel {
         'ProfilePicture',
         'Photo' => array(
             'dependent' => true
+        ),
+        'Activity' => array(
+            'dependent' => true,
         )
     );
     
@@ -55,6 +58,24 @@ class Upload extends AppModel {
             'order' => ''
         ),
     );
+
+    public function afterSave($created) {
+        if($created) {
+            $this->Activity = new Activity;
+            $lastInsertData = $this->findById($this->getLastInsertId());
+
+            $data = array(
+                    'id' => null,
+                    'user_id' => $lastInsertData['Upload']['user_id'],
+                    'activity_type_id' => $this->Activity->getActivityTypeId($this->useTable),
+                    'upload_id' => $lastInsertData['Upload']['id'],
+                    'object_id' => $lastInsertData['Photo']['id'],
+                    'timestamp' => strtotime($lastInsertData['Upload']['created'])
+                );
+
+            $this->Activity->logActivity($data);
+        }
+    }
 
     protected function getGps($exifCoord, $hemi) {
     

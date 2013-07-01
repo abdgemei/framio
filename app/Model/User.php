@@ -2,23 +2,10 @@
 
 App::uses('AppModel', 'Model');
 App::uses('AuthComponent', 'Controller/Component');
+App::uses('Activity', 'Model');
 class User extends AppModel {
     
     public $validate = array(
-        'username' => array(
-            'required' => array(
-                'rule' => array('notEmpty'),
-                'message' => 'A username is required'
-            ),
-            'length' => array(
-                'rule' => array('between', 5, 15),
-                'message' => 'Username must be between 5 to 15 characters'
-            ),
-            'isUnique' => array(
-                'rule' => 'isUnique',
-                'message' => 'This username has already been taken'
-            )
-        ),
         'email' => array(
             'required' => array(
                 'rule' => array('notEmpty'),
@@ -73,13 +60,10 @@ class User extends AppModel {
     );
     
     public $hasOne = array(
-        'Profile' => array(
-            'className' => 'Profile',
-            'foreignKey' => '',
-            'conditions' => '',
-            'fields' => '',
-            'order' => ''
-        ),
+        'Profile',
+        'Activity' => array(
+            'dependent' => true,
+        )
     );
     
     public $hasMany = array(
@@ -115,6 +99,21 @@ class User extends AppModel {
         return true;
     }
     
+    public function afterSave($created) {
+        if($created) {
+            $this->Activity = new Activity;
+            $lastInsertData = $this->findById($this->getLastInsertId());
+
+            $data = array(
+                    'id' => null,
+                    'user_id' => $lastInsertData['User']['id'],
+                    'activity_type_id' => $this->Activity->getActivityTypeId($this->useTable),
+                    'timestamp' => strtotime($lastInsertData['User']['created'])
+                );
+
+            $this->Activity->logActivity($data);
+        }
+    }
     public function matchPasswords($data) {
         if ($this->data['User']['password'] == $this->data['User']['password_confirmation']) {
             return true;

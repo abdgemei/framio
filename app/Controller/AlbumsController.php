@@ -45,6 +45,8 @@ class AlbumsController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Album->create();
+			$this->request->data['Album']['user_id'] = $this->Auth->user('id');
+//			pr($this->request->data); die;
 			if ($this->Album->save($this->request->data)) {
 				$this->Session->setFlash(__('The album has been saved'));
 				$this->redirect(array('action' => 'index'));
@@ -52,6 +54,15 @@ class AlbumsController extends AppController {
 				$this->Session->setFlash(__('The album could not be saved. Please, try again.'));
 			}
 		}
+		// $options['joins'] = array(array(
+		// 	'table' => 'upload',
+		// 	'alias' => 'Upload',
+		// 	'type' => 'INNER',
+		// 	'conditions' => array(
+		// 		'Upload.id = Photo.upload_id',
+		// 		'Upload.user_id' => $this->Auth->user('id')
+		// 		)
+		// 	));
 		$photos = $this->Album->Photo->find('list');
 		$this->set(compact('photos'));
 	}

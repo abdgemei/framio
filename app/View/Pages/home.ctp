@@ -5,12 +5,8 @@
         </section>
         <section class="span3 offset3" id="logInForm">
             <?php echo $this->element('loginForm'); ?>
-            <!-- <form action="<?php $this->Html->link(array('controller'=>'users','action'=>'login')); ?>" id="login">
-                <input type="text" name="data[User][email]" value="Email" id="emailForm" />
-                <input type="password" name="data[User][password]" value="Password" id="passForm" />
-                <input type="submit" value="Sign in" id="signInButton" class="btn btn-primary" />
-            </form> -->            <p>New here? <?php echo $this->Html->link('Sign up for an invite', array('controller'=>'invitations','action'=>'apply'), array('title'=>'Come in!')); ?>!</p>
-            <p><a href="#">Forgot your password</a>?</p>
+            <p>New here? <?php echo $this->Html->link('Sign up for an invitation', array('controller'=>'invitations', 'action'=>'apply'), array('title'=>'Come in!')); ?>!</p>
+            <p><?php echo $this->Html->link('Forgot your password', array('controller'=>'users', 'action'=>'resetPassword'), array('title'=>'Reset your password here')); ?>?</p>
         </section>
     </section>
     <section class="row marginsAndBorders" id="featureList">

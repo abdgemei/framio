@@ -46,6 +46,20 @@ class EmailConfig {
 
 	public $smtp = array(
 		'transport' => 'Smtp',
+		'from' => array('info@framio.net' => 'Framio'),
+		'host' => 'ssl://smtpout.secureserver.net',
+		'port' => 465,
+		'timeout' => 30,
+		'username' => 'info@framio.net',
+		'password' => '2IbGxG',
+		'client' => null,
+		'log' => false,
+		//'charset' => 'utf-8',
+		//'headerCharset' => 'utf-8',
+	);
+	
+	public $smtpGmail = array(
+		'transport' => 'Smtp',
 		'from' => array('a@framio.net' => 'Framio'),
 		'host' => 'ssl://smtp.gmail.com',
 		'port' => 465,

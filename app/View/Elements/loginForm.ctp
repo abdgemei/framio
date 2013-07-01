@@ -3,8 +3,8 @@
         'url' => array('controller'=>'users','action'=>'login')
         )); ?>
     <flieldset>
-        <?php echo $this->Form->input('email', array('value'=>'Email', 'id'=>'emaiForm'));
-              echo $this->Form->input('password', array('value'=>'Password', 'id'=>'passForm'));
+        <?php echo $this->Form->input('email', array('id'=>'emaiForm', 'placeholder' => 'Email'));
+              echo $this->Form->input('password', array('placeholder'=>'Password', 'id'=>'passForm'));
               echo $this->Form->submit(
                   'Log in', 
                   array('class' => 'btn btn-primary', 'title' => 'Custom Title', 'id'=>'signInButton', 'div'=>false)

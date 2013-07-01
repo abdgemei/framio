@@ -112,3 +112,39 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
+/* Routing home based on login status!
+ *
+ */
+
+// include the Session Component to our application
+App::uses('SessionComponent', 'Controller/Component');
+
+// now create new SessionComponent instance
+$Session = new SessionComponent(new ComponentCollection());
+
+// check if the user logged in
+if ($Session->read('Auth.User')) {
+
+    switch ($Session->read('Auth.User.group')) {
+
+        case 1:
+            Configure::write('Route.default', array('controller' => 'activities', 'action' => 'index'));
+            break;
+
+
+        case 2:
+            Configure::write('Route.default', array('controller' => 'activities', 'action' => 'index'));
+            break;
+
+            // User
+        case 3:
+            Configure::write('Route.default', array('controller' => 'activities', 'action' => 'index'));
+            break;
+    }
+
+}
+// nope, user not logged in
+else {
+    Configure::write('Route.default', array('controller' => 'pages', 'action' => 'display', 'home'));
+}

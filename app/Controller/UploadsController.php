@@ -3,6 +3,7 @@ App::uses('AppController', 'Controller');
 App::uses('File', 'Utility');
 App::uses('Photo', 'Model');
 App::uses('Album', 'Model');
+App::uses('Favorite', 'Model');
 App::uses('PhotoMetadatum', 'Model');
 App::uses('ProfilePicture', 'Model');
 /**
@@ -35,8 +36,15 @@ class UploadsController extends AppController {
         $this->Upload->unbindModel(array('hasOne' => array('ProfilePicture')));
         $this->Upload->User->unbindModel(array('hasMany' => array('Upload')));
         $this->Upload->Photo->unbindModel(array('belongsTo' => array('Upload')));
-		$this->set('uploads', $this->Upload->find('all', array('Upload.user_id' => $this->Auth->user('id')) ));
+        $options['conditions'] = array('Upload.user_id' => $this->Auth->user('id'));
+        // $options['order'] = 'photo.title ASC';
+        //pr($this->Upload->find('all', $options)); die;
+		$this->set('uploads', $this->Upload->find('all', $options));
 	}
+
+    public function editMultiple() {
+
+    }
 
     public function addToAlbum($photo_data, $album_id) {
         if(is_array($photo_data)) {
@@ -65,7 +73,26 @@ class UploadsController extends AppController {
 		if (!$this->Upload->exists($id)) {
 			throw new NotFoundException(__('Invalid upload'));
 		}
-		$options = array('conditions' => array('Upload.' . $this->Upload->primaryKey => $id));
+
+        // pr($id); die;
+        $this->Upload->recursive = 2;
+        $this->Upload->unbindModel(array(
+            'belongsTo' => array('User'),
+            'hasOne' => array('Activity')
+            ));
+
+
+		$options['conditions'] = array('Upload.' . $this->Upload->primaryKey => $id);
+
+        $data = $this->Upload->find('first', $options);
+        // pr($data['Upload']['user_id']); die;
+
+        if(CakeSession::read('Auth.User.id') !== $data['Upload']['user_id']) {
+            if(!$data['Photo']['is_visible']) {
+                throw new NotFoundException(__('Invalid upload'));
+            }
+        }
+
 		$this->set('upload', $this->Upload->find('first', $options));
         $this->set('uploadMetadata', $this->Upload->getMetadata($id));
 	}
@@ -80,12 +107,18 @@ class UploadsController extends AppController {
         $upload = $this->Upload->find('first', array(
             'conditions' => array(
                 'Upload.id' => $id,
-                'OR' => array(
-                    'Upload.user_id' => $this->Auth->user('id'),
-                ),
+                // 'OR' => array(
+                //     'Upload.user_id' => $this->Auth->user('id'),
+                // ),
             )
         ));
-        
+        //pr($upload); die;
+        if(CakeSession::read('Auth.User.id') !== $upload['Upload']['user_id']) {
+            if(!$upload['Photo']['is_downloadable']) {
+                throw new NotFoundException(__('Invalid upload'));
+            }
+        }
+
         if (!$upload) {
             $this->Session->setFlash(__('Invalid id for upload', true));
             $this->redirect(array('action' => 'index'));
@@ -93,6 +126,7 @@ class UploadsController extends AppController {
         
         $this->viewClass = 'media';
         $filename = $upload['Upload']['filename'];
+
         $this->set(array(
             'id' => $upload['Upload']['id'],
             //'name' => substr($filename, 0, strrpos($filename, '.')),
@@ -186,7 +220,7 @@ class UploadsController extends AppController {
 			throw new NotFoundException(__('Invalid upload'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Upload->save($this->request->data)) {
+			if ($this->Upload->saveAll($this->request->data)) {
 				$this->Session->setFlash(__('The upload has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
@@ -222,4 +256,71 @@ class UploadsController extends AppController {
 		$this->Session->setFlash(__('Upload was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+    public function unfavorite() {
+        if ($this->request->is('post')) {
+            $conditions = array(
+                'Upload.id' => $this->request->data['Favorite']['photo_id']
+                );
+            if (!$this->Upload->hasAny($conditions)) {
+                throw new NotFoundException(__('Upload not found'));
+            }
+
+            $this->Favorite = new Favorite;
+            $conditions = array(
+                'Favorite.user_id' => CakeSession::read('Auth.User.id'),
+                'Favorite.photo_id' => $this->request->data['Favorite']['photo_id']
+                );
+
+            if (!$this->Favorite->hasAny($conditions)) {
+                throw new InternalErrorException(__('Invalid operation: You do not favorite this photo.'));
+            }
+
+            $conditions = array(
+                'Favorite.user_id' => CakeSession::read('Auth.User.id'),
+                'Favorite.photo_id' => $this->request->data['Favorite']['photo_id']
+                );
+            if($this->Favorite->deleteAll($conditions, true)) {
+                $this->autoRender = false;
+                $this->Session->setFlash(__('Done!'));
+                $this->redirect($this->referer());
+            } else {
+                throw new InternalErrorException(__('Invalid operation: Cannot save'));
+            }
+        }
+    }
+
+    public function favorite() {
+        //pr($this->request->data); die;
+        if ($this->request->is('post')) {
+            $conditions = array(
+                'Upload.id' => $this->request->data['Favorite']['photo_id']
+                );
+            if (!$this->Upload->hasAny($conditions)) {
+                throw new NotFoundException(__('Upload not found'));
+            }
+
+            $this->Favorite = new Favorite;
+            $conditions = array(
+                'Favorite.user_id' => CakeSession::read('Auth.User.id'),
+                'Favorite.photo_id' => $this->request->data['Favorite']['photo_id']
+                );
+
+            if ($this->Favorite->hasAny($conditions)) {
+                throw new InternalErrorException(__('Invalid operation: You have already favorited this photo'));
+            }
+
+            $this->request->data['Favorite']['user_id'] = CakeSession::read('Auth.User.id');
+            $this->request->data['Favorite']['timestamp'] = time();
+
+            if($this->Favorite->save($this->request->data)) {
+                $this->autoRender = false;
+                $this->Session->setFlash(__('Done!'));
+                $this->redirect($this->referer());
+            } else {
+                throw new InternalErrorException(__('Invalid operation: Cannot save'));
+            }
+        }
+    }
+
 }

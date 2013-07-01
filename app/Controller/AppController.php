@@ -50,7 +50,7 @@ class AppController extends Controller {
     
     public function beforeFilter() {
         $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
-        $this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'login');
+        $this->Auth->logoutRedirect = Configure::read('Route.default');
         $this->Auth->loginRedirect = array('controller' => 'pages', 'action' => 'display');
     }
 		

@@ -44,7 +44,7 @@ $cakeDescription = __d('cake_dev', 'Framio');
 			<div style="float:right">
 			    <?php //pr($this->Session->read('Auth.User')); die; ?>
 			    <?php $user = $this->Session->read('Auth.User'); ?>
-			    <?php if(isset($user)) { echo "Logged in as <em>". $user['username'] ."</em>&nbsp;".$this->Html->link('Sign out', array('controller'=>'users', 'action'=>'logout')); } else { ?>
+			    <?php if(isset($user)) { echo "Logged in as <em>". $user['email'] ."</em>&nbsp;".$this->Html->link('Sign out', array('controller'=>'users', 'action'=>'logout')); } else { ?>
 			        
 			    <?php echo $this->Html->link('Sign in', array('controller'=>'users', 'action'=>'login')); }  ?>
 			</div>

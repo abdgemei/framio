@@ -148,12 +148,16 @@ header {
 /*    
     #signInButton:hover {
         cursor: pointer;
+    }*/
+
+    #UserDisplayForm {
+        margin-bottom: 5px;
     }
     
     #logInForm p {
-        line-height: 1.625em;
+        line-height: 1em;
     }
-    */
+
 h2, h3 {
     font-size: 1.25em;
     font-weight: 600;

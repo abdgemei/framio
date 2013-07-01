@@ -18,38 +18,34 @@ App::uses('Debugger', 'Utility');
           echo $this->Html->css('dashboard');
           echo $this->fetch('meta');
           echo $this->fetch('css');
-          echo $this->fetch('jquery-2.0.2.min');
-          echo $this->fetch('script');
+          echo $this->Html->script('jquery-2.0.2.min');
+          echo $this->Html->script('masonry.pkgd.min');
+          echo $this->Html->script('script');
     ?>
 
 </head>
 <body>
 <?php echo $this->element('dashboardHeader'); ?>
+<section id="flashMessages">
+    <?php echo $this->Session->flash(); ?>
+    <?php echo $this->Session->flash('auth'); ?>
+
+</section>
 <section class="container">
     <section class="row">
         <section class="span1" id="verticalNav">
             <ul>
-                <li><?php echo $this->Html->link('Home', array('controller' => 'uploads', 'action' => 'index'), array('class' => 'navItem', 'id' => 'home')); ?></li>
+                <li><?php echo $this->Html->link('Home', array('controller' => 'activities', 'action' => 'index'), array('class' => 'navItem', 'id' => 'home')); ?></li>
                 <li><?php echo $this->Html->link('Home', array('controller' => 'uploads', 'action' => 'index'), array('class' => 'navItem', 'id' => 'photos')); ?></li>
                 <li><a href="#" class="navItem" id="faves"></a></li>
                 <li><a href="#" class="navItem" id="stats"></a></li>
-                <li><a href="#" class="navItem" id="settings"></a></li>
+                <li><?php echo $this->Html->link('Home', array('controller' => 'users', 'action' => 'edit'), array('class' => 'navItem', 'id' => 'settings')); ?></li>
             </ul>
         </section>
-        <section class="span7" id="content">
-            <section id="flashMessages">
-                <?php echo $this->Session->flash(); ?>
-                <?php echo $this->Session->flash('auth'); ?>
-
-            </section>
-            <?php echo $this->fetch('content'); ?>
-        </section>
-        <section class="span4" id="activityFeed">
-            
-        </section>
+        <?php echo $this->fetch('content'); ?>
     </section>
 </section>
-<?php echo $this->element('sql_dump'); ?>
+<?php //echo $this->element('sql_dump'); ?>
 </body>
 </html>
 <?php //echo $this->element('footer'); ?>

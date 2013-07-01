@@ -1,5 +1,17 @@
 <div class="profiles form">
-<?php echo $this->Form->create('Profile'); ?>
+<?php
+echo $this->Form->create('Profile',
+	array(
+		'class' => 'form-horizontal',
+		'inputDefaults' => array(
+				'div' => 'control-group',
+				'label' => array('class' => 'control-label'),
+				'between' => '<div class="controls">',
+				'after' => '</div>'
+			)
+		));
+
+?>
 	<fieldset>
 		<legend><?php echo __('Edit Profile'); ?></legend>
 	<?php 
@@ -22,7 +34,7 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 
-		<li><?php echo $this->Html->link(__('List Uploads'), array('controller' => 'uploads', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Profile Picture'), array('controller' => 'uploads', 'action' => 'addProfilePicture')); ?> </li>
-	</ul>
+		<li><?php echo $this->Html->link(__('Profile information'), array('controller' => 'profiles', 'action' => 'edit')); ?> </li>
+		<li><?php echo $this->Html->link(__('Change password'), array('controller' => 'users', 'action' => 'changePassword')); ?> </li>
+		<li><?php echo $this->Html->link(__('Deactivate account'), array('controller' => 'users', 'action' => 'deactivate')); ?> </li>	</ul>
 </div>

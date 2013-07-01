@@ -1,6 +1,7 @@
 <?php
 App::uses('AppModel', 'Model');
 App::uses('Photo', 'Model');
+//App::uses('AuthComponent', 'Controller/Component');
 /**
  * Album Model
  *
@@ -44,4 +45,26 @@ class Album extends AppModel {
 		)
 	);
 	
+	public $hasOne = array(
+		'Activity' => array(
+			'dependent' => true,
+		)
+	);
+
+	public function afterSave($created) {
+		if($created) {
+			$this->Activity = new Activity;
+			$lastInsertData = $this->findById($this->getLastInsertId());
+			//pr($lastInsertData['Album']['user_id']); die;
+			$data = array(
+	                'id' => null,
+	                'user_id' => $lastInsertData['Album']['user_id'],
+	                'activity_type_id' => $this->Activity->getActivityTypeId($this->useTable),
+	                'album_id' => $lastInsertData['Album']['id'],
+	                'timestamp' => strtotime($lastInsertData['Album']['created'])
+	            );
+
+			$this->Activity->logActivity($data);
+		}
+	}
 }
