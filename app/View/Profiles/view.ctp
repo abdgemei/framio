@@ -1,40 +1,18 @@
-         <div class="hero-unit">
-            <section class="row1">
-                <?php echo $this->Html->link($this->Html->image('/timthumb.php?w=198&src='.FULL_BASE_URL.DS.'content'.DS.$profile_pictures['ProfilePictures']['upload_id'], array('alt'=>'image', 'class' => 'pull-left')), array('controller' => 'uploads', 'action'=>'view', $profile_pictures['ProfilePictures']['upload_id']), array('escape'=>false)); ?>
-                <?php //pr($profile_pictures); die; ?>
-                <h4 class="offset2">
-                <?php echo $profile['Profile']['name']; ?></p><br/><p><?php echo h($profile['Profile']['city']).', '.$profile['Profile']['country']; ?></p><p><?php echo $profile['User']['created'] ?></p>
-                <button type="submit" id="hoverbtn" class="btn-primary btn-small">Follow</button></p>
-                </h4>
-            </section>
-         </div>
-    </div>
-</div>
-<div class="container">
-    <div class="row-fluid" style="margin-left:0px; margin-top:-30px;">
-        <aside class="span2" id="transparentGray" style="margin-left:0px; padding-bottom:520px; width:17%;">
-            <ul class="nav nav-list">
-                <li><a href="friends.html">Friends</a></li>
-                <li class="active"><a href="">Favorites</a></li>
-                <li><a href="#">Featured Content</a></li>
-                <li><a href="#">Featured Albums</a></li>
-                <li><a href="#">Category</a></li>
-            </ul>
-            
-        
-        </aside>
-        <section class="span10" style=" background-color:#191919; margin-left:0px; padding-left:20px; padding-bottom:15px;">
+<?php //pr($uploads); die; ?>
+
             <ul>
             <?php foreach($uploads as $upload) : ?>
-                <li class="span4">
-                    <?php echo $this->Html->link($this->Html->image('/timthumb.php?w=198&src='.FULL_BASE_URL.DS.'content'.DS.$upload['Upload']['id'], array('alt'=>'image', 'class' => 'thumbnail')), array('controller'=>'uploads', 'action'=>'view', $upload['Upload']['id']), array('escape'=>false)); ?>
+                <?php $src = 'content'.DS.$upload['Upload']['id'];
+                      $options =  array('w' => 220, 'hp' => 138, 'q' => 100, 'zc' => 'C'); ?>
+                <li class="span3">
+                    <a href="<?php echo $this->Html->url(array('controller'=>'uploads', 'action'=>'view', $upload['Upload']['id']), false) ?>" class="thumbnailLink">
+
+                        <?php echo $this->PhpThumb->thumbnail($src, $options); ?>
+                        <div class="slidingPanel" id="icons">
+                               <section id="view-icon"><i class="icon-comment"></i> <?php echo $this->Comment->commentCount($upload['Upload']['id']); ?></section>
+                               <section id="like-icon"><i class="icon-thumbs-up"></i> <?php echo $this->Favorite->favoriteCount($upload['Upload']['id']) ?></section>
+                        </div>
+                    </a>
                 </li>
             <?php endforeach; ?>
-            <div class="span8 offset3">   
-                <a class="prev_big" href="profile-b.html" title="View Previous Page">Previous</a>
-                <a class="next_big" href="page2.html" title="View Next Page">Next</a> 
-            </div>
-        </aside>
-    </div>
-
-
+            </ul>

@@ -14,5 +14,5 @@
                 <?php echo $this->Html->link('Sign in', array('controller'=>'users', 'action'=>'login')); }  ?>
             </div>
         </div>
-        </section>
+    </section>
 </header>

@@ -11,6 +11,7 @@ App::uses('Invitation', 'Model');
  */
 class ProfilesController extends AppController {
     
+    public $helpers = array('Time', 'Following', 'Favorite', 'Photo', 'Comment', 'PhpThumb.PhpThumb');
     public $layout = 'profile';
 
     public function beforeFilter() {
@@ -26,10 +27,11 @@ class ProfilesController extends AppController {
             throw new NotFoundException(__('Invalid profile'));
         }
         $profileOptions = array('conditions' => array('Profile.username' => $username));
-        $photoOptions = array('conditions' => array('Profile.username' => $username, 'is_visible' => true));
+        $photoOptions = array('conditions' => array('Upload.user_id' => $row['Profile']['user_id'], 'is_visible' => true));
         //$this->Profile->User->Upload->find('all');
         //pr($this->Profile->User->ProfilePictures->find());
         $this->set('profile_pictures', $this->Profile->User->ProfilePictures->find('first'));
+        // pr($this->Profile->User->Upload->find('all', $photoOptions)); die;
         $this->set('uploads', $this->Profile->User->Upload->find('all', $photoOptions));
         $this->set('profile', $this->Profile->find('first', $profileOptions));
         $this->set('title_for_layout', $row['Profile']['first_name']);

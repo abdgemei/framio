@@ -3,6 +3,7 @@ App::uses('AppController', 'Controller');
 App::uses('File', 'Utility');
 App::uses('Photo', 'Model');
 App::uses('Album', 'Model');
+App::uses('Comment', 'Model');
 App::uses('Favorite', 'Model');
 App::uses('PhotoMetadatum', 'Model');
 App::uses('ProfilePicture', 'Model');
@@ -30,21 +31,48 @@ class UploadsController extends AppController {
  * @return void
  */
 
-	public function index() {
+    public function index() {
         $this->Upload->recursive = 2;
         $this->Upload->unbindModel(array('belongsTo' => array('User')));
         $this->Upload->unbindModel(array('hasOne' => array('ProfilePicture')));
+        $this->Upload->unbindModel(array('hasMany' => array('Upload')));
         $this->Upload->User->unbindModel(array('hasMany' => array('Upload')));
         $this->Upload->Photo->unbindModel(array('belongsTo' => array('Upload')));
         $options['conditions'] = array('Upload.user_id' => $this->Auth->user('id'));
         // $options['order'] = 'photo.title ASC';
         //pr($this->Upload->find('all', $options)); die;
+        $this->set('uploads', $this->Upload->find('all', $options));
+    }
+
+	public function favorites() {
+        $this->Upload->recursive = 2;
+        $this->Upload->unbindModel(array('belongsTo' => array('User')));
+        $this->Upload->unbindModel(array('hasOne' => array('ProfilePicture')));
+        // $this->Upload->unbindModel(array('hasOne' => array('Photo')));
+        $this->Upload->User->unbindModel(array('hasMany' => array('Upload')));
+        // $this->Upload->Photo->unbindModel(array('belongsTo' => array('Upload')));
+        // $options['conditions'] = array('Upload.user_id' => $this->Auth->user('id'));
+        $options['joins'] = array(
+            array('table' => 'favorite',
+                'alias' => 'Favorite',
+                'type' => 'INNER',
+                'conditions' => array(
+                    'Favorite.photo_id = Upload.id',
+                )),
+            array('table' => 'photo',
+                'alias' => 'VisiblePhoto',
+                'type' => 'INNER',
+                'conditions' => array(
+                    'VisiblePhoto.upload_id = Upload.id',
+                    'VisiblePhoto.is_visible = 1',
+                ),
+            )
+            );
+        // pr($this->Upload->find('all', $options)); die;
+        // $options['order'] = 'photo.title ASC';
+        // pr($this->Upload->find('all', $options)); die;
 		$this->set('uploads', $this->Upload->find('all', $options));
 	}
-
-    public function editMultiple() {
-
-    }
 
     public function addToAlbum($photo_data, $album_id) {
         if(is_array($photo_data)) {
@@ -93,7 +121,23 @@ class UploadsController extends AppController {
             }
         }
 
-		$this->set('upload', $this->Upload->find('first', $options));
+        
+        $this->Comment = new Comment;
+        $commentOptions['conditions'] = array(
+            'Comment.upload_id' => $id
+            );
+        $this->Comment->unbindModel(array(
+            'belongsTo' => array('Upload')
+            ));
+        $this->Comment->User->unbindModel(array(
+            'belongsTo' => array('Group'),
+            'hasMany' => array('Activity', 'Upload', 'Album', 'Comment'),
+            ));
+        $this->Comment->recursive = 2;
+        // debug($this->Comment->find('all', $commentOptions));
+
+        $this->set('upload', $this->Upload->find('first', $options));
+		$this->set('comments', $this->Comment->find('all', $commentOptions));
         $this->set('uploadMetadata', $this->Upload->getMetadata($id));
 	}
 
@@ -169,23 +213,18 @@ class UploadsController extends AppController {
 	}
     
     public function addProfilePicture() {
-        $this->view = 'add';
+        // $this->view = 'add';
         $this->ProfilePicture = new ProfilePicture;
         if ($this->request->is('post')) {
-            $this->Upload->create();
-            if ($this->uploadFile() && $this->Upload->save($this->request->data)) {
-                $data['user_id'] = $this->Auth->user('id');
-                $data['upload_id'] = $this->Upload->getLastInsertID();
-                $this->ProfilePicture->create();
-                if($this->ProfilePicture->save($data)) {
-                    $this->Session->setFlash(__('The profile picture has been saved'));
-                    $this->redirect(array('action' => 'index'));
-                }
-            } else {
-                $this->Session->setFlash(__('The upload could not be saved. Please, try again.'));
+            $data['user_id'] = $this->Auth->user('id');
+            $data['upload_id'] = $this->Upload->getLastInsertID();
+            $this->ProfilePicture->create();
+            if($this->ProfilePicture->save($data)) {
+                $this->Session->setFlash(__('The profile picture has been saved'));
+                $this->redirect(array('action' => 'index'));
             }
         }
-        $users = $this->Upload->User->find('list');
+        $users = $this->ProfilePicture->find('all');
         $this->set(compact('users'));
     }
     
@@ -219,6 +258,14 @@ class UploadsController extends AppController {
 		if (!$this->Upload->exists($id)) {
 			throw new NotFoundException(__('Invalid upload'));
 		}
+
+        $upload = $this->Upload->findById($id);
+
+        // pr($upload['Upload']['user_id']); die;
+        if(CakeSession::read('Auth.User.id') !== $upload['Upload']['user_id']) {
+            throw new NotFoundException(__('Invalid upload'));
+        }
+
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Upload->saveAll($this->request->data)) {
 				$this->Session->setFlash(__('The upload has been saved'));

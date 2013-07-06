@@ -21,6 +21,9 @@
                     if($activity['Upload']['Photo']['is_visible'] == 0) {continue;}
                     echo $this->element('Feed/uploadActivity', array('activity' => $activity));
                     break;
+                case 7:
+                    echo $this->element('Feed/commentActivity', array('activity' => $activity));
+                    break;
             }
         endforeach; ?>
         </div>

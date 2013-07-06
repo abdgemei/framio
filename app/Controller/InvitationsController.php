@@ -23,6 +23,7 @@ class InvitationsController extends AppController {
 	}
 
    public function apply() {
+        $this->layout = 'loginScreen';
         if ($this->Session->check('Auth.User')) {
             $this->redirect('/');
         }

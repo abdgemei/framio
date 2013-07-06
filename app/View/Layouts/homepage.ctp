@@ -29,7 +29,7 @@ App::uses('Debugger', 'Utility');
         <?php echo $this->Session->flash(); ?>
         <?php echo $this->Session->flash('auth'); ?>
         <section class="span3" id="logo">
-            <h1><a href="<?php echo FULL_BASE_URL ?>">framio</a></h1>
+            <h1><a href="<?php echo FULL_BASE_URL ?>" id="mainHomeLink">framio</a></h1>
         </section>
         <?php echo $this->element('navigation'); ?>
     </section>

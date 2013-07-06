@@ -1,5 +1,5 @@
 <footer class="container row">
-    <section class="span2 linkList1" id="footerAboutFramio">
+    <section class="offset1 span2 linkList1" id="footerAboutFramio">
         <h4>About Framio</h4>
         <ul>
             <li><a href="#">Discover</a></li>

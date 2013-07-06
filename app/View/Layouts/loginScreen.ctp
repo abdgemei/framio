@@ -15,7 +15,7 @@ App::uses('Debugger', 'Utility');
     </title>
     <?php echo $this->Html->meta('icon');
           echo $this->Html->css('bootstrap');
-          echo $this->Html->css('style');
+          echo $this->Html->css('login');
           echo $this->fetch('meta');
           echo $this->fetch('css');
           echo $this->fetch('jquery-2.0.2.min');
@@ -24,18 +24,14 @@ App::uses('Debugger', 'Utility');
 
 </head>
 <body>
-<header class="container">
-    <section class="row">
+    <img src="<?php echo FULL_BASE_URL ?>/images/framio-login_01.jpg" id="full-screen-background-image"/>
+    <section id="logInForm" class="transparent">
+        <section id="topSection" class="transparent">
+            <img src="<?php echo FULL_BASE_URL ?>/images/framio-blue_03.png" id="logo"/>
+        </section>
+        <?php echo $this->fetch('content'); ?>
         <?php echo $this->Session->flash(); ?>
         <?php echo $this->Session->flash('auth'); ?>
-        <section class="span3" id="logo">
-            <h1><a href="<?php echo FULL_BASE_URL ?>">framio</a></h1>
-        </section>
-        <?php echo $this->element('navigation'); ?>
     </section>
-</header>
-<?php if(isset($this->params->pass[0])) { if ($this->params->pass[0] == 'home') { echo $this->element('collage');}} ?>
-<section class="container" id="wrap">
-<?php echo $this->fetch('content'); ?>
-</section>
-<?php echo $this->element('footer'); ?>
+</body>
+</html>

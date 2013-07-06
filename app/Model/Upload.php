@@ -19,7 +19,7 @@ class Upload extends AppModel {
  *
  * @var string
  */
-    public $displayField = 'title';
+    // public $displayField = 'title';
 
 
     //The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -39,15 +39,9 @@ class Upload extends AppModel {
         )
     );
     
-    // public $hasMany = array(
-    //     'ProfilePictures' => array(
-    //         'className' => 'ProfilePicture',
-    //         'foreignKey' => '',
-    //         'conditions' => '',
-    //         'fields' => '',
-    //         'order' => ''
-    //     )    
-    // );
+    public $hasMany = array(
+      'Comment'
+    );
     
     public $belongsTo = array(
         'User' => array(

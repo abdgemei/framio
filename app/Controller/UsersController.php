@@ -13,76 +13,79 @@ class UsersController extends AppController {
     
     public $helpers = array('HTML', 'Form', 'Following');
 
-// TODO make forgot password function
-// TODO password salt using user salt
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('login', 'initDB', 'logout', 'resetPassword');
     }
 
-	public function index() {
-		$this->User->recursive = 0;
-		$this->set('users', $this->paginate());
-	}
+    public function index() {
+        $this->User->recursive = 0;
+        $this->set('users', $this->paginate());
+    }
 
-	public function view($id = null) {
-		if (!$this->User->exists($id)) {
-			throw new NotFoundException(__('Invalid user'));
-		}
-		$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
-		$this->set('user', $this->User->find('first', $options));
-	}
+    public function view($id = null) {
+        if (!$this->User->exists($id)) {
+            throw new NotFoundException(__('Invalid user'));
+        }
+        $options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+        $this->set('user', $this->User->find('first', $options));
+    }
 
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->User->create();
-			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
-			}
-		}
-        //pr($this->User); die;
-		$groups = $this->User->Group->find('list');
-		$this->set(compact('groups'));
-	}
+    public function add() {
+        if ($this->request->is('post')) {
+            $this->User->create();
+            if ($this->User->save($this->request->data)) {
+                $this->Session->setFlash(__('The user has been saved'));
+                $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+            }
+        }
+        $groups = $this->User->Group->find('list');
+        $this->set(compact('groups'));
+    }
     
-	public function edit() {
-	    //pr($this->User); die;
+    public function edit() {
+        //pr($this->User); die;
         $id = $this->Auth->user('id');
         $this->layout = 'dashboard';
         $profile_row = $this->User->findById($id);
         $profile_id = $profile_row['Profile']['id'];
         unset($profile_row);
 
-		if (!$this->User->exists($id)) {
-			throw new NotFoundException(__('Invalid user'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
+        if (!$this->User->exists($id)) {
+            throw new NotFoundException(__('Invalid user'));
+        }
+        if ($this->request->is('post') || $this->request->is('put')) {
             $this->request->data['Profile']['last_update'] = date('Y-m-d H:i:s');
-			if ($this->User->saveAll($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
-			$this->request->data = $this->User->find('first', $options);
-		}
+            if ($this->User->saveAll($this->request->data)) {
+                $this->Session->setFlash(__('The user has been saved'));
+                $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+            }
+        } else {
+            $options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+            $this->request->data = $this->User->find('first', $options);
+        }
         
-		$groups = $this->User->Group->find('list');
-		$this->set(compact('groups'));
-	}
+        $groups = $this->User->Group->find('list');
+        $this->set(compact('groups'));
+    }
 
     public function changePassword() {
         $this->layout = 'dashboard';
 
         if ($this->request->is('post') || $this->request->is('put')) {
+            // pr($this->request->data); die;
+            if($this->request->data['User']['password'] !== $this->request->data['User']['password_confirmation']) {
+                $this->Session->setFlash('Passwords do not match');
+                $this->redirect($this->referer());
+            }
             $this->User->id = CakeSession::read('Auth.User.id');
-            $this->User->set('password', AuthComponent::password($this->request->data['User']['password_confirmation']));
+            $this->User->set('password', $this->request->data['User']['password']);
             $this->User->set('change_password_flag', 0);
+            // pr($this->User->data); die;
             if ($this->User->save()) {
                 $this->Session->setFlash(__('Your password has been changed!'));
                 $this->redirect($this->referer());
@@ -92,19 +95,19 @@ class UsersController extends AppController {
         }
     }
 
-	public function delete($id = null) {
-		$this->User->id = $id;
-		if (!$this->User->exists()) {
-			throw new NotFoundException(__('Invalid user'));
-		}
-		$this->request->onlyAllow('post', 'delete');
-		if ($this->User->delete()) {
-			$this->Session->setFlash(__('User deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('User was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
+    public function delete($id = null) {
+        $this->User->id = $id;
+        if (!$this->User->exists()) {
+            throw new NotFoundException(__('Invalid user'));
+        }
+        $this->request->onlyAllow('post', 'delete');
+        if ($this->User->delete()) {
+            $this->Session->setFlash(__('User deleted'));
+            $this->redirect(array('action' => 'index'));
+        }
+        $this->Session->setFlash(__('User was not deleted'));
+        $this->redirect(array('action' => 'index'));
+    }
 
     public function login() {
         $this->layout = 'loginScreen';
@@ -248,6 +251,8 @@ class UsersController extends AppController {
         }
     }
 
+    // TODO deactivate function
+
     public function initDB() {
         $group = $this->User->Group;
         
@@ -270,10 +275,15 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Uploads/delete');
         $this->Acl->allow($group, 'controllers/Uploads/addProfilePicture');
         $this->Acl->allow($group, 'controllers/Uploads/favorite');
+        $this->Acl->allow($group, 'controllers/Uploads/favorites');
         $this->Acl->allow($group, 'controllers/Uploads/unfavorite');
+        $this->Acl->allow($group, 'controllers/Comments/index');
         $this->Acl->allow($group, 'controllers/Albums/add');
         $this->Acl->allow($group, 'controllers/Albums/edit');
         $this->Acl->allow($group, 'controllers/Albums/delete');
+        $this->Acl->allow($group, 'controllers/Comments/add');
+        $this->Acl->allow($group, 'controllers/Comments/edit');
+        $this->Acl->allow($group, 'controllers/Comments/delete');
         $this->Acl->allow($group, 'controllers/Photos/index');
         $this->Acl->allow($group, 'controllers/Photos/view');
         $this->Acl->allow($group, 'controllers/Invitations/index');
@@ -296,10 +306,15 @@ class UsersController extends AppController {
         $this->Acl->allow($group, 'controllers/Uploads/delete');
         $this->Acl->allow($group, 'controllers/Uploads/addProfilePicture');
         $this->Acl->allow($group, 'controllers/Uploads/favorite');
+        $this->Acl->allow($group, 'controllers/Uploads/favorites');
         $this->Acl->allow($group, 'controllers/Uploads/unfavorite');
+        $this->Acl->allow($group, 'controllers/Comments/index');
         $this->Acl->allow($group, 'controllers/Albums/add');
         $this->Acl->allow($group, 'controllers/Albums/edit');
         $this->Acl->allow($group, 'controllers/Albums/delete');
+        $this->Acl->allow($group, 'controllers/Comments/add');
+        $this->Acl->allow($group, 'controllers/Comments/edit');
+        $this->Acl->allow($group, 'controllers/Comments/delete');
         $this->Acl->allow($group, 'controllers/Photos/index');
         $this->Acl->allow($group, 'controllers/Photos/view');
         $this->Acl->allow($group, 'controllers/Invitations/apply');

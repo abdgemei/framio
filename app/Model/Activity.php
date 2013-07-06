@@ -58,6 +58,13 @@ class Activity extends AppModel {
             'fields' => '',
             'order' => ''
         ),
+        'Comment' => array(
+            'className' => 'Comment',
+            'foreignKey' => 'comment_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        ),
         'Following' => array(
             'className' => 'Following',
             'foreignKey' => 'following_id',
@@ -100,14 +107,11 @@ class Activity extends AppModel {
     }
 
     public function getFeed($followingList, $timeRange = null) {
-        // pr(date('Y-m-d H:i:s', time())); die;
-        // pr(date('Y-m-d H:i:s', time() - 14400)); die;
+
         $this->Activity = new Activity;
         if(is_null($timeRange)) {
             $timeRange = time() - 84600;
         }
-        // $this->Following = new Following;
-        // pr(date('Y-m-d H:i:s', mktime(-12))); die;
         $this->Activity->recursive = 2;
 
         $options['conditions'] = array(
@@ -119,17 +123,14 @@ class Activity extends AppModel {
             'Upload' => array('Photo' => array('PhotoMetaDatum')),
             'Following' => array('FollowedUser' => array('Profile')),
             'Favorite',
+            'Comment' => array('Upload' => array('User' => array('Profile'))),
             'ActivityType'
             );
         $options['limit'] = 10;
         $options['order'] = array('Activity.timestamp DESC');
-        // pr($this->Activity->find('all', $options)); die;
-        //pr($this->Activity->find('all', $options)); die;
         if($this->Activity->find('count', $options) > 10) {
-            // pr('>5'); die;
             return $this->Activity->find('all', $options);
         } else {
-            // pr('<5'); die;
             $options['conditions'] = array(
                 'Activity.user_id' => $followingList,
                 'Activity.timestamp >' => 0

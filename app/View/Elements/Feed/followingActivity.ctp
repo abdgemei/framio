@@ -17,7 +17,7 @@ $timeOptions = array(
             <?php //echo $this->PhpThumb->thumbnail($src, $options); ?>
             </div>
             <div class="description">
-                <p><?php echo ucfirst($activity['User']['Profile']['first_name']).' has '.$activity['ActivityType']['verb'].' '.$this->Html->link(ucfirst($activity['Following']['FollowedUser']['Profile']['first_name'] . ' ' . ucfirst($activity['Following']['FollowedUser']['Profile']['last_name'])), array('controller' => 'profiles', 'action' => 'view', $activity['Following']['FollowedUser']['Profile']['username'] ));'.' ?></p>
+                <p><?php echo $this->Html->link(ucfirst($activity['User']['Profile']['first_name']), array('controller' => 'profiles', 'action' => 'view', $activity['User']['id'])).' has '.$activity['ActivityType']['verb'].' '.$this->Html->link(ucfirst($activity['Following']['FollowedUser']['Profile']['first_name'] . ' ' . ucfirst($activity['Following']['FollowedUser']['Profile']['last_name'])), array('controller' => 'profiles', 'action' => 'view', $activity['Following']['FollowedUser']['Profile']['username'] ));'.' ?></p>
                 <p><small><?php echo $this->Time->timeAgoInWords($time, $timeOptions); ?></small></p>
             </div>
         </div>

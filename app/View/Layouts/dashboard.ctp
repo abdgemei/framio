@@ -25,7 +25,8 @@ App::uses('Debugger', 'Utility');
 
 </head>
 <body>
-<?php echo $this->element('dashboardHeader'); ?>
+<section id="wrapper">
+<?php echo $this->element('Dashboard/Header'); ?>
 <section id="flashMessages">
     <?php echo $this->Session->flash(); ?>
     <?php echo $this->Session->flash('auth'); ?>
@@ -37,7 +38,7 @@ App::uses('Debugger', 'Utility');
             <ul>
                 <li><?php echo $this->Html->link('Home', array('controller' => 'activities', 'action' => 'index'), array('class' => 'navItem', 'id' => 'home')); ?></li>
                 <li><?php echo $this->Html->link('Home', array('controller' => 'uploads', 'action' => 'index'), array('class' => 'navItem', 'id' => 'photos')); ?></li>
-                <li><a href="#" class="navItem" id="faves"></a></li>
+                <li><?php echo $this->Html->link('Favorites', array('controller' => 'uploads', 'action' => 'favorites'), array('class' => 'navItem', 'id' => 'faves')); ?></li>
                 <li><a href="#" class="navItem" id="stats"></a></li>
                 <li><?php echo $this->Html->link('Home', array('controller' => 'users', 'action' => 'edit'), array('class' => 'navItem', 'id' => 'settings')); ?></li>
             </ul>
@@ -46,6 +47,6 @@ App::uses('Debugger', 'Utility');
     </section>
 </section>
 <?php //echo $this->element('sql_dump'); ?>
-</body>
-</html>
-<?php //echo $this->element('footer'); ?>
+<section id="push"></section>
+</section>
+<?php echo $this->element('footer'); ?>
