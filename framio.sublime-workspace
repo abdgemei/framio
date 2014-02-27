@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"find",
+				"find"
+			],
+			[
+				"user",
+				"user_id"
+			],
+			[
+				"els",
+				"else"
+			],
+			[
+				"photo",
+				"photo_data"
+			],
+			[
+				"delet",
+				"delete"
+			],
+			[
 				"th",
 				"this"
 			],
@@ -52,45 +72,42 @@
 	"buffers":
 	[
 		{
-			"file": "app/Controller/UsersController.php",
+			"file": "app/webroot/css/photo.css",
 			"settings":
 			{
-				"buffer_size": 9568,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "{<?php\n/**\n *\n * PHP 5\n *\n * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)\n * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)\n *\n * Licensed under The MIT License\n * For full copyright and license information, please see the LICENSE.txt\n * Redistributions of files must retain the above copyright notice.\n *\n * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)\n * @link          http://cakephp.org CakePHP(tm) Project\n * @package       app.View.Layouts\n * @since         CakePHP(tm) v 0.10.0.1076\n * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)\n */\n\n$cakeDescription = __d('cake_dev', 'Framio');\n?>\n<!DOCTYPE html>\n<html>\n<head>\n	<?php echo $this->Html->charset(); ?>\n	<title>\n		<?php echo $cakeDescription ?>:\n		<?php echo $title_for_layout; ?>\n	</title>\n	<?php\n		echo $this->Html->meta('icon');\n\n		echo $this->Html->css('cake.generic');\n\n		echo $this->fetch('meta');\n		echo $this->fetch('css');\n		echo $this->fetch('script');\n	?>\n</head>\n<body>\n	<div id=\"container\">\n		<div id=\"header\">\n			<h1><?php echo $this->Html->link($cakeDescription, 'http://framio.dev'); ?></h1>\n			<div style=\"float:right\">\n			    <?php //pr($this->Session->read('Auth.User')); die; ?>\n			    <?php $user = $this->Session->read('Auth.User'); ?>\n			    <?php if(isset($user)) { echo \"Logged in as <em>\". $user['username'] .\"</em>&nbsp;\".$this->Html->link('Sign out', array('controller'=>'users', 'action'=>'logout')); } else { ?>\n			        \n			    <?php echo $this->Html->link('Sign in', array('controller'=>'users', 'action'=>'login')); }  ?>\n			</div>\n		</div>\n		<div id=\"content\">\n\n			<?php echo $this->Session->flash(); ?>\n			<?php echo $this->Session->flash('auth'); ?>\n\n			<?php echo $this->fetch('content'); ?>\n		</div>\n		<div id=\"footer\">\n			<?php echo $this->Html->link(\n					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),\n					'http://www.cakephp.org/',\n					array('target' => '_blank', 'escape' => false)\n				);\n			?>\n		</div>\n	</div>\n	<?php echo $this->element('sql_dump'); ?>\n</body>\n</html>\n",
-			"file": "app/View/Layouts/default.ctp",
-			"file_size": 2139,
-			"file_write_time": 1371055137000000,
-			"settings":
-			{
-				"buffer_size": 2140,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/abdgemei/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-			"settings":
-			{
-				"buffer_size": 138,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/View/Layouts/dashboard.ctp",
-			"settings":
-			{
-				"buffer_size": 1575,
-				"line_ending": "Unix"
+				"buffer_size": 2474,
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "app/Controller/UploadsController.php",
 			"settings":
 			{
-				"buffer_size": 7270,
+				"buffer_size": 13729,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/View/Uploads/view.old.ctp",
+			"settings":
+			{
+				"buffer_size": 6649,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/View/Activities/index.ctp",
+			"settings":
+			{
+				"buffer_size": 1345,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Controller/UsersController.php",
+			"settings":
+			{
+				"buffer_size": 14609,
 				"line_ending": "Unix"
 			}
 		}
@@ -101,8 +118,44 @@
 		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"show",
+				"Show TODOs: Project and open files"
+			],
+			[
+				"sho",
+				"Show TODOs: Project and open files"
+			],
+			[
+				"show t",
+				"Show TODOs: Project and open files"
+			],
+			[
+				"show to",
+				"Show TODOs: Project and open files"
+			],
+			[
+				"show ",
+				"Show TODOs: Open files only"
+			],
+			[
+				"todo",
+				"Show TODOs: Project and open files"
+			],
+			[
+				"php",
+				"Snippet: Throw Exception"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Preferences: Browse Packages"
+			]
 		],
-		"width": 575.0
+		"width": 449.0
 	},
 	"console":
 	{
@@ -119,134 +172,134 @@
 	},
 	"file_history":
 	[
-		"/Users/abdgemei/Library/Application Support/Sublime Text 2/Packages/User/Distraction Free.sublime-settings",
-		"/Applications/MAMP/htdocs/framio/app/Controller/UploadsController.php",
+		"/Users/abdgemei/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Applications/MAMP/htdocs/framio/app/View/Users/reset_password.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Layouts/dashboard.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Elements/Dashboard/Header.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Users/edit.ctp",
+		"/Applications/MAMP/htdocs/framio/app/Controller/UsersController.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Uploads/view.ctp",
 		"/Applications/MAMP/htdocs/framio/build.properties",
 		"/Applications/MAMP/htdocs/framio/build.xml",
 		"/Applications/MAMP/htdocs/framio/CONTRIBUTING.md",
-		"/Applications/MAMP/htdocs/framio/framio.sublime-workspace",
 		"/Applications/MAMP/htdocs/framio/index.php",
-		"/Applications/MAMP/htdocs/framio/README.md",
 		"/Applications/MAMP/htdocs/framio/plugins/empty",
-		"/Applications/MAMP/htdocs/framio/reset.css",
+		"/Applications/MAMP/htdocs/framio/README.md",
+		"/Applications/MAMP/htdocs/framio/app/View/Users/change_password.ctp",
+		"/Applications/MAMP/htdocs/framio/app/Controller/InvitationsController.php",
+		"/Applications/MAMP/htdocs/framio/app/Controller/ActivitiesController.php",
+		"/Applications/MAMP/htdocs/framio/lib/Cake/Config/unicode/casefolding/2100_214f.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Elements/Feed/commentActivity.ctp",
+		"/Applications/MAMP/htdocs/framio/lib/Cake/Test/test_app/Plugin/TestPlugin/Model/Datasource/Database/TestDriver.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Helper/CommentHelper.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Elements/Dashboard/Settings.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Elements/Photo/header.ctp",
+		"/Applications/MAMP/htdocs/framio/app/webroot/css/photo.css",
+		"/Applications/MAMP/htdocs/framio/app/View/Layouts/photo.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Uploads/view.old.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Elements/Profile/info.ctp",
+		"/Applications/MAMP/htdocs/framio/app/Controller/UploadsController.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Elements/footer.ctp",
+		"/Applications/MAMP/htdocs/framio/app/webroot/css/dashboard.css",
+		"/Applications/MAMP/htdocs/framio/app/View/Layouts/profile.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Elements/Profile/header.ctp",
+		"/Users/abdgemei/Desktop/bootstrap-framio/photo.html",
+		"/Users/abdgemei/Desktop/bootstrap-framio/photo.css",
+		"/Applications/MAMP/htdocs/framio/app/View/Users/login.ctp",
+		"/Applications/MAMP/htdocs/framio/app/webroot/css/login.css",
+		"/Applications/MAMP/htdocs/framio/app/webroot/css/style.css",
+		"/Applications/MAMP/htdocs/framio/app/webroot/css/cake.generic.css",
+		"/Applications/MAMP/htdocs/framio/app/View/Layouts/loginScreen.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Elements/loginForm.ctp",
+		"/Applications/MAMP/htdocs/framio/app/Controller/ProfilesController.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Uploads/edit.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Activities/index.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Elements/Feed/uploadActivity.ctp",
+		"/Applications/MAMP/htdocs/framio/app/webroot/css/profile.css",
+		"/Applications/MAMP/htdocs/framio/app/View/Layouts/profile.old.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Profiles/view.ctp",
+		"/Applications/MAMP/htdocs/framio/app/webroot/images/glyphicons-halflings-white.png",
+		"/Applications/MAMP/htdocs/framio/app/View/Helper/FavoriteHelper.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Photos/view.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Profiles/index.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Users/view.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Helper/PhotoHelper.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Helper/FollowingHelper.php",
+		"/Applications/MAMP/htdocs/framio/app/Model/Activity.php",
+		"/Applications/MAMP/htdocs/framio/app/Model/Comment.php",
+		"/Users/abdgemei/Desktop/bootstrap-framio/profile2.css",
+		"/Users/abdgemei/Desktop/bootstrap-framio/profile2.html",
+		"/Applications/MAMP/htdocs/framio/app/View/Elements/Feed/followingActivity.ctp",
+		"/Applications/MAMP/htdocs/framio/app/Controller/CommentsController.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Comments/index.ctp",
+		"/Applications/MAMP/htdocs/framio/app/Model/Upload.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Comments/edit.ctp",
+		"/Applications/MAMP/htdocs/framio/app/Config/core.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Comments/add.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Uploads/add.ctp",
+		"/Applications/MAMP/htdocs/framio/app/Config/database.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Uploads/favorites.ctp",
+		"/Applications/MAMP/htdocs/framio/app/Controller/AppController.php",
+		"/Applications/MAMP/htdocs/framio/app/Model/User.php",
+		"/Applications/MAMP/htdocs/framio/lib/Cake/Controller/Component/AuthComponent.php",
+		"/Users/abdgemei/.Trash/SaltedHashAuthenticate.php",
+		"/Applications/MAMP/htdocs/framio/lib/Cake/Utility/Hash.php",
+		"/Applications/MAMP/htdocs/framio/app/Controller/Component/SaltedHashAuthenticate.php",
+		"/Applications/MAMP/htdocs/framio/app/Model/Favorite.php",
+		"/Applications/MAMP/htdocs/framio/lib/Cake/Utility/CakeTime.php",
+		"/Applications/MAMP/htdocs/framio/lib/Cake/Test/test_app/Locale/time_test/LC_TIME",
+		"/Applications/MAMP/htdocs/framio/lib/Cake/Console/Templates/skel/Config/acl.ini.php",
+		"/Applications/MAMP/htdocs/framio/lib/Cake/Console/Command/Task/ViewTask.php",
+		"/Applications/MAMP/htdocs/framio/app/Model/Photo.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Elements/Feed/favoriteActivity.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Pages/home.ctp",
+		"/Applications/MAMP/htdocs/framio/app/Controller/PhotosController.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Photos/index.ctp",
+		"/Applications/MAMP/htdocs/framio/app/Config/email.php",
+		"/Applications/MAMP/htdocs/framio/app/Config/bootstrap.php",
+		"/Users/abdgemei/Library/Application Support/Sparrow/abdgemei@gmail.com.sparrowdb/Cache/INBOX/4918/2/UsersController.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Layouts/homepage.ctp",
+		"/Applications/MAMP/htdocs/framio/app/Plugin/debug_kit/Lib/Panel/HistoryPanel.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Elements/navigation.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Layouts/default.ctp",
+		"/Applications/MAMP/htdocs/framio/app/Model/ActivityType.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Uploads/index.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Profiles/edit.ctp",
+		"/Applications/MAMP/htdocs/framio/app/Model/Following.php",
+		"/Applications/MAMP/htdocs/framio/app/Model/PhotoMetadatum.php",
+		"/Applications/MAMP/htdocs/framio/app/webroot/css/bootstrap.css",
+		"/Applications/MAMP/htdocs/framio/app/webroot/js/script.js",
+		"/Applications/MAMP/htdocs/framio/app/webroot/content/thumbs/05edfa6604e05ae34a4309cdb49aab5b.jpg",
+		"/Applications/MAMP/htdocs/framio/app/webroot/js/masonry.pkgd.min.js",
+		"/Applications/MAMP/htdocs/framio/app/View/Activities/uploadActivity.ctp",
+		"/Applications/MAMP/htdocs/framio/app/Model/Profile.php",
+		"/Applications/MAMP/htdocs/framio/app/Model/Album.php",
+		"/Applications/MAMP/htdocs/framio/app/tmp/cache/persistent/myapp_cake_core_cake_dev_en-us",
+		"/Applications/MAMP/bin/php/php5.4.4/conf/php.ini",
+		"/Applications/MAMP/htdocs/framio/app/Plugin/PhpThumb/Vendor/phpThumb/phpThumb.config.php.default",
+		"/Applications/MAMP/htdocs/framio/app/webroot/content/eh2d1dVcfW",
+		"/Applications/MAMP/htdocs/framio/app/webroot/content/MTEZ1e6aeX",
+		"/Applications/MAMP/htdocs/framio/app/webroot/.htaccess",
+		"/Applications/MAMP/htdocs/framio/app/Config/routes.php",
 		"/Users/abdgemei/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/Users/abdgemei/Documents/Study/College/Term 7/Intelligent Computing/person-abdgemei.xsd",
-		"/Users/abdgemei/Desktop/met.xsd",
-		"/Applications/MAMP/htdocs/Symfony/app/AppKernel.php",
-		"/Applications/MAMP/htdocs/Symfony/app/config/config.yml",
-		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Resources/views/Signup/index.html.twig",
-		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Form/AccountType.php",
-		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Controller/SignupController.php",
-		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Resources/config/routing.yml",
-		"/Applications/MAMP/htdocs/Symfony/app/config/routing.yml",
-		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Resources/views/Default/index.html.twig",
-		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Controller/DefaultController.php",
-		"/Applications/MAMP/htdocs/Symfony/app/config/routing_dev.yml",
-		"/Users/abdgemei/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/Applications/MAMP/htdocs/Symfony/app/config/parameters.ini",
-		"/Applications/MAMP/htdocs/Symfony/app/bootstrap.php.cache",
-		"/Applications/MAMP/htdocs/Symfony/app/config/security.yml",
-		"/Applications/MAMP/htdocs/Symfony/app/config/sssecurity.yml",
-		"/Applications/MAMP/htdocs/Symfony/deps",
-		"/Applications/MAMP/htdocs/Symfony/deps.lock",
-		"/Applications/MAMP/htdocs/Symfony/LICENSE",
-		"/Applications/MAMP/htdocs/Symfony/README.md",
-		"/Applications/MAMP/htdocs/Symfony/src/FrontendBundle.zip",
-		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/KareerakFrontendBundle.php",
-		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Resources/config/doctrine/Account.orm.yml",
-		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Resources/config/doctrine/Employer.orm.yml",
-		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Resources/config/doctrine/Seeker.orm.yml",
-		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/FrontendBundle/Resources/config/services.yml",
-		"/Applications/MAMP/htdocs/Symfony/web/app_dev.php",
-		"/Applications/MAMP/htdocs/Symfony/web/app.php",
-		"/Applications/MAMP/htdocs/Symfony/web/config.php",
-		"/Applications/MAMP/htdocs/Symfony/src/Kareerak/JobsBundle/Controller/DefaultController.php",
-		"/Applications/MAMP/htdocs/doit/include/Zend/Locale/Format.php",
-		"/Applications/MAMP/htdocs/doit/include/Zend/Date.php",
-		"/Applications/MAMP/htdocs/doit/include/Zend/Calendar.php",
-		"/Applications/MAMP/htdocs/doit/application/controllers/CalendarController.php",
-		"/Applications/MAMP/htdocs/doit/application/views/scripts/calendar.phtml",
-		"/Users/abdgemei/Downloads/muxx-Twig-HTML.mode-12713c7/README.markdown",
-		"/Applications/MAMP/htdocs/doit/application/views/scripts/calendar/index.phtml",
-		"/Applications/MAMP/htdocs/doit/application/models/Service/Calendar.php",
-		"/Applications/MAMP/htdocs/doit/application/models/Service/CCalendra.php",
-		"/Applications/MAMP/htdocs/doit/application/models/Calendar/Calendar.php",
-		"/Applications/MAMP/htdocs/doit/include/Zend/Locale.php",
-		"/Applications/MAMP/htdocs/doit/include/Zend/Gdata/Calendar/Extension/Timezone.php",
-		"/Applications/MAMP/htdocs/doit/include/Zend/Gdata/DublinCore/Extension/Date.php",
-		"/Applications/MAMP/htdocs/doit/htdocs/index.php",
-		"/Applications/MAMP/htdocs/doit/application/services/Calendar.php",
-		"/Applications/MAMP/htdocs/doit/application/views/scripts/calendar/view-calendar.php",
-		"/Applications/MAMP/htdocs/doit/application/controllers/TasksController.php",
-		"/Applications/MAMP/htdocs/doit/include/Zend/Auth.php",
-		"/Applications/MAMP/htdocs/doit/include/Zend/Db.php",
-		"/Applications/MAMP/htdocs/doit/application/layouts/scripts/layout.phtml",
-		"/Applications/MAMP/htdocs/doit/include/Zend/Controller/Action.php",
-		"/Applications/MAMP/htdocs/doit/application/controllers/IndexController.php",
-		"/Applications/MAMP/htdocs/doit/application/models/tasks/EntryForm.php",
-		"/Applications/MAMP/htdocs/doit/include/Zend/Form.php",
-		"/Applications/MAMP/htdocs/doit/include/Zend/Db/Adapter/Pdo/Mysql.php",
-		"/Applications/MAMP/htdocs/doit/include/Zend/Db/Adapter/Abstract.php",
-		"/Applications/MAMP/htdocs/doit/include/Zend/Db/Adapter/Pdo/Abstract.php",
-		"/Applications/MAMP/htdocs/doit/include/Zend/Db/Statement/Mysqli.php",
-		"/Applications/MAMP/htdocs/doit/include/Zend/Db/Adapter/Mysqli.php",
-		"/Applications/MAMP/htdocs/doit/application/config.ini",
-		"/Applications/MAMP/htdocs/doit/application/models/tasks/GetTable.php",
-		"/Applications/MAMP/htdocs/doit/include/Zend/Request/Interface.php",
-		"/Applications/MAMP/htdocs/doit/include/Zend/Form/SubForm.php",
-		"/Applications/MAMP/htdocs/doit/application/views/scripts/index/index.phtml",
-		"/Applications/MAMP/htdocs/doit/application/views/scripts/tasks/index.phtml",
-		"/Applications/MAMP/htdocs/doit/application/models/Tasks/EntryForm.php",
-		"/Applications/MAMP/htdocs/doit/application/models/TaskEntryForm",
-		"/Applications/MAMP/htdocs/doit/htdocs/assets/css/style.css",
-		"/Applications/MAMP/htdocs/doit/application/models/Task.php",
-		"/Applications/MAMP/htdocs/doit/application/views/scripts/tasks/add.phtml",
-		"/Applications/MAMP/htdocs/doit/application/views/scripts/index/add.phtml",
-		"/Applications/MAMP/htdocs/doit/application/layouts/scripts/footer.phtml",
-		"/Applications/MAMP/htdocs/doit/application/layouts/scripts/header.phtml",
-		"/Applications/MAMP/htdocs/doit/htdocs/assets/css/reset.css",
-		"/Applications/MAMP/htdocs/doit/application/views/helpers/BaseUrl.php",
-		"/Applications/MAMP/htdocs/doit/application/views/helpers/baseUrl.php",
-		"/Applications/MAMP/htdocs/doit/application/views/helper/baseUrl.php",
-		"/Applications/MAMP/htdocs/doit/application/views/helper/baseUrl",
-		"/Applications/MAMP/htdocs/blueflare/ar/device-location.html",
-		"/Users/abdgemei/Library/Caches/Cleanup At Startup/Transmit/06868C11-85E6-4E05-81EF-B2A50A94C0D2/device-location.php",
-		"/Applications/MAMP/htdocs/blueflare/ar/assets/style.css",
-		"/Applications/MAMP/htdocs/blueflare/ar/add-device.html",
-		"/Applications/MAMP/htdocs/blueflare/ar/contactsView.html",
-		"/Applications/MAMP/htdocs/blueflare/ar/login.html",
-		"/Applications/MAMP/htdocs/blueflare/ar/reports.html",
-		"/Applications/MAMP/htdocs/blueflare/ar/index.html",
-		"/Applications/MAMP/htdocs/blueflare/ar/add-contact.html",
-		"/Applications/MAMP/htdocs/php-project/inc/sidebar.php",
-		"/Applications/MAMP/htdocs/php-project/film.php",
-		"/Applications/MAMP/htdocs/php-project/index.php",
-		"/Applications/MAMP/htdocs/php-project/name.php",
-		"/Applications/MAMP/htdocs/php-project/inc/footer.php",
-		"/Applications/MAMP/htdocs/php-project/css/style.css",
-		"/Applications/MAMP/htdocs/php-project/genre.php",
-		"/Applications/MAMP/htdocs/php-project/inc/header.php",
-		"/Applications/MAMP/htdocs/php-project/php-project.esproj/user.abdgemei.espressostorage",
-		"/Applications/MAMP/htdocs/php-project/functions.php",
-		"/Applications/MAMP/htdocs/ci/application/views/modify_post_form.php",
-		"/Applications/MAMP/htdocs/ci/application/views/modify_user_form.php",
-		"/Applications/MAMP/htdocs/ci/application/views/add_user_form.php",
-		"/Applications/MAMP/htdocs/ci/application/controllers/dashboard/signup.php",
-		"/Applications/MAMP/htdocs/ci/application/controllers/dashboard/users.php",
-		"/Applications/MAMP/htdocs/ci/application/models/user_model.php",
-		"/Applications/MAMP/htdocs/ci/application/models/post_model.php",
-		"/Applications/MAMP/htdocs/ci/application/controllers/dashboard/posts.php",
-		"/Applications/MAMP/htdocs/ci/application/views/signup_form.php",
-		"/Applications/MAMP/htdocs/ci/application/controllers/dashboard/media.php",
-		"/Applications/MAMP/htdocs/ci/application/controllers/dashboard/login.php",
-		"/Applications/MAMP/htdocs/ci/application/controllers/admin.php",
-		"/Applications/MAMP/htdocs/ci/application/controllers/dashboard/logout.php",
-		"/Applications/MAMP/htdocs/ci/application/views/login_form.php",
-		"/Applications/MAMP/htdocs/ci/application/config/autoload.php",
-		"/Applications/MAMP/htdocs/ci/application/models/media_model.php",
-		"/Applications/MAMP/htdocs/ci/application/views/upload_media_form.php",
-		"/Applications/MAMP/htdocs/ci/application/config/config.php",
-		"/Applications/MAMP/htdocs/ci/application/views/admin_view.php"
+		"/Applications/MAMP/htdocs/framio/app/Controller/AlbumsController.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Albums/add.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Elements/dashboardHeader.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Users/add.ctp",
+		"/Applications/MAMP/htdocs/framio/app/View/Users/index.ctp",
+		"/Applications/MAMP/htdocs/framio/app/Plugin/PhpThumb/View/Helper/PhpThumbHelper.php",
+		"/Applications/MAMP/htdocs/framio/app/Config/config.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Helper/ThumbnailHelper.php",
+		"/Applications/MAMP/htdocs/framio/app/webroot/content/hqaAerevf4",
+		"/Applications/MAMP/htdocs/framio/app/webroot/content/thumbs/90x70/hqaAerevf4",
+		"/Applications/MAMP/htdocs/framio/app/View/Helper/ThumbHelper.php",
+		"/Applications/MAMP/htdocs/framio/app/Plugin/PhpThumb/Vendor/phpThumb/phpThumb.php",
+		"/Applications/MAMP/htdocs/framio/app/Plugin/Thumbnail/View/Helper/ThumbnailHelper.php",
+		"/Applications/MAMP/htdocs/framio/app/View/Uploads/index.old.ctp",
+		"/Applications/MAMP/htdocs/framio/lib/Cake/bootstrap.php",
+		"/Users/abdgemei/Library/Application Support/Sublime Text 2/Packages/User/Package Control.sublime-settings",
+		"/Applications/MAMP/htdocs/framio/app/webroot/css/cake.generic.old.css",
+		"/Applications/MAMP/htdocs/framio/app/View/Profiles/signup.ctp"
 	],
 	"find":
 	{
@@ -254,9 +307,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
@@ -264,6 +318,115 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"unbind",
+			"contain",
+			"id",
+			"settin",
+			"cakesess",
+			"tr",
+			"div",
+			"photom",
+			"time",
+			"                <?php elseif (!$this->Following->isFollowing($upload['User']['id'])) : ?>\n                <?php echo $this->Form->create(false, array('url' => array('controller' => 'users', 'action' => 'follow'))); ?>\n                    <?php\n                        echo $this->Form->hidden('Following.following_user_id', array('value'=> $upload['User']['id']));\n                        echo $this->Form->submit('Follow', array('class' => 'btn btn-primary', 'id' => 'hoverbtn'));\n                    ?>\n                <?php echo $this->Form->end(); ?>\n",
+			"icon",
+			"php",
+			"echo",
+			"php",
+			"echo",
+			"upload",
+			"']['",
+			"caption",
+			"']['",
+			"</section",
+			"<section",
+			"<section>",
+			"section",
+			" $",
+			"row",
+			"legend",
+			"flash",
+			"profileco",
+			"phpthu",
+			"profile",
+			"info h",
+			"Upload",
+			"hoverbtn",
+			"$user",
+			"timestamp",
+			"Activity",
+			"last_name",
+			"add",
+			" ));",
+			"uploads",
+			"username",
+			"pr",
+			"title",
+			"joins",
+			"comments",
+			"authenticate = ",
+			"salt",
+			"Photo",
+			"['Photo",
+			"is_pr",
+			")            ",
+			"login",
+			"gmail",
+			"email",
+			"cakeemai",
+			"Forgot",
+			"loginf",
+			"upload_id",
+			"favoritec",
+			"upload_id",
+			"photo.",
+			"photo",
+			"photo_id",
+			"invalid",
+			"CakeSession::read",
+			"read(",
+			"session::read",
+			"dt ",
+			"dt",
+			"h2",
+			"font",
+			"span7",
+			".sear",
+			"h2",
+			"action",
+			"#content",
+			"content",
+			"span1",
+			"if(",
+			"getColumnType",
+			"`",
+			"cache",
+			"default_ti",
+			"time",
+			"    public function getFollowingList($user_id = null) {\n    	$this->User = new User;\n        if(is_null($user_id)) {\n        	$user_id = CakeSession::read('Auth.User.id');\n        }\n        $conditions = array(\n            'id' => $user_id\n        );\n        if($this->User->hasAny($conditions)) {\n        	$this->unbindModel(array(\n        		'belongsTo' => array('FollowingUser'),\n        		'hasOne' => array('Activity')\n        		));\n            $followingList = $this->find('all', array('conditions'=>array('Following.user_id'=>$user_id)));\n            return $followingList;\n        } else {\n            throw new NotFoundException(__('User not found'));\n        }\n        \n    }\n",
+			"session",
+			"upload",
+			"slash",
+			"<?php",
+			"memory",
+			"spaces",
+			"auth->",
+			"App::uses('Auth",
+			"a",
+			"activi",
+			"foreach(array_keys($this->Upload->Photo->getColumnTypes()) as $column) {\n            $photoColumnNames[] = 'Photo.'.$column;\n        ",
+			"user_id",
+			"html",
+			"allow",
+			"render",
+			"config",
+			"img",
+			"font-weig",
+			"h2",
+			"link",
+			"html",
+			"auto",
+			"auth",
+			"beforeFilter",
 			"zend_date",
 			"EEE",
 			"day",
@@ -282,62 +445,7 @@
 			"iconv_s",
 			"iconv",
 			"iconv_s",
-			"iconv_",
-			"iconv_strpos",
-			"strpos",
-			"iconv_strpos",
-			"parseDate",
-			"service",
-			"format",
-			"locale",
-			"new ",
-			"Zend_Locale",
-			"new ",
-			"new",
-			"getDate",
-			"_parseDate",
-			"new ",
-			"_profiler",
-			"insert",
-			" has",
-			" is",
-			"session",
-			"_POST",
-			"is",
-			"isPost",
-			"ispost",
-			"$_request",
-			"var $_request",
-			"_request",
-			"getR",
-			"fieldset",
-			"a href",
-			"script",
-			"search",
-			"groups",
-			"location",
-			" ",
-			"add",
-			"shopp",
-			"min-height",
-			"get_movie_by_id",
-			"get_names",
-			"sitemap_model",
-			"id",
-			"flash",
-			"n/",
-			"model",
-			"controller",
-			"model",
-			"controller",
-			"model",
-			"line",
-			"noel",
-			"saw",
-			"noel",
-			"file",
-			"wrap",
-			"font"
+			"iconv_"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -345,6 +453,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"'",
 			"s",
 			"strpos"
 		],
@@ -357,28 +466,28 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/Controller/UsersController.php",
+					"file": "app/webroot/css/photo.css",
 					"settings":
 					{
-						"buffer_size": 9568,
+						"buffer_size": 2474,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								662,
-								662
+								2450,
+								2450
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"syntax": "Packages/CSS/CSS.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -390,99 +499,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "app/View/Layouts/default.ctp",
-					"settings":
-					{
-						"buffer_size": 2140,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								710,
-								710
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/Users/abdgemei/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-					"settings":
-					{
-						"buffer_size": 138,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								138,
-								138
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/View/Layouts/dashboard.ctp",
-					"settings":
-					{
-						"buffer_size": 1575,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
 					"file": "app/Controller/UploadsController.php",
 					"settings":
 					{
-						"buffer_size": 7270,
+						"buffer_size": 13729,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								243,
-								243
+								4698,
+								4698
 							]
 						],
 						"settings":
@@ -493,6 +521,90 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/View/Uploads/view.old.ctp",
+					"settings":
+					{
+						"buffer_size": 6649,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3533,
+								3533
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/View/Activities/index.ctp",
+					"settings":
+					{
+						"buffer_size": 1345,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								919,
+								919
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/Controller/UsersController.php",
+					"settings":
+					{
+						"buffer_size": 14609,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11562,
+								11562
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3809.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -542,256 +654,516 @@
 		"selected_items":
 		[
 			[
+				"usersc",
+				"app/Controller/UsersController.php"
+			],
+			[
+				"users/edit",
+				"app/View/Users/edit.ctp"
+			],
+			[
+				"resetpass",
+				"app/View/Users/reset_password.ctp"
+			],
+			[
+				"change",
+				"app/View/Users/change_password.ctp"
+			],
+			[
+				"invit",
+				"app/Controller/InvitationsController.php"
+			],
+			[
+				"users",
+				"app/Controller/UsersController.php"
+			],
+			[
+				"header.ctp",
+				"app/View/Elements/Dashboard/Header.ctp"
+			],
+			[
+				"dasb",
+				"app/View/Layouts/dashboard.ctp"
+			],
+			[
+				"activit",
+				"app/Controller/ActivitiesController.php"
+			],
+			[
+				"21",
+				"lib/Cake/Config/unicode/casefolding/2100_214f.php"
+			],
+			[
+				"index.ctp",
+				"app/View/Activities/index.ctp"
+			],
+			[
+				"uplaods",
+				"lib/Cake/Test/test_app/Plugin/TestPlugin/Model/Datasource/Database/TestDriver.php"
+			],
+			[
+				"activi",
+				"app/Controller/ActivitiesController.php"
+			],
+			[
+				"feed/",
+				"app/View/Elements/Feed/commentActivity.ctp"
+			],
+			[
+				"activities/",
+				"app/View/Activities/index.ctp"
+			],
+			[
+				"commenthel",
+				"app/View/Helper/CommentHelper.php"
+			],
+			[
+				"view.old",
+				"app/View/Uploads/view.old.ctp"
+			],
+			[
 				"uploads",
 				"app/Controller/UploadsController.php"
 			],
 			[
-				"settings",
-				"/Users/abdgemei/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings"
+				"photo.css",
+				"app/webroot/css/photo.css"
 			],
 			[
-				"dashboard.ctp",
+				"uploads/view",
+				"app/View/Uploads/view.ctp"
+			],
+			[
+				"settings",
+				"app/View/Elements/Dashboard/Settings.ctp"
+			],
+			[
+				"dashb",
+				"app/webroot/css/dashboard.css"
+			],
+			[
+				"footer.ctp",
+				"app/View/Elements/footer.ctp"
+			],
+			[
+				"dashboard",
+				"app/View/Elements/Dashboard/Header.ctp"
+			],
+			[
+				"profile/inf",
+				"app/View/Elements/Profile/info.ctp"
+			],
+			[
+				"profile/header",
+				"app/View/Elements/Profile/header.ctp"
+			],
+			[
+				"profile.ctp",
+				"app/View/Layouts/profile.ctp"
+			],
+			[
+				"photo.ctp",
+				"app/View/Layouts/photo.ctp"
+			],
+			[
+				"profile/info",
+				"app/View/Elements/Profile/info.ctp"
+			],
+			[
+				"sty",
+				"app/webroot/css/style.css"
+			],
+			[
+				"login.css",
+				"app/webroot/css/login.css"
+			],
+			[
+				"login.ctp",
+				"app/View/Users/login.ctp"
+			],
+			[
+				"loginscree",
+				"app/View/Layouts/loginScreen.ctp"
+			],
+			[
+				"loginfo",
+				"app/View/Elements/loginForm.ctp"
+			],
+			[
+				"loginctp",
+				"app/View/Users/login.ctp"
+			],
+			[
+				"cake.gene",
+				"app/webroot/css/cake.generic.css"
+			],
+			[
+				"profiles",
+				"app/Controller/ProfilesController.php"
+			],
+			[
+				"style.css",
+				"app/webroot/css/style.css"
+			],
+			[
+				"uploadac",
+				"app/View/Elements/Feed/uploadActivity.ctp"
+			],
+			[
+				"invita",
+				"app/Controller/InvitationsController.php"
+			],
+			[
+				"edit.ctp",
+				"app/View/Uploads/edit.ctp"
+			],
+			[
+				"dashboard.css",
+				"app/webroot/css/dashboard.css"
+			],
+			[
+				"favorite",
+				"app/View/Helper/FavoriteHelper.php"
+			],
+			[
+				"view.ctp",
+				"app/View/Photos/view.ctp"
+			],
+			[
+				"profiles/view",
+				"app/View/Profiles/view.ctp"
+			],
+			[
+				"profiles/",
+				"app/View/Profiles/index.ctp"
+			],
+			[
+				"users/v",
+				"app/View/Users/view.ctp"
+			],
+			[
+				"users/view",
+				"app/View/Users/view.ctp"
+			],
+			[
+				"activities",
+				"app/Controller/ActivitiesController.php"
+			],
+			[
+				"uploadacc",
+				"app/View/Elements/Feed/uploadActivity.ctp"
+			],
+			[
+				"profile.old",
+				"app/View/Layouts/profile.old.ctp"
+			],
+			[
+				"usersco",
+				"app/Controller/UsersController.php"
+			],
+			[
+				"profile.css",
+				"app/webroot/css/profile.css"
+			],
+			[
+				"activities/ind",
+				"app/View/Activities/index.ctp"
+			],
+			[
+				"follow",
+				"app/View/Elements/Feed/followingActivity.ctp"
+			],
+			[
+				"uploadact",
+				"app/View/Elements/Feed/uploadActivity.ctp"
+			],
+			[
+				"activity",
+				"app/Model/Activity.php"
+			],
+			[
+				"upload",
+				"app/Model/Upload.php"
+			],
+			[
+				"comments/edit",
+				"app/View/Comments/edit.ctp"
+			],
+			[
+				"uploads/edit",
+				"app/View/Uploads/edit.ctp"
+			],
+			[
+				"add.ctp",
+				"app/View/Uploads/add.ctp"
+			],
+			[
+				"comments/add",
+				"app/View/Comments/add.ctp"
+			],
+			[
+				"upload.php",
+				"app/Model/Upload.php"
+			],
+			[
+				"userscont",
+				"app/Controller/UsersController.php"
+			],
+			[
+				"commentsc",
+				"app/Controller/CommentsController.php"
+			],
+			[
+				"comments",
+				"app/View/Comments/index.ctp"
+			],
+			[
+				"database",
+				"app/Config/database.php"
+			],
+			[
+				"core.php",
+				"app/Config/core.php"
+			],
+			[
+				"comment.",
+				"app/Model/Comment.php"
+			],
+			[
+				"comments/",
+				"app/View/Comments/index.ctp"
+			],
+			[
+				"uplo",
+				"app/Model/Upload.php"
+			],
+			[
+				"user",
+				"app/Model/User.php"
+			],
+			[
+				"hash",
+				"lib/Cake/Utility/Hash.php"
+			],
+			[
+				"authcom",
+				"lib/Cake/Controller/Component/AuthComponent.php"
+			],
+			[
+				"appc",
+				"app/Controller/AppController.php"
+			],
+			[
+				"authcomp",
+				"lib/Cake/Controller/Component/AuthComponent.php"
+			],
+			[
+				"appcon",
+				"app/Controller/AppController.php"
+			],
+			[
+				"index",
+				"app/View/Activities/index.ctp"
+			],
+			[
+				"photo",
+				"app/Model/Photo.php"
+			],
+			[
+				"activies",
+				"app/Controller/ActivitiesController.php"
+			],
+			[
+				"uploa",
+				"app/Model/Upload.php"
+			],
+			[
+				"dash",
 				"app/View/Layouts/dashboard.ctp"
 			],
 			[
-				"view/layouts/def",
+				"dashbo",
+				"app/webroot/css/dashboard.css"
+			],
+			[
+				".css",
+				"app/webroot/css/cake.generic.css"
+			],
+			[
+				"user.php",
+				"app/Model/User.php"
+			],
+			[
+				"photosc",
+				"app/Controller/PhotosController.php"
+			],
+			[
+				"photos/ind",
+				"app/View/Photos/index.ctp"
+			],
+			[
+				"appco",
+				"app/Controller/AppController.php"
+			],
+			[
+				"config/ema",
+				"app/Config/email.php"
+			],
+			[
+				"invi",
+				"app/Controller/InvitationsController.php"
+			],
+			[
+				"bootstr",
+				"app/Config/bootstrap.php"
+			],
+			[
+				"config/core",
+				"app/Config/core.php"
+			],
+			[
+				"style",
+				"app/webroot/css/style.css"
+			],
+			[
+				"homep",
+				"app/View/Layouts/homepage.ctp"
+			],
+			[
+				"das",
+				"app/webroot/css/dashboard.css"
+			],
+			[
+				"home.ctp",
+				"app/View/Pages/home.ctp"
+			],
+			[
+				"naviga",
+				"app/View/Elements/navigation.ctp"
+			],
+			[
+				"layouts/def",
 				"app/View/Layouts/default.ctp"
 			],
 			[
-				"routing",
-				"app/config/routing.yml"
+				"layouts/home",
+				"app/View/Layouts/homepage.ctp"
 			],
 			[
-				"routing_dev",
-				"app/config/routing_dev.yml"
+				"loginf",
+				"app/View/Elements/loginForm.ctp"
 			],
 			[
-				"appker",
-				"app/AppKernel.php"
+				"homepa",
+				"app/View/Layouts/homepage.ctp"
 			],
 			[
-				"appkerne",
-				"app/AppKernel.php"
+				"activities/in",
+				"app/View/Activities/index.ctp"
 			],
 			[
-				"para",
-				"app/config/parameters.ini"
+				"activity.php",
+				"app/Model/Activity.php"
 			],
 			[
-				"app/config/conf",
-				"app/config/config.yml"
+				"favori",
+				"app/Model/Favorite.php"
 			],
 			[
-				"accounttype",
-				"src/Kareerak/FrontendBundle/Form/AccountType.php"
+				"favo",
+				"app/Model/Favorite.php"
 			],
 			[
-				"index.html.twig",
-				"src/Kareerak/FrontendBundle/Resources/views/Default/index.html.twig"
+				"followingh",
+				"app/View/Helper/FollowingHelper.php"
 			],
 			[
-				"defaultcontro",
-				"src/Kareerak/FrontendBundle/Controller/DefaultController.php"
+				"uploads/ve",
+				"app/View/Uploads/view.ctp"
 			],
 			[
-				"routing.",
-				"app/config/routing.yml"
+				"uploads/vew",
+				"app/View/Uploads/view.ctp"
 			],
 			[
-				"signup",
-				"src/Kareerak/FrontendBundle/Controller/SignupController.php"
+				"uploads/v",
+				"app/View/Uploads/view.ctp"
 			],
 			[
-				"zendlocalefor",
-				"include/Zend/Locale/Format.php"
+				"photos/v",
+				"app/View/Photos/view.ctp"
 			],
 			[
-				"zend/date",
-				"include/Zend/Date.php"
+				"uploads/index",
+				"app/View/Uploads/index.ctp"
 			],
 			[
-				"zend/calendar",
-				"include/Zend/Calendar.php"
+				"userscon",
+				"app/Controller/UsersController.php"
 			],
 			[
-				"zendlocaleform",
-				"include/Zend/Locale/Format.php"
+				"profiles/e",
+				"app/View/Profiles/edit.ctp"
 			],
 			[
-				"zenddate.php",
-				"include/Zend/Date.php"
+				"photo/v",
+				"app/View/Photos/view.ctp"
 			],
 			[
-				"zendlocalform",
-				"include/Zend/Locale/Format.php"
+				"photome",
+				"app/Model/PhotoMetadatum.php"
 			],
 			[
-				"zenddate",
-				"include/Zend/Date.php"
+				"uploada",
+				"app/View/Elements/Feed/uploadActivity.ctp"
 			],
 			[
-				"localefo",
-				"include/Zend/Locale/Format.php"
+				"uploads/edi",
+				"app/View/Uploads/edit.ctp"
 			],
 			[
-				"zendlocale",
-				"include/Zend/Locale.php"
+				"uploads/",
+				"app/View/Uploads/index.ctp"
 			],
 			[
-				"",
-				"application/controllers/TasksController.php"
+				"boot",
+				"app/webroot/css/bootstrap.css"
 			],
 			[
-				"zenddbadapterpdoabstract",
-				"include/Zend/Db/Adapter/Pdo/Abstract.php"
+				"bootstra",
+				"app/webroot/css/bootstrap.css"
 			],
 			[
-				"zenddbmys",
-				"include/Zend/Db/Statement/Mysqli.php"
+				"upload/inde",
+				"app/View/Uploads/index.ctp"
 			],
 			[
-				"zenddbadaptera",
-				"include/Zend/Db/Adapter/Abstract.php"
+				"profi",
+				"app/Model/Profile.php"
 			],
 			[
-				"zenddbadapterpdoab",
-				"include/Zend/Db/Adapter/Pdo/Abstract.php"
+				"album",
+				"app/Model/Album.php"
 			],
 			[
-				"zend/db/adamysql",
-				"include/Zend/Db/Adapter/Pdo/Mysql.php"
+				"activityt",
+				"app/Model/ActivityType.php"
 			],
 			[
-				"zend/db/adapter/m",
-				"include/Zend/Db/Adapter/Mysqli.php"
+				"acti",
+				"app/Model/ActivityType.php"
 			],
 			[
-				"auth.php",
-				"include/Zend/Auth.php"
+				"core.",
+				"app/Config/core.php"
 			],
 			[
-				"action.php",
-				"include/Zend/Controller/Action.php"
+				"bootstrap",
+				"app/Config/bootstrap.php"
 			],
 			[
-				"zenddb",
-				"include/Zend/Db.php"
-			],
-			[
-				"config",
-				"application/config.ini"
-			],
-			[
-				"zend/form.php",
-				"include/Zend/Form.php"
-			],
-			[
-				"zend/controller",
-				"include/Zend/Controller/Action.php"
-			],
-			[
-				"entryform",
-				"application/models/Tasks/EntryForm.php"
-			],
-			[
-				"zend/form/sub",
-				"include/Zend/Form/SubForm.php"
-			],
-			[
-				"layout.phtml",
-				"application/layouts/scripts/layout.phtml"
-			],
-			[
-				"shopp",
-				"shoppingcart.php"
-			],
-			[
-				"functions.php",
-				"functions.php"
-			],
-			[
-				"function",
-				"functions.php"
-			],
-			[
-				"posts.php",
-				"application/controllers/dashboard/posts.php"
-			],
-			[
-				"users.php",
-				"application/controllers/dashboard/users.php"
-			],
-			[
-				"media",
-				"application/controllers/dashboard/media.php"
-			],
-			[
-				"post",
-				"application/models/post_model.php"
-			],
-			[
-				"post.",
-				"application/controllers/dashboard/posts.php"
-			],
-			[
-				"mes",
-				"application/views/message_display.php"
-			],
-			[
-				"posts.ph",
-				"application/controllers/dashboard/posts.php"
-			],
-			[
-				"media_mo",
-				"application/models/media_model.php"
-			],
-			[
-				"template.php",
-				"application/views/includes/template.php"
-			],
-			[
-				"galle",
-				"application/views/gallery.php"
-			],
-			[
-				"galler",
-				"application/models/gallery_model.php"
-			],
-			[
-				"gall",
-				"application/controllers/gallery.php"
-			],
-			[
-				"post_m",
-				"application/models/post_model.php"
-			],
-			[
-				"admin",
-				"application/controllers/admin.php"
-			],
-			[
-				"mess",
-				"application/views/message_display.php"
-			],
-			[
-				"media.php",
-				"application/controllers/dashboard/media.php"
-			],
-			[
-				"auto",
-				"application/config/autoload.php"
-			],
-			[
-				"post_mo",
-				"application/models/post_model.php"
-			],
-			[
-				"admin_v",
-				"application/views/admin_view.php"
-			],
-			[
-				"media_",
-				"application/models/media_model.php"
+				"phpth",
+				"app/Plugin/PhpThumb/Vendor/phpThumb/phpThumb.config.php.default"
 			]
 		],
 		"width": 0.0
@@ -808,6 +1180,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": false,
-	"side_bar_width": 171.0,
+	"side_bar_width": 150.0,
 	"status_bar_visible": true
 }

@@ -6,9 +6,11 @@
         <div class="span3 offset4">
             <div id="accountActions">
                 <?php $user = $this->Session->read('Auth.User'); ?>
-                <?php if(isset($user)) { echo "Logged in as <em>". $user['email'] ."</em><br />".$this->Html->link('Sign out', array('controller'=>'users', 'action'=>'logout'));
+                <?php if(isset($user)) { echo $user['email'] ."</em><br />";
                       echo '&nbsp;';
                       echo $this->Html->link('Account Settings', array('controller' => 'users', 'action' => 'edit'));
+                      echo '&nbsp;';
+                      echo $this->Html->link('Sign out', array('controller'=>'users', 'action'=>'logout'));
                 } else { ?>
                     
                 <?php echo $this->Html->link('Sign in', array('controller'=>'users', 'action'=>'login')); }  ?>

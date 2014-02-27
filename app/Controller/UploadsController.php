@@ -14,7 +14,7 @@ App::uses('ProfilePicture', 'Model');
  */
 class UploadsController extends AppController {
 
-    public $helpers = array('Html', 'Time', 'PhpThumb.PhpThumb');
+    public $helpers = array('Html', 'Time', 'PhpThumb.PhpThumb', 'Following');
     public $components = array('Rand');
    // public $layout = 'dashboard';
 
@@ -22,6 +22,7 @@ class UploadsController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
+        $this->Auth->allow('view');
         $this->layout = 'dashboard';
     }
 
@@ -98,6 +99,7 @@ class UploadsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+        $this->layout = 'photo';
 		if (!$this->Upload->exists($id)) {
 			throw new NotFoundException(__('Invalid upload'));
 		}
@@ -126,12 +128,14 @@ class UploadsController extends AppController {
         $commentOptions['conditions'] = array(
             'Comment.upload_id' => $id
             );
+        $commentOptions['order'] = 'Comment.timestamp DESC';
         $this->Comment->unbindModel(array(
-            'belongsTo' => array('Upload')
+            'belongsTo' => array('Upload'),
+            'hasOne' => array('Activity')
             ));
         $this->Comment->User->unbindModel(array(
             'belongsTo' => array('Group'),
-            'hasMany' => array('Activity', 'Upload', 'Album', 'Comment'),
+            'hasMany' => array('Upload'),
             ));
         $this->Comment->recursive = 2;
         // debug($this->Comment->find('all', $commentOptions));

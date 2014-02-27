@@ -5,15 +5,12 @@ echo $this->Form->create('User',
         'class' => 'form-horizontal',
         'inputDefaults' => array(
                 'div' => 'control-group',
-                'label' => array('class' => 'control-label'),
-                'between' => '<div class="controls">',
-                'after' => '</div>'
             )
         ));
 
 ?>
     <fieldset>
-        <legend><?php echo __('Change password'); ?></legend>
+        <legend><?php echo __('Forgot password'); ?></legend>
     <?php
         echo $this->Form->input('email');
     ?>

@@ -5,9 +5,7 @@
 $time = date('Y-m-d H:i:s', $activity['Activity']['timestamp']);
 $timeOptions = array(
         'accuracy' => array('hour' => 'hour', 'day' => 'day'),
-        'end' => '1 week'
-
-);
+        'end' => '1 week');
 
 
 ?>

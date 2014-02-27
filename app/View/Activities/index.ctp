@@ -18,7 +18,9 @@
                     echo $this->element('Feed/followingActivity', array('activity' => $activity));
                     break;
                 case 4:
-                    if($activity['Upload']['Photo']['is_visible'] == 0) {continue;}
+                // pr($activity['Upload']['Photo']); die;
+                    if (isset($activity['Upload']['Photo'])) {
+                        if ($activity['Upload']['Photo']['is_visible'] == 0) {continue;} }
                     echo $this->element('Feed/uploadActivity', array('activity' => $activity));
                     break;
                 case 7:

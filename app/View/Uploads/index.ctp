@@ -7,8 +7,8 @@
             <div class="input-append">
                 <?php   $this->Form->create('Search', array(
                 'inputDefaults' => array('label'=>false, 'div'=>false)));
-                        echo $this->Form->input('search', array('placeholder' => 'search photos', 'class' => 'search-query', 'id' => 'appendedInputButtons'));
-                        echo $this->Form->submit('Search', array('class' => 'btn', 'div' => false, 'type' => 'button'))
+                        //echo $this->Form->input('search', array('placeholder' => 'search photos', 'class' => 'search-query', 'id' => 'appendedInputButtons'));
+                        //echo $this->Form->submit('Search', array('class' => 'btn', 'div' => false, 'type' => 'button'))
                 ?>
             </div>
             <div id="viewOptions">

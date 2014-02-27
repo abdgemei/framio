@@ -75,7 +75,6 @@ class UsersController extends AppController {
 
     public function changePassword() {
         $this->layout = 'dashboard';
-
         if ($this->request->is('post') || $this->request->is('put')) {
             // pr($this->request->data); die;
             if($this->request->data['User']['password'] !== $this->request->data['User']['password_confirmation']) {
@@ -88,7 +87,7 @@ class UsersController extends AppController {
             // pr($this->User->data); die;
             if ($this->User->save()) {
                 $this->Session->setFlash(__('Your password has been changed!'));
-                $this->redirect($this->referer());
+                $this->redirect('/');
             } else {
                 $this->Session->setFlash(__('Something went wrong...'));
             }
@@ -123,6 +122,7 @@ class UsersController extends AppController {
 
                 $this->redirect($this->Auth->redirect());
             } else {
+
                 $this->Session->setFlash(__('Invalid username or password, try again'));
             }
         }
@@ -219,7 +219,7 @@ class UsersController extends AppController {
     }
     
     public function resetPassword() {
-        $this->layout = 'homepage';
+        $this->layout = 'loginScreen';
         if ($this->request->is('post')) {
             $user = $this->User->findByEmail($this->request->data['User']['email']);
             // pr($this->request->data); die;

@@ -1,8 +1,8 @@
 <?php //pr($profile); die; ?>
     <section class="row" id="userInfo">
         <section class="span4" id="profileInfo">
-            <?php echo $this->Html->image(null, array('width' => 130, 'height' => 174)); ?>
-            <h5 class="pull-right">
+            <?php //echo $this->Html->image(null, array('width' => 130, 'height' => 174)); ?>
+            <h5>
             <p style="font-size:18px;"><?php echo $profile['Profile']['first_name'].' '.$profile['Profile']['last_name']; ?></p></br><p><?php echo $profile['Profile']['city'].', '.$profile['Profile']['country']; ?></p><p>Member since <?php echo $this->Time->nice($profile['User']['created']); ?></p>
             </h5>
 

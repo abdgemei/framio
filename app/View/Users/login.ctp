@@ -2,6 +2,7 @@
         'inputDefaults' => array('label'=>false, 'div'=>false)
         )); ?>
     <flieldset>
+        <legend><?php echo __('Log in') ?></legend>
         <?php echo $this->Form->input('email', array('id'=>'emailForm', 'placeholder' => 'Email'));
               echo $this->Form->input('password', array('placeholder'=>'Password', 'id'=>'passForm'));
               echo $this->Form->submit(

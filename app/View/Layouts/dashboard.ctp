@@ -39,7 +39,6 @@ App::uses('Debugger', 'Utility');
                 <li><?php echo $this->Html->link('Home', array('controller' => 'activities', 'action' => 'index'), array('class' => 'navItem', 'id' => 'home')); ?></li>
                 <li><?php echo $this->Html->link('Home', array('controller' => 'uploads', 'action' => 'index'), array('class' => 'navItem', 'id' => 'photos')); ?></li>
                 <li><?php echo $this->Html->link('Favorites', array('controller' => 'uploads', 'action' => 'favorites'), array('class' => 'navItem', 'id' => 'faves')); ?></li>
-                <li><a href="#" class="navItem" id="stats"></a></li>
                 <li><?php echo $this->Html->link('Home', array('controller' => 'users', 'action' => 'edit'), array('class' => 'navItem', 'id' => 'settings')); ?></li>
             </ul>
         </section>
@@ -49,4 +48,4 @@ App::uses('Debugger', 'Utility');
 <?php //echo $this->element('sql_dump'); ?>
 <section id="push"></section>
 </section>
-<?php echo $this->element('footer'); ?>
+<?php //echo $this->element('footer'); ?>

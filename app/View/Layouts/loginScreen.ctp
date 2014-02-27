@@ -14,6 +14,7 @@ App::uses('Debugger', 'Utility');
         <?php echo $cakeDescription ?>
     </title>
     <?php echo $this->Html->meta('icon');
+          echo $this->Html->css('cake.generic');
           echo $this->Html->css('bootstrap');
           echo $this->Html->css('login');
           echo $this->fetch('meta');

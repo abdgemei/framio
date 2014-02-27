@@ -1,0 +1,147 @@
+/* CSS Document */
+
+body{
+    background-color:#262626;
+    background-image:url(images/noisy-texture-100x100-o33-d37-c-262626-t1.png);
+}
+
+#navigation{
+    background-color:#000;
+    border-radius:6px 6px 0px 0px;
+    margin-top:10px
+}
+#logo{
+    color:#FFF;
+    
+}
+
+#links ul{
+    padding-top:10px;
+    margin-left:90px;
+}
+
+#links li{
+    display:inline;
+    list-style:none;
+    color:#CCC;
+    text-decoration:none;
+    padding-left:30px;
+}
+
+#links a{
+    color:#F8F8F8;
+    text-decoration:none;
+}
+
+#large-picture{
+    background-color:#141414;
+    border-top:#252525 solid 1px;
+    border-right:#252525 thin 1px;
+    margin-left:0px;
+    padding-left:50px;
+    padding-right:50px;
+    padding-bottom:40px;
+    border-bottom:#333 solid 1px;
+}
+
+#large-picture img{
+    margin-top:20px;
+    padding-left:auto;
+    padding-right:auto;
+}
+
+#large-picture p{
+    color:#F8F8F8;
+    margin-top:0px;
+    padding-top:10px;
+    padding-left:10px;
+    padding-bottom:10px;
+    background-color:#252525;
+    border-bottom:#272727 solid 1px;
+    -webkit-box-shadow: -2px 0px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: -2px 0px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 2px 0px 20px 5px rgba(0,0,0,0.75);
+}
+
+
+#photo-info{
+    background-color:#161616;
+    border-left:#252525 solid 1px;
+    margin-left:0px;
+    padding-left:15px;
+    padding-bottom:10px;
+    -webkit-box-shadow: -2px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow:    -2px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow:         -2px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+#photo-info img{
+    padding-top:20px;
+}
+
+#photo-info h5{
+    padding-top:35px;
+    margin-right:35px;
+    color:#F8F8F8;
+    line-height:10px;
+}
+
+#side-nav{
+    padding-top:10px;
+}
+
+#side-nav li{
+}
+
+#side-nav li a{
+    color:#000;
+    text-decoration:none;
+}
+
+#side-nav p{
+    color:#F8F8F8;
+    line-height:8px;
+    padding-bottom:10px;
+}
+#break li{
+    background-color:#FFF;
+    border:none;
+    
+}
+#break li a{
+    background-color:#FFF;
+    border:none;
+    
+}
+#Counts{
+    margin-left:0px;
+    padding-top:10px;
+    margin-right:15px;
+    padding-bottom:10px;
+    border-top:#252525 solid 1px;
+    border-bottom:#252525 solid 1px;
+}
+
+#Counts li{
+    color:#F8F8F8;
+    list-style:none;
+    line-height:25px;
+}
+
+#post{
+    background-color:#c6c6c6;
+    border-top:#141414 solid 1px;
+}
+
+#commentbox{
+    padding-top:10px;
+    padding-left:10px;
+}
+#comment{
+    width:525px;
+    border:#9F9F9F solid 1px;
+}
+
+.commentItem {
+    margin-bottom:20px;
+}
